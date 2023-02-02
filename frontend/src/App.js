@@ -3,9 +3,9 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 import './App.css';
 
-import About from './routes/About';
 import Dashboard from './routes/Dashboard';
 import Home from './routes/Home';
+import Login from './routes/Login';
 import NoMatch from './routes/NoMatch';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route path="login" element={<Login />} />
           <Route path="dashboard" element={<Dashboard />} />
           {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
@@ -33,7 +33,7 @@ function Layout() {
           share across all the pages on your site, like navigation. */}
       <nav class="App-header">
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/login">Login</Link>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/nothing-here">Nothing Here</Link>
       </nav>
