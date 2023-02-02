@@ -2,10 +2,10 @@ const mysql = require('mysql');
 require('dotenv').config();
 
 const con = mysql.createConnection({
-  host: "cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com",
+  host: process.env.DATABASE_HOSTNAME, 
   user: process.env.DATABASE_USER,
-  password: "ookay123",
-  database: 'CIS260db',
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
 });
 
 con.connect((err) => {
