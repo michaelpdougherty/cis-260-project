@@ -31,6 +31,7 @@ app.listen(port, () => {
 app.get('/patients', (req, res) => {
   con.query("SELECT * FROM PATIENTS", (err, result) => {
     if (err) throw err;
+    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(result);
   });
 })
