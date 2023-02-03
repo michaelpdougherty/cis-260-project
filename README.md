@@ -7,7 +7,7 @@ See `frontend/` for more details.
 ## Local Development Instructions
 
 1. Open Git Bash
-2. Navigate to folder where you want to clone the project.
+2. `cd` into the folder where you want to place the project. (A folder called 'cis-260-project' will be created)
 3. `git clone https://github.com/michaelpdougherty/cis-260-project` 
 3. `cd cis-260-project/frontend`
 3. `npm install`
