@@ -14,10 +14,11 @@ See `frontend/` for more details.
 4. `npm start`
 5. Open new Git Bash process
 6. `cd` into the `backend/` folder
-7. Edit and save `example.env` to include your DB username and password (`notepad example.env`?)
-8. `cp example.env .env`
-9. `npm run dev`
-10. Everything is working if you can click the "Patients" tab and see the data.
+7. `npm install`
+8. Edit and save `example.env` to include your DB username and password (`notepad example.env`?)
+9. `cp example.env .env`
+10. `npm run dev`
+11. Everything is working if you can click the "Patients" tab and see the data.
 
 ## Available Scripts (Front-End)
 
