@@ -8,7 +8,7 @@ See `frontend/` for more details.
 
 1. Open Git Bash
 2. Navigate to folder where you want to clone the project.
-3. `git clone THIS_PAGE_URL}`
+3. `git clone https://github.com/michaelpdougherty/cis-260-project` 
 3. `cd cis-260-project/frontend`
 3. `npm install`
 4. `npm start`
