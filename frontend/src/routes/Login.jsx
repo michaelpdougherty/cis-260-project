@@ -45,16 +45,19 @@ function Login() {
     accountType: 'STUDENT',
   };
   const onSubmit = values => {
-    console.log("Submitting");
-    console.log(values);
     fetch("/api/login", {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(res => res.json())
-    .then(data => console.log(data));
+    }).then(res => res.text())
+    .then(body => {
+      if (body === 'OK') {
+        window.sessionStorage.setItem('username', values.username)
+        window.location = "/";
+      }
+    });
   };
   return (
     <>

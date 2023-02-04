@@ -11,6 +11,9 @@ import Login from './routes/Login';
 import Logout from './routes/Logout';
 import NoMatch from './routes/NoMatch';
 import Patients from './routes/Patients';
+const NotLogin = () => {
+  window.location = '/login';
+}
 
 const theme = {
   lightBlue: 'hsl(231deg 100% 85%)',
@@ -21,22 +24,34 @@ const theme = {
 };
 
 const App = () => {
+  if (sessionStorage.getItem('username')) {
+    return (
+      <ThemeProvider theme={theme}>
+      <AppStyle>
+      <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="patients" element={<Patients />} />
+            {/* Using path="*"" means "match anything", so this route
+                acts like a catch-all for URLs that we don't have explicit
+                routes for. */}
+            <Route path="*" element={<NoMatch />} />
+          </Route>
+        </Routes>
+      </AppStyle>
+      </ThemeProvider>
+    );
+  }
   return (
     <ThemeProvider theme={theme}>
-    <AppStyle>
-    <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="patients" element={<Patients />} />
-          {/* Using path="*"" means "match anything", so this route
-              acts like a catch-all for URLs that we don't have explicit
-              routes for. */}
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </AppStyle>
+      <AppStyle>
+        <Routes>
+          <Route index path="/login" element={<Login />} />
+          <Route path="*" element={<NotLogin />} />
+        </Routes>
+      </AppStyle>
     </ThemeProvider>
   );
 }
