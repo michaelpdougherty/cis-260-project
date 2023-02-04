@@ -9,15 +9,13 @@ See `frontend/` for more details.
 1. Open Git Bash
 2. `cd` into the folder where you want to place the project. (A folder called 'cis-260-project' will be created)
 3. `git clone https://github.com/michaelpdougherty/cis-260-project` 
-3. `cd cis-260-project/frontend`
-3. `npm install`
-4. `npm start`
-5. Open new Git Bash process
-6. `cd` into the `backend/` folder
-7. `npm install`
-8. Edit and save `example.env` to include your DB username and password (`notepad example.env`?)
-9. `cp example.env .env`
-10. `npm run dev`
+4. `cd cis-260-project/backend`
+5. Edit and save `example.env` to include your DB username and password (`notepad example.env`?)
+6. `cp example.env .env`
+7. `cd ..` to return to the project root
+8. `npm run install`
+9. `npm start`
+10. The app should run on localhost:3000
 11. Everything is working if you can click the "Patients" tab and see the data.
 
 ## Available Scripts (Front-End)
