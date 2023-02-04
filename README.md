@@ -11,7 +11,7 @@ See `frontend/` for more details.
 3. `git clone https://github.com/michaelpdougherty/cis-260-project` 
 4. `cd cis-260-project/backend`
 5. `cp example.env .env` (Copy `example.env` to secret file `.env`)
-6. Edit `.env` to add your DB username and password (`notepad example.env`?)
+6. Edit `.env` to add your DB username and password (`notepad .env`?)
 7. `cd ..` to return to the project root
 8. `npm run build`
 9. `npm start`
