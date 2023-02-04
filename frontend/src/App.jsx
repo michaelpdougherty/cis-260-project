@@ -1,5 +1,8 @@
-import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import * as React from 'react';
+import { Routes, Route, Outlet, Link } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+
+import { AppStyle } from './styles';
 
 import './App.css';
 
@@ -8,13 +11,22 @@ import Login from './routes/Login';
 import NoMatch from './routes/NoMatch';
 import Patients from './routes/Patients';
 
+const theme = {
+  lightBlue: 'hsl(231deg 100% 85%)',
+  white: 'hsl(230deg 94% 94%)',
+  navy: 'hsl(223deg 85% 24%)',
+  gray: 'hsl(228deg 94% 94%)',
+  mediumBlue: '#6776ce',
+};
+
 const App = () => {
   return (
-    <div className="App">
+    <ThemeProvider theme={theme}>
+    <AppStyle>
     <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="login" element={<Login />} />
           <Route path="patients" element={<Patients />} />
           {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
@@ -22,7 +34,8 @@ const App = () => {
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
-    </div>
+    </AppStyle>
+    </ThemeProvider>
   );
 }
 
