@@ -10,10 +10,10 @@ See `frontend/` for more details.
 2. `cd` into the folder where you want to place the project. (A folder called 'cis-260-project' will be created)
 3. `git clone https://github.com/michaelpdougherty/cis-260-project` 
 4. `cd cis-260-project/backend`
-5. Edit and save `example.env` to include your DB username and password (`notepad example.env`?)
-6. `cp example.env .env`
+5. `cp example.env .env` (Copy `example.env` to secret file `.env`)
+6. Edit `.env` to add your DB username and password (`notepad example.env`?)
 7. `cd ..` to return to the project root
-8. `npm run install`
+8. `npm run build`
 9. `npm start`
 10. The app should run on localhost:3000
 11. Everything is working if you can click the "Patients" tab and see the data.
