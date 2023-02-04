@@ -1,4 +1,4 @@
-import { Form, Formik } from 'formik';
+import { Form, Field, Formik } from 'formik';
 import {
   FormGroup,
   Label,
@@ -16,9 +16,9 @@ const LoginFieldRow = ({ name, type = 'text', options = null }) => {
   const getInput = () => {
     if (type === 'select') {
       return (
-        <LoginField as='select' id={name} name={name} type={type}>
-        {options.map(option => <option key={option} value={option}>{option}</option>)}
-        </LoginField>
+        <Field as='select' id={name} name={name} style={{ width: '100%', padding: 3 }}>
+          {Object.entries(options).map(([key, value]) => <option key={key} value={key}>{value}</option>)}
+        </Field>
       )
     }
     return (
@@ -37,6 +37,7 @@ function Login() {
   const JOBS = {
     STUDENT: 'OCCUPATIONAL THERAPY ASSISTANT',
     TEACHER: 'OCCUPATIONAL THERAPIST',
+    ADMIN: 'HOSPITAL ADMINISTRATOR',
   };
   const initialValues = {
     username: '',
@@ -51,7 +52,7 @@ function Login() {
   return (
     <>
       <LoginHeader>
-        MEDITECH Signon
+        MEDITECH EMR Login
       </LoginHeader>
       <LoginView>
         <Formik {...{initialValues, onSubmit}}>
@@ -59,11 +60,11 @@ function Login() {
             <LoginBox>
               <LoginFieldRow name='username'/>
               <LoginFieldRow name='password' type='password'/>
-              <LoginFieldRow name='job' type='select' options={Object.values(JOBS)}/>
+              <LoginFieldRow name='job' type='select' options={JOBS}/>
             </LoginBox>
             <LoginButtons>
               <SignonButton type='submit'>
-                <span>Signon</span>
+                <span>Log In</span>
                 <FontAwesomeIcon icon={faCheck}/>
               </SignonButton>
             </LoginButtons>

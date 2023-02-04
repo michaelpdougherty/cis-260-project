@@ -8,16 +8,12 @@ export const AppStyle = styled.div`
 `;
 
 export const LoginField = styled(Field)`
-  /*
-  padding: 5px 15px;
-  font-size: calc(10px + 2vmin);
-  border-width: 1px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  */
-  background-color: ${p => p.theme.white};
+  input {
+    background-color: ${p => p.theme.white};
+  }
   flex: 1;
-  font-size: 16px;
+  font-size: 18px;
+  padding: 3px;
 `;
 
 export const LoginBox = styled.div`
@@ -43,6 +39,7 @@ export const LoginView = styled(FlexBox)`
 export const FormGroup =  styled.div`
   display: flex;
   justify-content: flex-start;
+  padding: 1px;
 `;
 
 export const Label = styled.label`
