@@ -30,7 +30,7 @@ app.listen(port, () => {
  * Back-End Routes
  */
 app.get('/patients', (req, res) => {
-  con.query("SELECT * FROM PATIENTS", (err, result) => {
+  con.query("SELECT * FROM PATIENTS ORDER BY LastName, FirstName ASC", (err, result) => {
     if (err) throw err;
     res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.json(result);

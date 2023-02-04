@@ -13,7 +13,7 @@ import Patients from './routes/Patients';
 
 const theme = {
   lightBlue: 'hsl(231deg 100% 85%)',
-  white: 'hsl(230deg 94% 94%)',
+  white: '#e1e6fe',
   navy: 'hsl(223deg 85% 24%)',
   gray: 'hsl(228deg 94% 94%)',
   mediumBlue: '#6776ce',
@@ -46,9 +46,8 @@ const Layout = () => {
           share across all the pages on your site, like navigation. */}
       <AppHeader>
         <Link to="/">Home</Link>
-        <Link to="/login">Login</Link>
         <Link to="/patients">Patients</Link>
-        <Link to="/nothing-here">Nothing Here</Link>
+        <Link to="/logout">Log Out</Link>
       </AppHeader>
       {/* An <Outlet> renders whatever child route is currently active,
           so you can think about this <Outlet> as a placeholder for
