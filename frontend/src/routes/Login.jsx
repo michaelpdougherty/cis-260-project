@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const LoginFieldRow = ({ name, type = 'text', options = null }) => {
+const LoginFieldRow = ({ name, type = 'text', options = null, text = null }) => {
   const getInput = () => {
     if (type === 'select') {
       return (
@@ -27,7 +27,7 @@ const LoginFieldRow = ({ name, type = 'text', options = null }) => {
   }
   return (
     <FormGroup>
-        <Label htmlFor={name}>{name[0].toUpperCase() + name.slice(1, name.length)}</Label>
+        <Label htmlFor={name}>{text ?? name[0].toUpperCase() + name.slice(1, name.length)}</Label>
         {getInput()}
     </FormGroup>
   )
@@ -42,12 +42,19 @@ function Login() {
   const initialValues = {
     username: '',
     password: '',
-    job: 'STUDENT',
+    accountType: 'STUDENT',
   };
   const onSubmit = values => {
-    window.alert(
-      JSON.stringify(values, null, 4)
-    );
+    console.log("Submitting");
+    console.log(values);
+    fetch("/api/login", {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }).then(res => res.json())
+    .then(data => console.log(data));
   };
   return (
     <>
@@ -60,7 +67,7 @@ function Login() {
             <LoginBox>
               <LoginFieldRow name='username'/>
               <LoginFieldRow name='password' type='password'/>
-              <LoginFieldRow name='job' type='select' options={JOBS}/>
+              <LoginFieldRow name='accountType' text='Job' type='select' options={JOBS}/>
             </LoginBox>
             <LoginButtons>
               <SignonButton type='submit'>

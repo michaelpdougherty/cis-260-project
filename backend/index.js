@@ -37,8 +37,11 @@ app.get('/patients', (req, res) => {
   });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password, accountType } = req.body;
+  if (!(username && password && accountType)) {
+    res.send({ 'error': "missing username, password, or account type" });
+  }
   if (!['student', 'teacher', 'admin'].includes(accountType.toLowerCase())) {
     res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
   }
