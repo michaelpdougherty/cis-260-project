@@ -55,6 +55,7 @@ function Login() {
     .then(body => {
       if (body === 'OK') {
         window.sessionStorage.setItem('username', values.username)
+        window.sessionStorage.setItem('accountType', values.accountType)
         window.location = "/";
       }
     });
