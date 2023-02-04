@@ -8,6 +8,7 @@ import './App.css';
 
 import Home from './routes/Home';
 import Login from './routes/Login';
+import Logout from './routes/Logout';
 import NoMatch from './routes/NoMatch';
 import Patients from './routes/Patients';
 
@@ -25,6 +26,7 @@ const App = () => {
     <AppStyle>
     <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="patients" element={<Patients />} />
