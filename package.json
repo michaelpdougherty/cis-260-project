@@ -1,0 +1,24 @@
+{
+  "name": "cis-260-project",
+  "version": "1.0.0",
+  "description": "CIS 260 Project - Spring 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install && concurrently \"cd backend && npm install\" \"cd frontend && npm install\" ",
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelpdougherty/cis-260-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelpdougherty/cis-260-project/issues"
+  },
+  "homepage": "https://github.com/michaelpdougherty/cis-260-project#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
