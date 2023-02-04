@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-const BACKEND_HOSTNAME = "http://localhost:5002";
-
 const Patients = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [patients, setPatients] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5002/patients")
+    fetch("/patients")
       .then((res) => res.json())
       .then((jsonData) => setPatients(jsonData))
       .finally(() => setIsLoading(false));
