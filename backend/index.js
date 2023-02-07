@@ -36,6 +36,14 @@ app.get('/patients', (req, res) => {
   });
 });
 
+app.get('/patient/:id', (req, res) => {
+  const { id } = req.params;
+  con.query(`SELECT * FROM PATIENTS WHERE ID = '${id}'`, (err, result) => {
+    if (err) throw err;
+    res.json(result[0]);
+  });
+});
+
 app.post('/api/login', (req, res) => {
   const { username, password, accountType } = req.body;
   if (!(username && password && accountType)) {

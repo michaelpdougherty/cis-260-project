@@ -93,3 +93,32 @@ export const AppHeader = styled.nav`
 export const LoginHeader = styled(AppHeader)`
   justify-content: flex-start;
 `;
+
+export const PatientsTable = styled.table`
+  text-align: left;
+  min-width: 50vw;
+  border-collapse: collapse;
+  padding: 0 50px;
+  th {
+    background: ${p => p.theme.gray2};
+  }
+  td, th {
+    padding: 10px;
+  }
+  tr {
+    background: ${p => p.theme.white};
+  }
+  tbody tr {
+    cursor: pointer;
+    :hover {
+      background: ${p => p.theme.white}80;
+    }
+  }
+`;
+
+export const Table = styled.table`
+  background: ${p => p.theme.white};
+  td, th {
+    padding: 10px;
+  }
+`;

@@ -11,6 +11,7 @@ import Login from './routes/Login';
 import Logout from './routes/Logout';
 import NoMatch from './routes/NoMatch';
 import Patients from './routes/Patients';
+import Patient from './routes/Patient';
 const NotLogin = () => {
   window.location = '/login';
 }
@@ -20,6 +21,7 @@ const theme = {
   white: '#e1e6fe',
   navy: 'hsl(223deg 85% 24%)',
   gray: 'hsl(228deg 94% 94%)',
+  gray2: '#a8acbd',
   mediumBlue: '#6776ce',
 };
 
@@ -33,6 +35,7 @@ const App = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="patient/:id" element={<Patient />} />
             <Route path="patients" element={<Patients />} />
             {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
