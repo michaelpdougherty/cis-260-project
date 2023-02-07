@@ -1,6 +1,16 @@
 import LoadingTable from './LoadingTable';
 import { FlexBox, Table } from './styles';
 
+const DATE_FIELDS = [
+  'DOB',
+  'DATE',
+  'ADMIT_DATE',
+  'DATE_OF_ONSET',
+];
+const DATETIME_FIELDS = [
+  'DATE_AND_TIME',
+];
+
 const JsonTable = ({
   jsonData,
   isLoading,
@@ -19,8 +29,8 @@ const JsonTable = ({
           <tbody>
             {jsonData.map((data, i) => (
               <tr key={i} onClick={() => onClick(data)}>
-                {Object.values(data).map((td) => (
-                  <td key={td}>{td}</td>
+                {Object.entries(data).map(([key, td]) => (
+                  <td key={td}>{DATE_FIELDS.includes(key) ? new Date(td).toLocaleDateString() : DATETIME_FIELDS.includes(key) ? new Date(td).toLocaleString() : td}</td>
                 ))}
               </tr>
             ))}

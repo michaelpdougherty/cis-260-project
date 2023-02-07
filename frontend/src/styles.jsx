@@ -132,7 +132,14 @@ export const PatientsTable = styled.table`
 
 export const Table = styled.table`
   width: 100vw;
+  text-align: left;
   border-collapse: collapse;
+  td:first-child, th:first-child {
+    padding-left: 10vw;
+  }
+  td:last-child, th:last-child {
+    padding-right: 10vw;
+  }
   td, th {
     padding: 10px;
   }

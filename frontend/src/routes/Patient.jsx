@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import JsonTable from '../JsonTable';
 import { setTitle } from '../util';
 import LoadingTable from '../LoadingTable';
+import { Label } from '../styles';
 
 const FullPageLoadingSpinner = () => {
   return (
@@ -32,34 +33,34 @@ const Patient = () => {
   return (
     <div style={{ height: '90vh', overflowY: 'scroll' }}>
       <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
-      <label>
-        Patient
+      <div>
+        <Label>Patient</Label>
         <JsonTable jsonData={[jsonData.patient]} />
-      </label>
-      <label>
-        Alerts
+      </div>
+      <div>
+        <Label>Alerts</Label>
         <JsonTable jsonData={[jsonData.alerts]} />
-      </label>
-      <label>
-        Encounter
+      </div>
+      <div>
+        <Label>Encounters</Label>
         <JsonTable jsonData={[jsonData.encounters]} />
-      </label>
-      <label>
-        Patient Header
+      </div>
+      <div>
+        <Label>Patient Header</Label>
         <JsonTable jsonData={[jsonData.patientHeader]} />
-      </label>
-      <label>
-        Patient Info 
+      </div>
+      <div>
+        <Label>Patient Info</Label>
         <JsonTable jsonData={[jsonData.patientInfo]} />
-      </label>
-      <label>
-        Patient Prevention 
+      </div>
+      <div>
+        <Label>Patient Prevention</Label>
         <JsonTable jsonData={[jsonData.patientPrevention]} />
-      </label>
-      <label>
-        Patient Problems 
+      </div>
+      <div>
+        <Label>Patient Problems</Label>
         <JsonTable jsonData={[jsonData.patientProblems]} />
-      </label>
+      </div>
     </div>
   );
 };
