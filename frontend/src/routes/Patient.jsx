@@ -32,13 +32,34 @@ const Patient = () => {
   return (
     <div style={{ height: '90vh', overflowY: 'scroll' }}>
       <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
-      <JsonTable jsonData={[jsonData.patient]} />
-      <JsonTable jsonData={[jsonData.alerts]} />
-      <JsonTable jsonData={[jsonData.encounters]} />
-      <JsonTable jsonData={[jsonData.patientHeader]} />
-      <JsonTable jsonData={[jsonData.patientInfo]} />
-      <JsonTable jsonData={[jsonData.patientPrevention]} />
-      <JsonTable jsonData={[jsonData.patientProblems]} />
+      <label>
+        Patient
+        <JsonTable jsonData={[jsonData.patient]} />
+      </label>
+      <label>
+        Alerts
+        <JsonTable jsonData={[jsonData.alerts]} />
+      </label>
+      <label>
+        Encounter
+        <JsonTable jsonData={[jsonData.encounters]} />
+      </label>
+      <label>
+        Patient Header
+        <JsonTable jsonData={[jsonData.patientHeader]} />
+      </label>
+      <label>
+        Patient Info 
+        <JsonTable jsonData={[jsonData.patientInfo]} />
+      </label>
+      <label>
+        Patient Prevention 
+        <JsonTable jsonData={[jsonData.patientPrevention]} />
+      </label>
+      <label>
+        Patient Problems 
+        <JsonTable jsonData={[jsonData.patientProblems]} />
+      </label>
     </div>
   );
 };
