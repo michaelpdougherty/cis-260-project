@@ -117,8 +117,19 @@ export const PatientsTable = styled.table`
 `;
 
 export const Table = styled.table`
-  background: ${p => p.theme.white};
+  border-collapse: collapse;
   td, th {
     padding: 10px;
   }
+  tr {
+    background: ${p => p.theme.white};
+  }
+  ${p => p.clickable && `
+    tbody tr {
+      cursor: pointer;
+      :hover {
+        background: ${p.theme.white}80;
+      }
+    }
+  `}
 `;

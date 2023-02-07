@@ -1,55 +1,31 @@
-import { useEffect, useState } from "react";
-import { Audio } from 'react-loader-spinner';
-import { FlexBox, PatientsTable } from '../styles';
+import { useEffect, useState } from 'react';
+import { setTitle } from '../util';
+import JsonTable from '../JsonTable';
 
 const Patients = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  setTitle('Patients');
   const [patients, setPatients] = useState([]);
   useEffect(() => {
     fetch("/patients")
       .then((res) => res.json())
-      .then((jsonData) => setPatients(jsonData))
-      .finally(() => setIsLoading(false));
-  }, []);
-
+      .then((jsonData) => setPatients(jsonData.map(data => ({
+        'MR#': data.ID,
+        'Name': `${data.FirstName} ${data.LastName}`,
+        'DOB': data.DOB
+      }))))
+  });
   const navigate = id => {
     window.location = `/patient/${id}`;
   }
-
   return (
     <div>
       <h2>Patients</h2>
-      <FlexBox>
-        <PatientsTable>
-          <thead>
-            <tr>
-              <th>MR#</th>
-              <th>Name</th>
-              <th>DOB</th>
-            </tr>
-          </thead>
-          <tbody>
-            {isLoading ? <Audio /> :
-              patients.map(
-                ({
-                  ID: id,
-                  FirstName: firstName,
-                  LastName: lastName,
-                  DOB: dob,
-                }) => (
-                  <tr onClick={() => navigate(id)}>
-                    <td>{id}</td>
-                    <td>{lastName}, {firstName}</td>
-                    <td>{dob}</td>
-                  </tr>
-                )
-              )}
-          </tbody>
-        </PatientsTable>
-      </FlexBox>
+      <JsonTable
+        jsonData={patients}
+        onClick={data => navigate(data['MR#'])}
+      />
     </div>
   );
 };
 
 export default Patients;
-

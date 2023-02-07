@@ -1,6 +1,5 @@
 const Logout = () => {
   window.sessionStorage.clear();
-  window.location = "/";
+  window.location = '/';
 };
-
 export default Logout;

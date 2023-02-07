@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-
-function NoMatch() {
+const NoMatch = () => {
   return (
     <div>
       <h2>Nothing to see here!</h2>
@@ -10,5 +9,4 @@ function NoMatch() {
     </div>
   );
 }
-
 export default NoMatch;

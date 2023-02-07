@@ -11,6 +11,7 @@ import {
 } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { setTitle } from '../util';
 
 const LoginFieldRow = ({ name, type = 'text', options = null, text = null }) => {
   const getInput = () => {
@@ -33,7 +34,9 @@ const LoginFieldRow = ({ name, type = 'text', options = null, text = null }) => 
   )
 };
 
-function Login() {
+const Login = () => {
+  setTitle('Login');
+  const PAGE_TITLE = `${window.BRAND.toUpperCase()} Login`;
   const JOBS = {
     STUDENT: 'OCCUPATIONAL THERAPY ASSISTANT',
     TEACHER: 'OCCUPATIONAL THERAPIST',
@@ -54,8 +57,7 @@ function Login() {
     }).then(res => res.text())
     .then(body => {
       if (body === 'OK') {
-        window.sessionStorage.setItem('username', values.username)
-        window.sessionStorage.setItem('accountType', values.accountType)
+        window.sessionStorage.setItem('user', JSON.stringify(values));
         window.location = "/";
       }
     });
@@ -63,7 +65,7 @@ function Login() {
   return (
     <>
       <LoginHeader>
-        MEDITECH EMR Login
+        {PAGE_TITLE}
       </LoginHeader>
       <LoginView>
         <Formik {...{initialValues, onSubmit}}>
@@ -85,5 +87,4 @@ function Login() {
     </>
   );
 }
-
 export default Login;
