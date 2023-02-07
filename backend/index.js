@@ -12,6 +12,7 @@ const con = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
+  multipleStatements: true,
 });
 
 // Connect to database
@@ -36,11 +37,33 @@ app.get('/patients', (req, res) => {
   });
 });
 
-app.get('/patient/:id', (req, res) => {
+app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
-  con.query(`SELECT * FROM PATIENTS WHERE ID = '${id}'`, (err, result) => {
+  const returnResult = {};
+  const statements = [
+    'SELECT * FROM PATIENTS WHERE ID = ?',
+    'SELECT * FROM ALERTS WHERE MR_NUM = ?',
+    'SELECT * FROM ENCOUNTERS WHERE MR_NUM = ?',
+    'SELECT * FROM PATIENT_HEADER WHERE MR_NUM = ?',
+    'SELECT * FROM PATIENT_INFO WHERE MR_NUM = ?',
+    'SELECT * FROM PATIENT_PREVENTION WHERE MR_NUM = ?',
+    'SELECT * FROM PATIENT_PROBLEMS WHERE MR_NUM = ?',
+  ];
+  const sql = statements.join('; ');
+  const bindings = [
+    id, id, id, id, id, id, id
+  ];
+  con.query(sql, bindings, (err, results) => {
     if (err) throw err;
-    res.json(result[0]);
+    res.json({
+      patient: results[0][0],
+      alerts: results[1][0],
+      encounters: results[2][0],
+      patientHeader: results[3][0],
+      patientInfo: results[4][0],
+      patientPrevention: results[5][0],
+      patientProblems: results[6][0],
+    });
   });
 });
 

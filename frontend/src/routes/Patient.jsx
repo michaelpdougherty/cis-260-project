@@ -30,9 +30,15 @@ const Patient = () => {
   }, [id]);
   if (isLoading) return <FullPageLoadingSpinner/>;
   return (
-    <div>
-      <h2>{jsonData.FirstName} {jsonData.LastName}</h2>
-      <JsonTable jsonData={[jsonData]} />
+    <div style={{ height: '90vh', overflowY: 'scroll' }}>
+      <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
+      <JsonTable jsonData={[jsonData.patient]} />
+      <JsonTable jsonData={[jsonData.alerts]} />
+      <JsonTable jsonData={[jsonData.encounters]} />
+      <JsonTable jsonData={[jsonData.patientHeader]} />
+      <JsonTable jsonData={[jsonData.patientInfo]} />
+      <JsonTable jsonData={[jsonData.patientPrevention]} />
+      <JsonTable jsonData={[jsonData.patientProblems]} />
     </div>
   );
 };

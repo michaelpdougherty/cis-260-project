@@ -96,6 +96,10 @@ export const AppHeader = styled.nav`
   padding: 15px;
   a {
     color: #61dafb;
+    text-decoration: none;
+  }
+  a:hover {
+    opacity: 0.8;
   }
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 `;
@@ -143,6 +147,7 @@ export const Table = styled.table`
     }
   `}
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin-bottom: 40px;
 `;
 
 export const Button = styled.button`
