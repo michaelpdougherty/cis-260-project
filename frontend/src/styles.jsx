@@ -7,6 +7,15 @@ export const AppStyle = styled.div`
   background-color: ${p => p.theme.lightBlue};
 `;
 
+export const StyledField = styled(Field)`
+  input {
+    background-color: ${p => p.theme.white};
+  }
+  flex: 1;
+  font-size: 18px;
+  padding: 3px;
+`;
+
 export const LoginField = styled(Field)`
   input {
     background-color: ${p => p.theme.white};
@@ -88,6 +97,7 @@ export const AppHeader = styled.nav`
   a {
     color: #61dafb;
   }
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 `;
 
 export const LoginHeader = styled(AppHeader)`
@@ -132,4 +142,18 @@ export const Table = styled.table`
       }
     }
   `}
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+`;
+
+export const Button = styled.button`
+  padding: 10px;
+  border: none;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  cursor: pointer;
+  background: ${p => p.theme.white};
+  border-radius: 2px;
+`;
+
+export const AddChartButton = styled(Button)`
+  margin-top: 20px;
 `;

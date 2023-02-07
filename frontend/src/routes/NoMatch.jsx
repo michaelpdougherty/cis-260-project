@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import LoadingTable from '../LoadingTable';
+
+
 const NoMatch = () => {
   return (
     <div>
@@ -6,6 +9,7 @@ const NoMatch = () => {
       <p>
         <Link to="/">Go to the home page</Link>
       </p>
+      <LoadingTable />
     </div>
   );
 }

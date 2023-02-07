@@ -1,10 +1,12 @@
+import LoadingTable from './LoadingTable';
 import { FlexBox, Table } from './styles';
 
 const JsonTable = ({
   jsonData,
+  isLoading,
   onClick = false,
 }) => {
-  if (!jsonData.length) jsonData = [jsonData];
+  if (isLoading) return <LoadingTable />;
   return (
     <FlexBox>
       <Table clickable={!!onClick}>
