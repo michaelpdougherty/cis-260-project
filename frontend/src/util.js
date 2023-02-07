@@ -12,3 +12,8 @@ export const getUser = () => {
   }
   return {};
 }
+
+export const getAgeFromDOB = DOB => {
+  const millisecondsInAYear = 1000 * 60 * 60 * 24 * 365
+  return (Math.abs(new Date(DOB) - new Date()) / millisecondsInAYear).toFixed(2);
+};

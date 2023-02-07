@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
-import { setTitle } from '../util';
+import { getAgeFromDOB, setTitle } from '../util';
 import JsonTable from '../JsonTable';
-
-const getAgeFromDOB = DOB => {
-  const millisecondsInAYear = 1000 * 60 * 60 * 24 * 365
-  return (Math.abs(new Date(DOB) - new Date()) / millisecondsInAYear).toFixed(2);
-};
 
 const Patients = () => {
   setTitle('Patients');
@@ -30,6 +25,7 @@ const Patients = () => {
     <div>
       <h2>Patients</h2>
       <JsonTable
+        title="Patient List"
         jsonData={patients}
         isLoading={isLoading}
         onClick={data => navigate(data.MRN)}

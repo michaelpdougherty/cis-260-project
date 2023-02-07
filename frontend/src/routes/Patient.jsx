@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import JsonTable from '../JsonTable';
-import { setTitle } from '../util';
+import { getAgeFromDOB, setTitle } from '../util';
 import LoadingTable from '../LoadingTable';
-import { Label } from '../styles';
+import { TableLabel } from '../styles';
 
 const FullPageLoadingSpinner = () => {
   return (
@@ -34,33 +34,21 @@ const Patient = () => {
     <div style={{ height: '90vh', overflowY: 'scroll' }}>
       <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
       <div>
-        <Label>Patient</Label>
-        <JsonTable jsonData={[jsonData.patient]} />
+        <TableLabel>Patient</TableLabel>
+        <JsonTable jsonData={[{
+          MRN: jsonData.patient.ID,
+          FULL_NAME: `${jsonData.patient.FirstName} ${jsonData.patient.LastName}`,
+          DOB: jsonData.patient.DOB,
+          AGE: `${getAgeFromDOB(jsonData.patient.DOB)} years`,
+          Location: jsonData.patient.LOCATION,
+        }]} />
       </div>
-      <div>
-        <Label>Alerts</Label>
-        <JsonTable jsonData={[jsonData.alerts]} />
-      </div>
-      <div>
-        <Label>Encounters</Label>
-        <JsonTable jsonData={[jsonData.encounters]} />
-      </div>
-      <div>
-        <Label>Patient Header</Label>
-        <JsonTable jsonData={[jsonData.patientHeader]} />
-      </div>
-      <div>
-        <Label>Patient Info</Label>
-        <JsonTable jsonData={[jsonData.patientInfo]} />
-      </div>
-      <div>
-        <Label>Patient Prevention</Label>
-        <JsonTable jsonData={[jsonData.patientPrevention]} />
-      </div>
-      <div>
-        <Label>Patient Problems</Label>
-        <JsonTable jsonData={[jsonData.patientProblems]} />
-      </div>
+      <JsonTable title="Alerts" jsonData={[jsonData.alerts]} />
+      <JsonTable title="Encounters" jsonData={[jsonData.encounters]} />
+      <JsonTable title="Patient Header" jsonData={[jsonData.patientHeader]} />
+      <JsonTable title="Patient Info" jsonData={[jsonData.patientInfo]} />
+      <JsonTable title="Patient Prevention" jsonData={[jsonData.patientPrevention]} />
+      <JsonTable title="Patient Problems" jsonData={[jsonData.patientProblems]} />
     </div>
   );
 };

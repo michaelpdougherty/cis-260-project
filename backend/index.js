@@ -25,7 +25,9 @@ con.connect((err) => {
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-});
+}).on('error', (err) => {
+  throw err;
+})
 
 /**
  * Back-End Routes
@@ -53,17 +55,37 @@ app.get('/patient/:id', async (req, res) => {
   const bindings = [
     id, id, id, id, id, id, id
   ];
-  con.query(sql, bindings, (err, results) => {
+  con.query(sql, bindings, async (err, results) => {
     if (err) throw err;
-    res.json({
-      patient: results[0][0],
-      alerts: results[1][0],
-      encounters: results[2][0],
-      patientHeader: results[3][0],
-      patientInfo: results[4][0],
-      patientPrevention: results[5][0],
-      patientProblems: results[6][0],
-    });
+    const responseBody = {};
+    const responseKeys = [
+      'patient',
+      'alerts',
+      'encounters',
+      'patientHeader',
+      'patientInfo',
+      'patientPrevention',
+      'patientProblems',
+    ];
+    await results.map(tableResult => tableResult[0]).forEach((row, i) => {
+      const key = responseKeys[i];
+      const rowObj = (() => {
+        if (!row) return {};
+        if (key !== 'patient') {
+          const rowObj = {};
+          Object.entries(row).forEach(([key, value]) => {
+            if (key !== 'MR_NUM') {
+              rowObj[key] = value;
+            }
+          });
+          return rowObj;
+        } else {
+          return row;
+        }
+      })();
+      responseBody[key] = rowObj;
+    })
+    res.json(responseBody);
   });
 });
 

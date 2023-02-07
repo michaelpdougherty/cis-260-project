@@ -170,3 +170,9 @@ export const Button = styled.button`
 export const AddChartButton = styled(Button)`
   margin-top: 20px;
 `;
+
+export const TableLabel = styled(Label)`
+  padding: 10px;
+  padding-left: 10vw;
+  width: 100vw;
+`;
