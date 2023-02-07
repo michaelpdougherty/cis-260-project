@@ -131,6 +131,7 @@ export const PatientsTable = styled.table`
 `;
 
 export const Table = styled.table`
+  width: 100vw;
   border-collapse: collapse;
   td, th {
     padding: 10px;
