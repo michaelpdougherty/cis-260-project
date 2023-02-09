@@ -17,3 +17,6 @@ insert into patient_problems values (
   1,
   '4665'
 );
+insert into users values ('test', 'test', 'admin');
+insert into users values ('test', 'test', 'student');
+insert into users values ('test', 'test', 'teacher');
