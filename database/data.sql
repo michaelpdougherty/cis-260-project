@@ -1,2 +1,19 @@
-INSERT INTO PATIENT_HEADER VALUES ('4665', 'Neveah Williams', '10/14/2014', '02/06/2023', 'Hillside Pediatric Hospital', 'Needs full assistance');
-INSERT INTO PATIENT_PROBLEMS VALUES ('4665', 1, 'Needs scoring now', 'Active', 'Dehydration: Assess Severity', 'Acute', '02/06/2023', 'Sharon Lamar, MD');
+insert into patient_header values (
+  '2014-10-14',
+  '2023-02-06',
+  'Neveah Williams',
+  'Hillside Pediatric Hospital',
+  'Needs full assistance',
+  1,
+  '4665'
+);
+insert into patient_problems values (
+  '2023-02-06',
+  'Dehydration: Assess Severity',
+  'Active',
+  'Acute',
+  'Needs scoring now',
+  'Sharon Lamar, MD',
+  1,
+  '4665'
+);
