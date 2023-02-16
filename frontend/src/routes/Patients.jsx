@@ -17,7 +17,7 @@ const Patients = () => {
         Location: data.LOCATION
       }))))
       .finally(() => setIsLoading(false));
-  });
+  }, []);
   const navigate = id => {
     window.location = `/patient/${id}`;
   }

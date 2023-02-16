@@ -8,6 +8,7 @@ create table alerts (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists encounters;
 create table encounters (
   date datetime not null,
@@ -19,6 +20,7 @@ create table encounters (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists labs;
 create table labs (
   date datetime not null,
@@ -31,6 +33,7 @@ create table labs (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists meds;
 create table meds (
   date datetime not null,
@@ -42,6 +45,7 @@ create table meds (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists notes;
 create table notes (
   date datetime not null,
@@ -52,6 +56,7 @@ create table notes (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists labs;
 create table labs (
   date datetime not null,
@@ -64,38 +69,19 @@ create table labs (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists orders;
 create table orders (
   category varchar(150) not null,
   order_item varchar(150) not null,
   frequency varchar(150) not null,
   status varchar(150) not null,
-  whene datetime not null,
+  `when` datetime not null,
   id int not null auto_increment,
   mr_num int,
   primary key (id)
 );
-drop table if exists patient_header;
-create table patient_header (
-  dob datetime not null,
-  admin_date datetime not null,
-  name varchar(50) not null,
-  hospital varchar(50) not null,
-  comment varchar(150) not null,
-  id int not null auto_increment,
-  mr_num int,
-  primary key (id)
-);
-drop table if exists patient_info;
-create table patient_info (
-  name varchar(50) not null,
-  contact_info varchar(150) not null,
-  patient_info varchar(150) not null,
-  patient varchar(50),
-  id int not null auto_increment,
-  mr_num int,
-  primary key (id)
-);
+
 drop table if exists patient_prevention;
 create table patient_prevention (
   prev_date datetime not null,
@@ -106,6 +92,7 @@ create table patient_prevention (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists patient_problems;
 create table patient_problems (
   date_of_onset datetime not null,
@@ -118,15 +105,23 @@ create table patient_problems (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists patients;
 create table patients (
-  dob datetime not null,
+  dob date not null,
   lastName varchar(50) not null,
   firstName varchar(50) not null,
-  id int not null auto_increment,
-  mr_num int,
-  primary key (id)
+  language varchar(50) not null,
+  ethnicity varchar(50) not null,
+  mr_num int not null auto_increment,
+  contact_info varchar(150) not null,
+  admit_date datetime not null,
+  provider varchar(50) not null,
+  hospital varchar(50) not null,
+  comment varchar(150) not null,
+  primary key (mr_num)
 );
+
 drop table if exists vitals;
 create table vitals (
   date datetime not null,
@@ -138,6 +133,7 @@ create table vitals (
   mr_num int,
   primary key (id)
 );
+
 drop table if exists users;
 create table users (
   username varchar(255) not null,

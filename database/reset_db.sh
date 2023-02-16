@@ -1,21 +1,24 @@
 #!/bin/bash
-HOST=localhost
+#HOST=localhost
+HOST=cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com
+PASSWORD=ookay123
 PORT=3306
-DATABASE=CIS260db
+DATABASE=cis260_test
+USER=mdougherty
 
 echo "No idea if connection to mysql has been established."
 echo "Dropping databases..."
-mysql -h $HOST -uroot -e "DROP DATABASE IF EXISTS $DATABASE"
+mysql -h $HOST -u $USER -p$PASSWORD -e "DROP DATABASE IF EXISTS $DATABASE"
 
 echo "Creating databases..."
-mysql -uroot -e "CREATE DATABASE $DATABASE"
+mysql -h $HOST -u $USER -p$PASSWORD -e "CREATE DATABASE $DATABASE"
 
 echo "Creating database schema..."
-mysql -uroot $DATABASE < schema.sql
+mysql -h $HOST -u $USER -p$PASSWORD $DATABASE < schema.sql
 
 echo "Populating database..."
-mysql -uroot $DATABASE < data.sql
+mysql -h $HOST -u $USER -p$PASSWORD $DATABASE < data.sql
 
-mysql -uroot $DATABASE -e "SHOW TABLES";
+mysql -h $HOST -u $USER -p$PASSWORD $DATABASE -e "SHOW TABLES";
 echo "Done"
 exit 0

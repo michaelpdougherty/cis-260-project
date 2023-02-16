@@ -58,7 +58,7 @@ const EditCharts = () => {
       .then(json => setJsonData(json))
       .catch(err => setError(err))
       .finally(() => setIsLoading(false));
-  });
+  }, []);
   return (
     <div>
       <ReactModal isOpen={isAddModalOpen} ariaHideApp={false}>
