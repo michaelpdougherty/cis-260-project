@@ -33,7 +33,7 @@ app.listen(port, () => {
  * Back-End Routes
  */
 app.get('/patients', (req, res) => {
-  con.query("SELECT * FROM PATIENTS ORDER BY LastName, FirstName ASC", (err, result) => {
+  con.query("SELECT * FROM patients ORDER BY lastName, firstName ASC", (err, result) => {
     if (err) throw err;
     res.json(result);
   });
@@ -43,11 +43,11 @@ app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
   const returnResult = {};
   const statements = [
-    'select * from patients where id = ?',
-    'select * from alerts WHERE MR_NUM = ?',
-    'select * from encounters WHERE MR_NUM = ?',
-    'select * from patient_prevention WHERE MR_NUM = ?',
-    'select * from patient_problems WHERE MR_NUM = ?',
+    'select * from patients where mr_num = ?',
+    'select * from alerts where mr_num = ?',
+    'select * from encounters where mr_num = ?',
+    'select * from patient_prevention where mr_num = ?',
+    'select * from patient_problems where mr_num = ?',
   ];
   const sql = statements.join('; ');
   const bindings = [
