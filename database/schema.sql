@@ -1,143 +1,130 @@
 drop table if exists alerts;
 create table alerts (
-  id int not null auto_increment,
-  mr_num int not null,
-  date_and_time datetime not null,
-  subject varchar(50) not null,
-  status varchar(50) not null,
-  alert_type varchar(50) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date_and_time` datetime not null,
+  `subject` varchar(50) not null,
+  `status` varchar(50) not null,
+  `alert_type` varchar(50) not null,
+  primary key (`id`)
 );
 
 drop table if exists encounters;
 create table encounters (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  location varchar(100) not null,
-  provider varchar(50) not null,
-  status varchar(150) not null,
-  description varchar(150) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date` datetime not null,
+  `location` varchar(100) not null,
+  `provider` varchar(50) not null,
+  `status` varchar(150) not null,
+  `description` varchar(150) not null,
+  primary key (`id`)
 );
 
 drop table if exists labs;
 create table labs (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  lab_test varchar(150) not null,
-  value varchar(150) not null,
-  unit varchar(150) not null,
-  abnormal_flag varchar(150) not null,
-  reference_range varchar(150) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date` datetime not null,
+  `lab_test` varchar(150) not null,
+  `value` varchar(150) not null,
+  `unit` varchar(150) not null,
+  `abnormal_flag` varchar(150) not null,
+  `reference_range` varchar(150) not null,
+  primary key (`id`)
 );
 
 drop table if exists meds;
 create table meds (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  category varchar(50) not null,
-  drug_description varchar(150) not null,
-  order_status varchar(50) not null,
-  frequency varchar(50) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date` datetime not null,
+  `category` varchar(50) not null,
+  `drug_description` varchar(150) not null,
+  `order_status` varchar(50) not null,
+  `frequency` varchar(50) not null,
+  primary key (`id`)
 );
 
 drop table if exists notes;
 create table notes (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  note_title varchar(150) not null,
-  author varchar(150) not null,
-  location varchar(150) not null,
-  primary key (id)
-);
-
-drop table if exists labs;
-create table labs (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  lab_test varchar(150) not null,
-  value varchar(150) not null,
-  unit varchar(150) not null,
-  abnormal_flag varchar(150) not null,
-  reference_range varchar(150) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date` datetime not null,
+  `note_title` varchar(150) not null,
+  `author` varchar(150) not null,
+  `location` varchar(150) not null,
+  primary key (`id`)
 );
 
 drop table if exists orders;
 create table orders (
-  id int not null auto_increment,
-  mr_num int not null,
-  category varchar(150) not null,
-  order_item varchar(150) not null,
-  frequency varchar(150) not null,
-  status varchar(150) not null,
+  `id` int not null auto_increment,
+  `mr_num` int not null,
   `when` datetime not null,
-  primary key (id)
+  `category` varchar(150) not null,
+  `order_item` varchar(150) not null,
+  `frequency` varchar(150) not null,
+  `status` varchar(150) not null,
+  primary key (`id`)
 );
 
 drop table if exists patient_prevention;
 create table patient_prevention (
-  id int not null auto_increment,
-  mr_num int not null,
-  prev_date datetime not null,
-  prev_subject varchar(50) not null,
-  prev_status varchar(50) not null,
-  prev_type varchar(50) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `prev_date` datetime not null,
+  `prev_subject` varchar(50) not null,
+  `prev_status` varchar(50) not null,
+  `prev_type` varchar(50) not null,
+  primary key (`id`)
 );
 
 drop table if exists patient_problems;
 create table patient_problems (
-  id int not null auto_increment,
-  mr_num int not null,
-  date_of_onset datetime not null,
-  priority varchar(50) not null,
-  patient_status varchar(50) not null,
-  description varchar(150) not null,
-  immediacy varchar(50) not null,
-  provider varchar(50) not null,
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date_of_onset` datetime not null,
+  `priority` varchar(50) not null,
+  `patient_status` varchar(50) not null,
+  `description` varchar(150) not null,
+  `immediacy` varchar(50) not null,
+  `provider` varchar(50) not null,
+  primary key (`id`)
 );
 
 drop table if exists patients;
 create table patients (
-  mr_num int not null auto_increment,
-  firstName varchar(50) not null,
-  lastName varchar(50) not null,
-  dob date not null,
-  language varchar(50) not null,
-  ethnicity varchar(50) not null,
-  contact_info varchar(150) not null,
-  admit_date datetime not null,
-  provider varchar(50) not null,
-  hospital varchar(50) not null,
-  comment varchar(150) not null,
-  primary key (mr_num)
+  `mr_num` int not null auto_increment,
+  `firstName` varchar(50) not null,
+  `lastName` varchar(50) not null,
+  `dob` date not null,
+  `language` varchar(50) not null,
+  `ethnicity` varchar(50) not null,
+  `contact_info` varchar(150) not null,
+  `admit_date` datetime not null,
+  `provider` varchar(50) not null,
+  `hospital` varchar(50) not null,
+  `comment` varchar(150) not null,
+  primary key (`mr_num`)
 );
 
 drop table if exists vitals;
 create table vitals (
-  id int not null auto_increment,
-  mr_num int not null,
-  date datetime not null,
-  pulse int not null,
-  blood_pressure varchar(10) not null,
-  pulse_ox int not null,
-  temperature decimal(3,1),
-  primary key (id)
+  `id` int not null auto_increment,
+  `mr_num` int not null,
+  `date` datetime not null,
+  `pulse` int not null,
+  `blood_pressure` varchar(10) not null,
+  `pulse_ox` int not null,
+  `temperature` decimal(3,1),
+  primary key (`id`)
 );
 
 drop table if exists users;
 create table users (
-  username varchar(255) not null,
-  password varchar(255),
-  account_type enum('teacher', 'student', 'admin') not null,
-  primary key (username, account_type)
+  `username` varchar(255) not null,
+  `password` varchar(255),
+  `account_type` enum('teacher', 'student', 'admin') not null,
+  primary key (`username`, `account_type`)
 );
