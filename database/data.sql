@@ -1,14 +1,16 @@
-/*
-insert into patient_header values (
-  '2014-10-14',
-  '2023-02-06',
-  'Neveah Williams',
-  'Hillside Pediatric Hospital',
-  'Needs full assistance',
+insert into patients values (
   1,
-  '4665'
+  'Neveah',
+  'Williams',
+  '2002-11-06',
+  'English',
+  'Caucasian',
+  'Mother',
+  '2023-02-06',
+  'Dr. Smith',
+  'Hillside Pediatric Hospital',
+  'Needs full assistance'
 );
-*/
 
 insert into patient_problems values (
   '2023-02-06',

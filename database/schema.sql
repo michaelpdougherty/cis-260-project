@@ -108,12 +108,12 @@ create table patient_problems (
 
 drop table if exists patients;
 create table patients (
-  dob date not null,
-  lastName varchar(50) not null,
+  mr_num int not null auto_increment,
   firstName varchar(50) not null,
+  lastName varchar(50) not null,
+  dob date not null,
   language varchar(50) not null,
   ethnicity varchar(50) not null,
-  mr_num int not null auto_increment,
   contact_info varchar(150) not null,
   admit_date datetime not null,
   provider varchar(50) not null,
