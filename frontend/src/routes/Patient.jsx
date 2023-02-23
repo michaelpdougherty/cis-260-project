@@ -43,11 +43,16 @@ const Patient = () => {
           Location: jsonData.patient.hospital,
         }]} />
       </div>
-      <JsonTable title="Patient All" jsonData={[jsonData.patient]} />
       <JsonTable title="Alerts" jsonData={[jsonData.alerts]} />
       <JsonTable title="Encounters" jsonData={[jsonData.encounters]} />
+      <JsonTable title="Labs" jsonData={[jsonData.labs]} />
+      <JsonTable title="Meds" jsonData={[jsonData.meds]} />
+      <JsonTable title="Notes" jsonData={[jsonData.notes]} />
+      <JsonTable title="Orders" jsonData={[jsonData.orders]} />
+      <JsonTable title="Patient All" jsonData={[jsonData.patient]} />
       <JsonTable title="Patient Prevention" jsonData={[jsonData.patientPrevention]} />
       <JsonTable title="Patient Problems" jsonData={[jsonData.patientProblems]} />
+      <JsonTable title="Vitals" jsonData={[jsonData.vitals]} />
     </div>
   );
 };

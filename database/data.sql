@@ -22,6 +22,8 @@ insert into meds (`mr_num`, `date`, `category`, `drug_description`, `order_statu
 insert into notes (`mr_num`, `date`, `note_title`, `author`, `location`) VALUES (@mrn, CURRENT_TIMESTAMP(), 'whatever', 'whatever', 'whatever');
 insert into orders (`mr_num`, `when`, `category`, `order_item`, `frequency`, `status`) VALUES (@mrn, CURRENT_TIMESTAMP(), 'whatever', 'whatever', 'whatever', 'whatever');
 insert into patient_problems (`mr_num`, `date_of_onset`, `priority`, `patient_status`, `description`, `immediacy`, `provider`) values (@mrn, '2023-02-06', 'Acute', 'Active', 'Dehydration: Assess Severity', 'Needs scoring now', @provider);
+insert into patient_prevention (`mr_num`, `prev_date`, `prev_subject`, `prev_status`, `prev_type`) values (@mrn, '2023-02-06', 'whatever', 'whatever', 'whatever');
+insert into vitals (`mr_num`, `date`, `pulse`, `blood_pressure`, `pulse_ox`, `temperature`) values (@mrn, CURRENT_TIMESTAMP(), 89, 'high', 100, 90.098);
 
 insert into users values ('test', 'test', 'admin');
 insert into users values ('test', 'test', 'student');

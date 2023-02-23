@@ -43,27 +43,33 @@ app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
   const returnResult = {};
   const statements = [
-    'select * from patients where mr_num = ?',
     'select * from alerts where mr_num = ?',
     'select * from encounters where mr_num = ?',
+    'select * from labs where mr_num = ?',
+    'select * from meds where mr_num = ?',
+    'select * from notes where mr_num = ?',
+    'select * from orders where mr_num = ?',
     'select * from patient_prevention where mr_num = ?',
     'select * from patient_problems where mr_num = ?',
+    'select * from patients where mr_num = ?',
+    'select * from vitals where mr_num = ?',
   ];
   const sql = statements.join('; ');
-  const bindings = [
-    id, id, id, id, id, id, id
-  ];
+  const bindings = statements.map(() => id);
   con.query(sql, bindings, async (err, results) => {
     if (err) throw err;
     const responseBody = {};
     const responseKeys = [
-      'patient',
       'alerts',
       'encounters',
-      'patientHeader',
-      'patientInfo',
+      'labs',
+      'meds',
+      'notes',
+      'orders',
       'patientPrevention',
       'patientProblems',
+      'patient',
+      'vitals',
     ];
     await results.map(tableResult => tableResult[0]).forEach((row, i) => {
       const key = responseKeys[i];
