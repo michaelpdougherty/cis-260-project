@@ -10,11 +10,11 @@ const Patients = () => {
     fetch("/patients")
       .then((res) => res.json())
       .then((jsonData) => setPatients(jsonData.map(data => ({
-        MRN: data.ID,
-        Name: `${data.FirstName} ${data.LastName}`,
-        DOB: new Date(data.DOB).toLocaleDateString(),
-        Age: `${getAgeFromDOB(data.DOB)} years`,
-        Location: data.LOCATION
+        MRN: data.mr_num,
+        Name: `${data.firstName} ${data.lastName}`,
+        DOB: new Date(data.dob).toLocaleDateString(),
+        Age: `${getAgeFromDOB(data.dob)} years`,
+        Location: data.hospital
       }))))
       .finally(() => setIsLoading(false));
   }, []);
