@@ -36,17 +36,16 @@ const Patient = () => {
       <div>
         <TableLabel>Patient</TableLabel>
         <JsonTable jsonData={[{
-          MRN: jsonData.patient.ID,
-          FULL_NAME: `${jsonData.patient.FirstName} ${jsonData.patient.LastName}`,
-          DOB: jsonData.patient.DOB,
-          AGE: `${getAgeFromDOB(jsonData.patient.DOB)} years`,
-          Location: jsonData.patient.LOCATION,
+          MRN: jsonData.patient.mr_num,
+          FULL_NAME: `${jsonData.patient.firstName} ${jsonData.patient.lastName}`,
+          DOB: jsonData.patient.dob,
+          AGE: `${getAgeFromDOB(jsonData.patient.dob)} years`,
+          Location: jsonData.patient.hospital,
         }]} />
       </div>
+      <JsonTable title="Patient All" jsonData={[jsonData.patient]} />
       <JsonTable title="Alerts" jsonData={[jsonData.alerts]} />
       <JsonTable title="Encounters" jsonData={[jsonData.encounters]} />
-      <JsonTable title="Patient Header" jsonData={[jsonData.patientHeader]} />
-      <JsonTable title="Patient Info" jsonData={[jsonData.patientInfo]} />
       <JsonTable title="Patient Prevention" jsonData={[jsonData.patientPrevention]} />
       <JsonTable title="Patient Problems" jsonData={[jsonData.patientProblems]} />
     </div>
