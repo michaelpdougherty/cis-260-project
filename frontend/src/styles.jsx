@@ -86,7 +86,7 @@ export const SignonButton = styled.button`
 `;
 
 export const AppHeader = styled.nav`
-  background-color: #282c34;
+  background-color: ${p => p.theme.primary3};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -102,6 +102,18 @@ export const AppHeader = styled.nav`
     opacity: 0.8;
   }
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+`;
+
+export const Brand = styled.h1`
+  margin: 0;
+  .ot {
+    color: ${p => p.theme.secondary3};
+    text-transform: uppercase;
+  }
+  .racker {
+    color: ${p => p.theme.secondary2};
+    text-transform: lowercase;
+  }
 `;
 
 export const LoginHeader = styled(AppHeader)`
@@ -120,7 +132,7 @@ export const Table = styled.table`
     background: ${p => p.theme.tertiary2};
   }
   tr {
-    background: ${p => p.theme.gray2};
+    background: ${p => p.theme.secondary2};
   }
   ${p => p.clickable && `
     tbody tr {

@@ -3,7 +3,7 @@ import { Navigate, Routes, Route, Outlet, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import './App.css';
 
-import { AppStyle, AppHeader } from './styles';
+import { AppStyle, AppHeader, Brand } from './styles';
 import { setTitle, getUser } from './util';
 
 import Login from './routes/Login';
@@ -14,14 +14,11 @@ import Patient from './routes/Patient';
 import EditCharts from './routes/EditCharts';
 
 const theme = {
-  lightBlue: 'hsl(231deg 100% 85%)',
-  white: '#e1e6fe',
   pureWhite: 'white',
-  navy: 'hsl(223deg 85% 24%)',
-  gray: 'hsl(228deg 94% 94%)',
-  gray2: '#E3E1DB',
-  mediumBlue: '#6776ce',
+  secondary2: '#E3E1DB',
+  secondary3: '#CDDB00',
   tertiary2: '#73B3B9',
+  primary3: '#007580',
 };
 
 window.BRAND = "Meditech EMR";
@@ -65,7 +62,10 @@ const Layout = () => {
   return (
     <div>
       <AppHeader>
-        <Link to="/">Home</Link>
+        <Link to='/'>
+          <Brand><span class='ot'>OT</span><span class='racker'>racker</span></Brand>
+        </Link>
+        {user.isLoggedIn && <p>You are signed in as: ???</p>}
         {user.canEdit && <Link to="/edit">Edit</Link>}
         <Link to="/logout">Log Out</Link>
       </AppHeader>
