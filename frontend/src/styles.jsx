@@ -90,7 +90,7 @@ export const AppHeader = styled.nav`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 15px;
@@ -102,6 +102,21 @@ export const AppHeader = styled.nav`
     opacity: 0.8;
   }
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+`;
+
+export const YouAreSignedInAs = styled.p`
+  margin: 0;
+  font-size: 70%;
+  color: 'black';
+`;
+
+export const LogoutButton = styled.button`
+  text-transform: uppercase;
+  width: 118px;
+  height: 31px;
+  background: ${p => p.theme.secondary3};
+  border: none;
+  cursor: pointer;
 `;
 
 export const Brand = styled.h1`

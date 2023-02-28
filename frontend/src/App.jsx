@@ -3,7 +3,7 @@ import { Navigate, Routes, Route, Outlet, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import './App.css';
 
-import { AppStyle, AppHeader, Brand } from './styles';
+import { AppStyle, AppHeader, Brand, YouAreSignedInAs, LogoutButton } from './styles';
 import { setTitle, getUser } from './util';
 
 import Login from './routes/Login';
@@ -57,6 +57,15 @@ const App = () => {
     </ThemeProvider>
   );
 }
+
+const LogOutButton = () => {
+  return (
+    <LogoutButton role='button'>
+      Logout
+    </LogoutButton>
+  );
+}
+
 const Layout = () => {
   const user = getUser();
   return (
@@ -65,9 +74,9 @@ const Layout = () => {
         <Link to='/'>
           <Brand><span class='ot'>OT</span><span class='racker'>racker</span></Brand>
         </Link>
-        {user.isLoggedIn && <p>You are signed in as: ???</p>}
+        {user.isLoggedIn && <YouAreSignedInAs>You are signed in as: ???</YouAreSignedInAs>}
         {user.canEdit && <Link to="/edit">Edit</Link>}
-        <Link to="/logout">Log Out</Link>
+        <Link to='/logout'><LogOutButton/></Link>
       </AppHeader>
       <Outlet />
     </div>
