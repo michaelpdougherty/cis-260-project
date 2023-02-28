@@ -1,9 +1,10 @@
 #!/bin/bash
-HOST=cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com
+#HOST=cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com
+HOST=localhost
 PORT=3306
-DATABASE=databasename
-USER=yourusername
-PASSWORD=yourpassword
+DATABASE=mdougherty
+USER=root
+PASSWORD=
 
 echo "No idea if connection to mysql has been established."
 echo "Dropping databases..."
