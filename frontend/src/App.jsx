@@ -16,10 +16,12 @@ import EditCharts from './routes/EditCharts';
 const theme = {
   lightBlue: 'hsl(231deg 100% 85%)',
   white: '#e1e6fe',
+  pureWhite: 'white',
   navy: 'hsl(223deg 85% 24%)',
   gray: 'hsl(228deg 94% 94%)',
-  gray2: '#a8acbd',
+  gray2: '#E3E1DB',
   mediumBlue: '#6776ce',
+  tertiary2: '#73B3B9',
 };
 
 window.BRAND = "Meditech EMR";

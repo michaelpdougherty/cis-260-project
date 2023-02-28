@@ -16,6 +16,7 @@ const JsonTable = ({
   isLoading,
   onClick = false,
   title = '',
+  style = {},
 }) => {
   const formatByKey = (key, td) => {
     if (DATE_FIELDS.includes(key)) {
@@ -28,8 +29,10 @@ const JsonTable = ({
 
   const KEY_REMAPPER = {
     DOB: 'DOB',
-    MRN: 'MRN',
     ID: 'MRN',
+    'MRN#': 'MRN#',
+    'Patient Name': 'Patient Name',
+    'Patient Age': 'Patient Age',
   };
   const capitalize = w => w[0]?.toUpperCase() + w.slice(1, w.length).toLowerCase();
   const isArticle = w => ['AND', 'OF'].includes(w.toUpperCase());
@@ -54,24 +57,29 @@ const JsonTable = ({
     <div>
       { title && <TableLabel>{title}</TableLabel>}
       <FlexBox>
-        {jsonData[0] ? (<Table clickable={!!onClick}>
-          <thead>
-            <tr>
-              {Object.keys(jsonData[0] ?? jsonData).map(th => <th key={th}>{formatKey(th)}</th>)}
-            </tr>
-          </thead>
-          <tbody>
-            {jsonData.map((data, i) => (
-              <tr key={i} onClick={() => onClick(data)}>
-                {Object.entries(data).map(([key, td]) => (
-                  <td key={td + new Date()}>{formatByKey(key, td)}</td>                ))}
+        {jsonData[0] ? (
+          <Table clickable={!!onClick} style={style}>
+            <thead>
+              <tr>
+                {Object.keys(jsonData[0] ?? jsonData).map(th => <th key={th}>{formatKey(th)}</th>)}
               </tr>
-            ))}
-          </tbody>
-        </Table>) : (
-        <Table style={{ textAlign: 'center' }}>
-          <tr><td>No data.</td></tr>
-        </Table>)}
+            </thead>
+            <tbody>
+              {jsonData.map((data, i) => (
+                <tr key={i / 1000} onClick={() => onClick(data)}>
+                  {Object.entries(data).map(([key, td], i) => (
+                    <td key={key + td + i}>{formatByKey(key, td)}</td>                ))}
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        ) : (
+          <Table style={{ textAlign: 'center' }}>
+            <tbody>
+              <tr><td>No data.</td></tr>
+            </tbody>
+          </Table>
+        )}
       </FlexBox>
     </div>
   );
