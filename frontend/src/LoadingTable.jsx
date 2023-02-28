@@ -5,11 +5,13 @@ const LoadingTable = () => {
   return (
     <FlexBox>
       <Table>
-        <tr>
-          <td>
-            <Audio />
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>
+              <Audio />
+            </td>
+          </tr>
+        </tbody>
       </Table>
     </FlexBox>
   );

@@ -4,7 +4,7 @@ import { Field } from 'formik';
 export const AppStyle = styled.div`
   text-align: center;
   height: 100vh;
-  background-color: ${p => p.theme.lightBlue};
+  background-color: ${p => p.theme.pureWhite};
 `;
 
 export const StyledField = styled(Field)`
@@ -86,11 +86,11 @@ export const SignonButton = styled.button`
 `;
 
 export const AppHeader = styled.nav`
-  background-color: #282c34;
+  background-color: ${p => p.theme.primary3};
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 15px;
@@ -104,57 +104,56 @@ export const AppHeader = styled.nav`
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 `;
 
+export const YouAreSignedInAs = styled.p`
+  margin: 0;
+  font-size: 70%;
+  color: 'black';
+`;
+
+export const LogoutButton = styled.button`
+  text-transform: uppercase;
+  width: 118px;
+  height: 31px;
+  background: ${p => p.theme.secondary3};
+  border: none;
+  cursor: pointer;
+`;
+
+export const Brand = styled.h1`
+  margin: 0;
+  .ot {
+    color: ${p => p.theme.secondary3};
+    text-transform: uppercase;
+  }
+  .racker {
+    color: ${p => p.theme.secondary2};
+    text-transform: lowercase;
+  }
+`;
+
 export const LoginHeader = styled(AppHeader)`
   justify-content: flex-start;
 `;
 
-export const PatientsTable = styled.table`
-  text-align: left;
-  min-width: 50vw;
-  border-collapse: collapse;
-  padding: 0 50px;
-  th {
-    background: ${p => p.theme.gray2};
-  }
-  td, th {
-    padding: 10px;
-  }
-  tr {
-    background: ${p => p.theme.white};
-  }
-  tbody tr {
-    cursor: pointer;
-    :hover {
-      background: ${p => p.theme.white}80;
-    }
-  }
-`;
-
 export const Table = styled.table`
-  width: 100vw;
-  text-align: left;
+  text-align: center;
   border-collapse: collapse;
-  td:first-child, th:first-child {
-    padding-left: 10vw;
-  }
-  td:last-child, th:last-child {
-    padding-right: 10vw;
-  }
+
   td, th {
-    padding: 10px;
+    padding: 10px 20px;
+  }
+  th {
+    font-weight: normal;
+    background: ${p => p.theme.tertiary2};
   }
   tr {
-    background: ${p => p.theme.white};
+    background: ${p => p.theme.secondary2};
   }
   ${p => p.clickable && `
     tbody tr {
       cursor: pointer;
-      :hover {
-        background: ${p.theme.white}80;
-      }
     }
   `}
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-bottom: 40px;
 `;
 
@@ -175,4 +174,11 @@ export const TableLabel = styled(Label)`
   padding: 10px;
   padding-left: 10vw;
   width: 100vw;
+`;
+
+export const StatusBoardTitle = styled.h2`
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: left;
 `;

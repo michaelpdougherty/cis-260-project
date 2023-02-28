@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAgeFromDOB, setTitle } from '../util';
+import { StatusBoardTitle } from '../styles';
 import JsonTable from '../JsonTable';
 
 const Patients = () => {
@@ -10,11 +11,11 @@ const Patients = () => {
     fetch("/patients")
       .then((res) => res.json())
       .then((jsonData) => setPatients(jsonData.map(data => ({
-        MRN: data.mr_num,
-        Name: `${data.firstName} ${data.lastName}`,
-        DOB: new Date(data.dob).toLocaleDateString(),
-        Age: `${getAgeFromDOB(data.dob)} years`,
-        Location: data.hospital
+        'Patient Name': `${data.firstName} ${data.lastName}`,
+        'MRN#': data.mr_num,
+        'Patient Age': getAgeFromDOB(data.dob),
+        'Diagnosis': data.diagnosis ?? '???',
+        'Gender': data.gender ?? '???',
       }))))
       .finally(() => setIsLoading(false));
   }, []);
@@ -22,14 +23,30 @@ const Patients = () => {
     window.location = `/patient/${id}`;
   }
   return (
-    <div>
-      <h2>Patients</h2>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+    }}>
+      <StatusBoardTitle>Status Board</StatusBoardTitle>
       <JsonTable
-        title="Patient List"
         jsonData={patients}
         isLoading={isLoading}
         onClick={data => navigate(data.MRN)}
+        style={{
+          width: '90vw',
+        }}
       />
+    </div>
+
     </div>
   );
 };
