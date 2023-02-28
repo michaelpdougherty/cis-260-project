@@ -125,12 +125,8 @@ export const Table = styled.table`
   ${p => p.clickable && `
     tbody tr {
       cursor: pointer;
-      :hover {
-        background: ${p.theme.white}80;
-      }
     }
   `}
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   margin-bottom: 40px;
 `;
 
