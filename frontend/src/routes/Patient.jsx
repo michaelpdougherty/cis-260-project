@@ -4,6 +4,17 @@ import JsonTable from '../JsonTable';
 import { getAgeFromDOB, setTitle } from '../util';
 import LoadingTable from '../LoadingTable';
 import { TableLabel } from '../styles';
+import styled from 'styled-components';
+
+const Sidebar = styled.div`
+  position: absolute;
+  left: 0;
+  height: 100%;
+`;
+
+const PatientSidebar = () => {
+  return <Sidebar>Hello!</Sidebar>;
+};
 
 const FullPageLoadingSpinner = () => {
   return (
@@ -32,6 +43,7 @@ const Patient = () => {
   if (isLoading) return <FullPageLoadingSpinner/>;
   return (
     <div style={{ height: '90vh', overflowY: 'scroll' }}>
+      <PatientSidebar />
       <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
       <div>
         <TableLabel>Patient</TableLabel>

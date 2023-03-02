@@ -40,7 +40,7 @@ const Patients = () => {
       <JsonTable
         jsonData={patients}
         isLoading={isLoading}
-        onClick={data => navigate(data.MRN)}
+        onClick={data => navigate(data['MRN#'])}
         style={{
           width: '90vw',
         }}
