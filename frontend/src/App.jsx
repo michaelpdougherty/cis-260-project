@@ -12,6 +12,7 @@ import NoMatch from './routes/NoMatch';
 import Patients from './routes/Patients';
 import Patient from './routes/Patient';
 import EditCharts from './routes/EditCharts';
+import Summary from './routes/Summary';
 
 const theme = {
   lightBlue: 'hsl(231deg 100% 85%)',
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               {user.canEdit && <Route element={<EditCharts />} />}
               <Route index element={<Patients />} />
+              <Route path="summary" element={<Summary />} />
               <Route path="edit" element={<EditCharts />} />
               <Route path="patient/:id" element={<Patient />} />
               <Route path="*" element={<NoMatch />} />
@@ -64,6 +66,7 @@ const Layout = () => {
     <div>
       <AppHeader>
         <Link to="/">Home</Link>
+        <Link to="/summary">Summary</Link>
         {user.canEdit && <Link to="/edit">Edit</Link>}
         <Link to="/logout">Log Out</Link>
       </AppHeader>
