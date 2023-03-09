@@ -191,6 +191,9 @@ export const TabBar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  .active {
+    background: ${p => p.theme.tertiary2};
+  }
   button {
     padding: 15px; 
     margin-right: 10px;
