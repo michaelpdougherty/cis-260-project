@@ -2,32 +2,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import JsonTable from '../JsonTable';
 import { getAgeFromDOB, setTitle } from '../util';
-import LoadingTable from '../LoadingTable';
-import { TableLabel } from '../styles';
-import styled from 'styled-components';
+import { MainPatientContent, PatientContentView, TableLabel, TabContainer, TabBar } from '../styles';
 
-const Sidebar = styled.div`
-  position: absolute;
-  left: 0;
-  height: 100%;
-`;
-
-const PatientSidebar = () => {
-  return <Sidebar>Hello!</Sidebar>;
-};
-
-const FullPageLoadingSpinner = () => {
-  return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      height: '80vh'
-    }}>
-      <LoadingTable/>
-    </div>
-  );
-}
+import SummaryTabView from './tabViews/SummaryTabView';
+import VitalsTabView from './tabViews/VitalsTabView';
+import LabResultsTabView from './tabViews/LabResultsTabView';
+import OrdersTabView from './tabViews/OrdersTabView';
+import ImagingTabView from './tabViews/ImagingTabView';
+import NotesTabView from './tabViews/NotesTabView';
+import PatientSidebar from '../PatientSidebar';
+import FullPageLoadingSpinner from '../FullPageLoadingSpinner';
 
 const Patient = () => {
   setTitle('Patient');
@@ -40,10 +24,36 @@ const Patient = () => {
       .then(json => setJsonData(json))
       .finally(() => setIsLoading(false));
   }, [id]);
+
+  // handle tabbing
+  const [currentTab, setCurrentTab] = useState(0);
+  const tabs = [
+    <SummaryTabView/>,
+    <VitalsTabView/>,
+    <LabResultsTabView/>,
+    <ImagingTabView/>,
+    <OrdersTabView/>,
+    <NotesTabView/>,
+  ];
+
   if (isLoading) return <FullPageLoadingSpinner/>;
   return (
-    <div style={{ height: '90vh', overflowY: 'scroll' }}>
+    <MainPatientContent>
       <PatientSidebar />
+      <PatientContentView>
+        <TabContainer>
+          <TabBar>
+            <p role="button" onClick={() => setCurrentTab(0)}>Summary</p>
+            <p role="button" onClick={() => setCurrentTab(1)}>Vitals</p>
+            <p role="button" onClick={() => setCurrentTab(2)}>Lab Results</p>
+            <p role="button" onClick={() => setCurrentTab(3)}>Imaging</p>
+            <p role="button" onClick={() => setCurrentTab(4)}>Orders</p>
+            <p role="button" onClick={() => setCurrentTab(5)}>Notes</p>
+          </TabBar>
+          { tabs[currentTab] }
+        </TabContainer>
+      </PatientContentView>
+      {/*
       <h2>{jsonData.patient.FirstName} {jsonData.patient.LastName}</h2>
       <div>
         <TableLabel>Patient</TableLabel>
@@ -65,7 +75,9 @@ const Patient = () => {
       <JsonTable title="Patient Prevention" jsonData={[jsonData.patientPrevention]} />
       <JsonTable title="Patient Problems" jsonData={[jsonData.patientProblems]} />
       <JsonTable title="Vitals" jsonData={[jsonData.vitals]} />
-    </div>
+      */}
+    </MainPatientContent>
   );
 };
+
 export default Patient;

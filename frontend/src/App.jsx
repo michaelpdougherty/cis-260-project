@@ -17,6 +17,7 @@ const theme = {
   pureWhite: 'white',
   secondary2: '#E3E1DB',
   secondary3: '#CDDB00',
+  tertiary1: '#99C8CC',
   tertiary2: '#73B3B9',
   primary3: '#007580',
 };

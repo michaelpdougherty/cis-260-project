@@ -182,3 +182,38 @@ export const StatusBoardTitle = styled.h2`
   font-size: 20px;
   text-align: left;
 `;
+
+export const TabContainer = styled.div`
+  height: 90%;
+  width: 80%;
+  background: ${p => p.theme.tertiary2};
+`;
+
+export const TabBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  p {
+    background: orange;
+    padding: 20px;
+  }
+`;
+
+export const Sidebar = styled.div`
+  height: 100%;
+  min-width: 450px;
+  background: ${p => p.theme.tertiary1};
+`;
+
+export const MainPatientContent = styled.div`
+  height: calc(100vh - 88px);
+  overflow-y: scroll;
+  display: flex;
+`;
+
+export const PatientContentView = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
