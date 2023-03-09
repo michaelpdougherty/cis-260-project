@@ -22,7 +22,7 @@ const theme = {
   primary3: '#007580',
 };
 
-window.BRAND = "Meditech EMR";
+window.BRAND = "OTracker EMR";
 
 const App = () => {
   setTitle();
