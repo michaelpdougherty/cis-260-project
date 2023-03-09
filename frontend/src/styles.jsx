@@ -26,7 +26,7 @@ export const LoginField = styled(Field)`
 `;
 
 export const LoginBox = styled.div`
-  background-color: ${p => p.theme.gray};
+  background-color: ${p => p.theme.secondary2};
   width: 50vw;
   border: solid black 1px;
   border-radius: 8px;
