@@ -190,11 +190,13 @@ export const TabContainer = styled.div`
 export const TabBar = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   button {
-    padding: 20px;
+    padding: 15px; 
+    margin-right: 10px;
     border: none;
     cursor: pointer;
+    width: 12%;
   }
   background: white;
 `;
