@@ -107,7 +107,10 @@ app.post('/api/login', (req, res) => {
     if (result.length === 1) {
       const { password: dbPassword } = result[0];
       if (password === dbPassword) {
-        res.send(200);
+        con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
+          res.send(result[0]);
+        });
+        // res.send(200);
       } else {
         res.send(401);
       }
@@ -116,3 +119,11 @@ app.post('/api/login', (req, res) => {
     }
   });
 });
+
+/*
+app.get('/api/user/:username', (req, res) => {
+  con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
+
+  });
+})
+*/

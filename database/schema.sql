@@ -126,5 +126,7 @@ create table users (
   `username` varchar(255) not null,
   `password` varchar(255),
   `account_type` enum('teacher', 'student', 'admin') not null,
+  `first_name` varchar(255),
+  `last_name` varchar(255),
   primary key (`username`, `account_type`)
 );

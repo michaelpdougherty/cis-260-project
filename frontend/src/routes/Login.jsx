@@ -54,10 +54,10 @@ const Login = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(res => res.text())
-    .then(body => {
-      if (body === 'OK') {
-        window.sessionStorage.setItem('user', JSON.stringify(values));
+    }).then(res => res.json())
+    .then(json => {
+      if (json.first_name) {
+        window.sessionStorage.setItem('user', JSON.stringify(json));
         window.location = "/";
       }
     });

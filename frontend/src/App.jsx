@@ -69,13 +69,14 @@ const LogOutButton = () => {
 
 const Layout = () => {
   const user = getUser();
+  console.log(user);
   return (
     <div>
       <AppHeader>
         <Link to='/'>
-          <Brand><span class='ot'>OT</span><span class='racker'>racker</span></Brand>
+          <Brand><span className='ot'>OT</span><span className='racker'>racker</span></Brand>
         </Link>
-        {user.isLoggedIn && <YouAreSignedInAs>You are signed in as: ???</YouAreSignedInAs>}
+        {user.isLoggedIn && (<YouAreSignedInAs>You are signed in as: {user.first_name} {user.last_name}</YouAreSignedInAs>)}
         {user.canEdit && <Link to="/edit">Edit</Link>}
         <Link to='/logout'><LogOutButton/></Link>
       </AppHeader>
