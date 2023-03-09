@@ -7,7 +7,7 @@ export const getUser = () => {
   if (userString) {
     const user = JSON.parse(userString);
     user.isLoggedIn = !!user.username;
-    user.canEdit = ['ADMIN', 'TEACHER'].includes(user.accountType);
+    user.canEdit = ['admin', 'teacher'].includes(user.account_type);
     return user;
   }
   return {};
