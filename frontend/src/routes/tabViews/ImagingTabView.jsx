@@ -1,14 +1,8 @@
-import styled from 'styled-components';
+import JsonTable from "../../JsonTable";
 
-const TabViewContainer = styled.div`
-  background: gray;
-`;
-
-const ImagingTabView = () => {
+const ImagingTabView = ({ imaging }) => {
   return (
-    <TabViewContainer>
-      <p>This is the imaging tab.</p>
-    </TabViewContainer>
+    <JsonTable jsonData={[imaging]} />
   );
 };
 

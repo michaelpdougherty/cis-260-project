@@ -172,8 +172,6 @@ export const AddChartButton = styled(Button)`
 
 export const TableLabel = styled(Label)`
   padding: 10px;
-  padding-left: 10vw;
-  width: 100vw;
 `;
 
 export const StatusBoardTitle = styled.h2`

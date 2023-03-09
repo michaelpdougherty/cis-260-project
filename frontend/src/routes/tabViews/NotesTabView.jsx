@@ -1,6 +1,8 @@
-const NotesTabView = () => {
+import JsonTable from '../../JsonTable';
+
+const NotesTabView = ({ notes }) => {
   return (
-    <p>This is the notes tab.</p>
+    <JsonTable jsonData={[notes]} />
   );
 };
 

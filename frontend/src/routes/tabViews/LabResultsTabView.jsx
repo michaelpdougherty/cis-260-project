@@ -1,6 +1,8 @@
-const LabResultsTabView = () => {
+import JsonTable from "../../JsonTable";
+
+const LabResultsTabView = ({ labs }) => {
   return (
-    <p>This is the lab results tab.</p>
+    <JsonTable jsonData={[labs]} />
   );
 };
 
