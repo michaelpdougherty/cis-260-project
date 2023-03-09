@@ -43,12 +43,12 @@ const Patient = () => {
       <PatientContentView>
         <TabContainer>
           <TabBar>
-            <p role="button" onClick={() => setCurrentTab(0)}>Summary</p>
-            <p role="button" onClick={() => setCurrentTab(1)}>Vitals</p>
-            <p role="button" onClick={() => setCurrentTab(2)}>Lab Results</p>
-            <p role="button" onClick={() => setCurrentTab(3)}>Imaging</p>
-            <p role="button" onClick={() => setCurrentTab(4)}>Orders</p>
-            <p role="button" onClick={() => setCurrentTab(5)}>Notes</p>
+            <button onClick={() => setCurrentTab(0)}>Summary</button>
+            <button onClick={() => setCurrentTab(1)}>Vitals</button>
+            <button onClick={() => setCurrentTab(2)}>Lab Results</button>
+            <button onClick={() => setCurrentTab(3)}>Imaging</button>
+            <button onClick={() => setCurrentTab(4)}>Orders</button>
+            <button onClick={() => setCurrentTab(5)}>Notes</button>
           </TabBar>
           { tabs[currentTab] }
         </TabContainer>

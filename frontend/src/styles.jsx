@@ -192,16 +192,18 @@ export const TabContainer = styled.div`
 export const TabBar = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  p {
-    background: orange;
+  justify-content: space-between;
+  button {
     padding: 20px;
+    border: none;
+    cursor: pointer;
   }
+  background: white;
 `;
 
 export const Sidebar = styled.div`
   height: 100%;
-  min-width: 450px;
+  min-width: 350px;
   background: ${p => p.theme.tertiary1};
 `;
 
