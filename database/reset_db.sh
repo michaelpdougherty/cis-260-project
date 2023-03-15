@@ -3,9 +3,9 @@ source config.sh
 function do_mysql() {
   if [ $PASSWORD ]
   then
-    command mysql -u "$USER" -p"$PASSWORD" "$@"
+    command mysql -u "$USER" -p"$PASSWORD" -h "$HOST" "$@"
   else
-    command mysql -u "$USER" "$@"
+    command mysql -u "$USER" -h "$HOST" "$@"
   fi
 }
 echo "Dropping databases..."
