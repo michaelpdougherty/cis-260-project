@@ -1,18 +1,29 @@
+const TabSlide = ({ heading, items }) => {
+	return (
+			<div style={{ background: 'gray' }}>
+				<h2>{heading}</h2>
+				{items.map(item => (<div>{item}</div>))}
+			</div>
+	);
+};
+
 const SummaryTabView = () => {
   const patient = {
-	  name: '',
-	  age: '',
-	  gender: '',
-	  address: '',
-	  phone: '',
-	  email: '',
-	  lastVisit: '',
-	  nextAppointment: '',
+	  name: 'Michael',
+	  age: '8',
+	  gender: 'M',
+	  address: '1234 Main St.',
+	  phone: '(123) 330-1234',
+	  email: 'mlowe@student.ccc.edu',
+	  lastVisit: '2020-01-01',
+	  nextAppointment: '2022-01-01q',
   };
 
   return (
     <div>
       <h2>Patient Summary</h2>
+  	<TabSlide heading={'Allergies'} items={['Latex']}/>
+  	<TabSlide heading={'Medications'} items={['Cetrizine 10mg', 'Aspirin 100mg']}/>
       <table>
         <tbody>
           <tr>
