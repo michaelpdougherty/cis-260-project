@@ -1,7 +1,7 @@
 const TabSlide = ({ heading, items }) => {
 	return (
-			<div style={{ background: 'gray' }}>
-				<h2>{heading}</h2>
+			<div style={{ textAlign: 'left', background: '#E3E1DB', width: '49%', margin: 5, padding: '10px 20px 20px 10px' }}>
+				<h2 style={{ fontSize: 16 }}>{heading}</h2>
 				{items.map(item => (<div>{item}</div>))}
 			</div>
 	);
@@ -20,11 +20,11 @@ const SummaryTabView = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <h2>Patient Summary</h2>
   	<TabSlide heading={'Allergies'} items={['Latex']}/>
   	<TabSlide heading={'Medications'} items={['Cetrizine 10mg', 'Aspirin 100mg']}/>
-      <table>
+     {/* <table>
         <tbody>
           <tr>
             <td>Name:</td>
@@ -59,7 +59,7 @@ const SummaryTabView = () => {
             <td>{patient.nextAppointment}</td>
           </tr>
         </tbody>
-      </table>
+  </table>*/}
     </div>
   );
 }
