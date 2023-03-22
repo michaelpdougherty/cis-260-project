@@ -5,6 +5,8 @@ insert into patients values (
   @mrn,
   'Neveah',
   'Williams',
+  'Sick',
+  'M',
   '2002-11-06',
   'English',
   'Caucasian',

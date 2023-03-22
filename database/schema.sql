@@ -98,6 +98,8 @@ create table patients (
   `mr_num` int not null auto_increment,
   `firstName` varchar(50) not null,
   `lastName` varchar(50) not null,
+  `diagnosis` varchar(50) not null,
+  `gender` enum('M', 'F') not null,
   `dob` date not null,
   `language` varchar(50) not null,
   `ethnicity` varchar(50) not null,
