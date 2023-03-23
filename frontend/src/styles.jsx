@@ -206,8 +206,12 @@ export const TabBar = styled.div`
 
 export const Sidebar = styled.div`
   height: 100%;
-  min-width: 350px;
+  min-width: 200px;
   background: ${p => p.theme.tertiary1};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const MainPatientContent = styled.div`

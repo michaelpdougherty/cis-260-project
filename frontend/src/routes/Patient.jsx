@@ -60,7 +60,7 @@ const Patient = () => {
 
   return (
     <MainPatientContent>
-      <PatientSidebar />
+      <PatientSidebar image={jsonData.patient.image} name={jsonData.patient.firstName + ' ' + jsonData.patient.lastName} />
       <PatientContentView>
         <TabContainer>
           <TabBar>
