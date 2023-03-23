@@ -30,7 +30,7 @@ const JsonTable = ({
   const KEY_REMAPPER = {
     DOB: 'DOB',
     ID: 'MRN',
-    'MRN#': 'MRN#',
+    MRN: 'MRN',
     'Patient Name': 'Patient Name',
     'Patient Age': 'Patient Age',
   };
