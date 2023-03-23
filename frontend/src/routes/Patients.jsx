@@ -12,7 +12,7 @@ const Patients = () => {
       .then((res) => res.json())
       .then((jsonData) => setPatients(jsonData.map(data => ({
         'Patient Name': `${data.firstName} ${data.lastName}`,
-        'MRN#': data.mr_num,
+        'MRN': data.mrn,
         'Patient Age': getAgeFromDOB(data.dob),
         'Diagnosis': data.diagnosis ?? '???',
         'Gender': data.gender ?? '???',

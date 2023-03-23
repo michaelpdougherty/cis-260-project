@@ -44,16 +44,16 @@ app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
   const returnResult = {};
   const statements = [
-    'select * from alerts where mr_num = ?',
-    'select * from encounters where mr_num = ?',
-    'select * from labs where mr_num = ?',
-    'select * from meds where mr_num = ?',
-    'select * from notes where mr_num = ?',
-    'select * from orders where mr_num = ?',
-    'select * from patient_prevention where mr_num = ?',
-    'select * from patient_problems where mr_num = ?',
-    'select * from patients where mr_num = ?',
-    'select * from vitals where mr_num = ?',
+    'select * from alerts where mrn = ?',
+    'select * from encounters where mrn = ?',
+    'select * from labs where mrn = ?',
+    'select * from meds where mrn = ?',
+    'select * from notes where mrn = ?',
+    'select * from orders where mrn = ?',
+    'select * from patient_prevention where mrn = ?',
+    'select * from patient_problems where mrn = ?',
+    'select * from patients where mrn = ?',
+    'select * from vitals where mrn = ?',
   ];
   const sql = statements.join('; ');
   const bindings = statements.map(() => id);
@@ -107,7 +107,7 @@ app.post('/api/notes', (req, res) => {
 
     con.query(
            'insert into notes (' +
-               '`mr_num`,' +
+               '`mrn`,' +
                '`date`,' +
                '`title`,' +
                '`author`,' +
