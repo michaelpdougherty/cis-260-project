@@ -14,8 +14,8 @@ const Patients = () => {
         'Patient Name': `${data.firstName} ${data.lastName}`,
         'MRN': data.mrn,
         'Patient Age': getAgeFromDOB(data.dob),
-        'Diagnosis': data.diagnosis ?? '???',
-        'Gender': data.gender ?? '???',
+        'Diagnosis': data.diagnosis,
+        'Gender': data.gender,
       }))))
       .finally(() => setIsLoading(false));
   }, []);
@@ -29,7 +29,6 @@ const Patients = () => {
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-
     <div style={{
       display: 'flex',
       flexDirection: 'column',
