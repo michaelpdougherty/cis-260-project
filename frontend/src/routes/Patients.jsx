@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getAgeFromDOB, setTitle } from '../util';
-import { StatusBoardTitle } from '../styles';
+import {
+    StatusBoardContainer as Container,
+    StatusBoardInnerContainer as Inner,
+    StatusBoardTitle
+} from '../styles';
 import JsonTable from '../JsonTable';
 
 const Patients = () => {
@@ -23,30 +27,19 @@ const Patients = () => {
     window.location = `/patient/${id}`;
   }
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
-    }}>
-      <StatusBoardTitle>Status Board</StatusBoardTitle>
-      <JsonTable
-        jsonData={patients}
-        isLoading={isLoading}
-        onClick={data => navigate(data.MRN)}
-        style={{
-          width: '90vw',
-        }}
-      />
-    </div>
-
-    </div>
+    <Container>
+      <Inner>
+        <StatusBoardTitle>Status Board</StatusBoardTitle>
+        <JsonTable
+          jsonData={patients}
+          isLoading={isLoading}
+          onClick={data => navigate(data.MRN)}
+          style={{
+            width: '90vw',
+          }}
+        />
+      </Inner>
+    </Container>
   );
 };
 

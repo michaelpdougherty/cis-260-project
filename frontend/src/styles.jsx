@@ -236,3 +236,16 @@ export const NotesContainer = styled.div`
     }
 `;
 
+export const StatusBoardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StatusBoardInnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
