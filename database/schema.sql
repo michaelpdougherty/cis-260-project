@@ -114,6 +114,7 @@ create table patients (
   `provider` varchar(50) not null,
   `hospital` varchar(50) not null,
   `comment` varchar(150) not null,
+  `image` varchar(150) not null,
   primary key (`mr_num`)
 );
 
