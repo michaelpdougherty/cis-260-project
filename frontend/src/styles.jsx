@@ -182,7 +182,7 @@ export const StatusBoardTitle = styled.h2`
 `;
 
 export const TabContainer = styled.div`
-  height: 90%;
+  height: 70vh;
   width: 80%;
   background: ${p => p.theme.tertiary2};
 `;
@@ -222,3 +222,17 @@ export const PatientContentView = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const NotesContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    height: 60vh;
+    div {
+        flex: 1;
+        background: ${p => p.theme.secondary2};
+        padding: 10px;
+        margin: 0 10px;
+        overflow-x: scroll;
+    }
+`;
+

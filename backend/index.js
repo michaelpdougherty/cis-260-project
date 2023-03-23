@@ -144,25 +144,24 @@ app.post('/api/notes', (req, res) => {
 app.post('/api/login', (req, res) => {
   const { username, password, accountType } = req.body;
   if (!(username && password && accountType)) {
-    res.send({ 'error': "missing username, password, or account type" });
+    return res.send({ 'error': "missing username, password, or account type" });
   }
   if (!['student', 'teacher', 'admin'].includes(accountType.toLowerCase())) {
-    res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
+    return res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
   }
   con.query(`SELECT password FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
     if (err) throw err;
     if (result.length === 1) {
       const { password: dbPassword } = result[0];
       if (password === dbPassword) {
-        con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
-          res.send(result[0]);
+        con.query(`SELECT * FROM users WHERE username = ? AND account_type = ?`, [username, accountType], (err, result) => {
+          res.send(result[0], 200);
         });
-        // res.send(200);
       } else {
-        res.send(401);
+        res.sendStatus(401);
       }
     } else {
-      res.send(401);
+      res.sendStatus(401);
     }
   });
 });

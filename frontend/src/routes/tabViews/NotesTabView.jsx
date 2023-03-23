@@ -2,6 +2,7 @@ import JsonTable from '../../JsonTable';
 
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { NotesContainer } from '../../styles';
 
 const NotesTabView = ({ notes }) => {
     const [notesList, setNotesList] = useState([]);
@@ -47,8 +48,9 @@ const NotesTabView = ({ notes }) => {
     ]
     const initialValues = Object.fromEntries(keys.map(key => [key, '']));
   return (
-  <div style={{ display: 'flex' }}>
+  <NotesContainer>
     <div>{notesList.length ? notesList.map(note => <NoteObject note={note} />) : 'No notes.'}</div>
+    <div>
       <Formik
           initialValues={initialValues}
           onSubmit={submitHandler}
@@ -58,7 +60,8 @@ const NotesTabView = ({ notes }) => {
             <input type="submit"/>
         </Form>
       </Formik>
-  </div>
+    </div>
+  </NotesContainer>
   );
 };
 
