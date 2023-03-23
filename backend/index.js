@@ -124,7 +124,6 @@ app.post('/api/notes', (req, res) => {
                '`blood_pressure`,' +
                '`heart_rate`,' +
                '`spo2`' +
-
            ') VALUES (' +
                 '?,' +
                 '?,' +
