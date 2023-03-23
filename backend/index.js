@@ -94,6 +94,53 @@ app.get('/patient/:id', async (req, res) => {
   });
 });
 
+app.post('/api/notes', (req, res) => {
+    console.log("Received request at /api/notes");
+
+    const {
+        mrn,
+        date,
+        title,
+        author,
+        precautions,
+    } = req.body;
+
+    con.query(
+           'insert into notes (' +
+               '`mr_num`,' +
+               '`date`,' +
+               '`title`,' +
+               '`author`,' +
+               '`precautions`' +
+           ') VALUES (' +
+               '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?' +
+            ')',
+            [
+                mrn,
+                date,
+                title,
+                author,
+                precautions
+            ],
+            (err, result) => {
+                if (err) throw err;
+                res.send({
+                    success: true,
+                    note: {
+                        mrn,
+                        date,
+                        title,
+                        author,
+                        precautions,
+                    }
+                });
+    });
+});
+
 app.post('/api/login', (req, res) => {
   const { username, password, accountType } = req.body;
   if (!(username && password && accountType)) {
