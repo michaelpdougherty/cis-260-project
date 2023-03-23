@@ -149,7 +149,7 @@ app.post('/api/login', (req, res) => {
   if (!['student', 'teacher', 'admin'].includes(accountType.toLowerCase())) {
     return res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
   }
-  con.query(`SELECT password FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
+  con.query(`SELECT password FROM users WHERE username = ? AND account_type = ?`, [username, accountType], (err, result) => {
     if (err) throw err;
     if (result.length === 1) {
       const { password: dbPassword } = result[0];

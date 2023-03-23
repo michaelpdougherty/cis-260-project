@@ -23,6 +23,8 @@ const JsonTable = ({
       return new Date(td).toLocaleDateString();
     } else if (DATETIME_FIELDS.includes(key)) {
       return new Date(td).toLocaleString();
+    } else if (key.toUpperCase() === 'IMAGE') {
+        return <img src={td} height={50} width={50} style={{ borderRadius: 50, objectFit: 'cover' }}/>;
     }
     return td;
   }
@@ -50,9 +52,7 @@ const JsonTable = ({
       )
       .join(' ');
   }
-
   if (isLoading) return <LoadingTable />;
-
   return (
     <div>
       { title && <TableLabel>{title}</TableLabel>}
@@ -68,7 +68,8 @@ const JsonTable = ({
               {jsonData.map((data, i) => (
                 <tr key={i / 1000} onClick={() => onClick(data)}>
                   {Object.entries(data).map(([key, td], i) => (
-                    <td key={key + td + i}>{formatByKey(key, td)}</td>                ))}
+                    <td key={key + td + i}>{formatByKey(key, td)}</td>
+                  ))}
                 </tr>
               ))}
             </tbody>

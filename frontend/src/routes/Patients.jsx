@@ -13,8 +13,9 @@ const Patients = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetch("/patients")
-      .then((res) => res.json())
-      .then((jsonData) => setPatients(jsonData.map(data => ({
+      .then(res => res.json())
+      .then(jsonData => setPatients(jsonData.map(data => ({
+        'Image': data.image,
         'Patient Name': `${data.firstName} ${data.lastName}`,
         'MRN': data.mrn,
         'Patient Age': getAgeFromDOB(data.dob),
