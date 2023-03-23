@@ -49,11 +49,17 @@ create table meds (
 drop table if exists notes;
 create table notes (
   `id` int not null auto_increment,
-  `mr_num` int not null,
-  `date` datetime not null,
-  `note_title` varchar(150) not null,
-  `author` varchar(150) not null,
-  `location` varchar(150) not null,
+  `mr_num` int,
+  `date` datetime,
+  `title` varchar(150),
+  `author` varchar(150),
+  `precautions` varchar(150),
+  `subjective` varchar(150),
+  `pain_level` varchar(150),
+  `pain_quality` varchar(150),
+  `blood_pressure` varchar(150),
+  `heart_rate` varchar(150),
+  `spo2` varchar(150),
   primary key (`id`)
 );
 

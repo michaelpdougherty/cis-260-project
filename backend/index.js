@@ -6,7 +6,7 @@ app.use(express.json());
 require('dotenv').config();
 
 // Database
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const con = mysql.createConnection({
   host: process.env.DATABASE_HOSTNAME, 
   user: process.env.DATABASE_USER,
