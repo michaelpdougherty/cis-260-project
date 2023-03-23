@@ -5,6 +5,11 @@ export const AppStyle = styled.div`
   text-align: center;
   height: 100vh;
   background-color: ${p => p.theme.pureWhite};
+  > div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
 `;
 
 export const StyledField = styled(Field)`
@@ -215,7 +220,7 @@ export const Sidebar = styled.div`
 `;
 
 export const MainPatientContent = styled.div`
-  height: calc(100vh - 88px);
+  height: 100%;
   overflow-y: scroll;
   display: flex;
 `;
