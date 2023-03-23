@@ -103,6 +103,12 @@ app.post('/api/notes', (req, res) => {
         title,
         author,
         precautions,
+        subjective,
+        painLevel,
+        painQuality,
+        bloodPressure,
+        heartRate,
+        spo2,
     } = req.body;
 
     con.query(
@@ -111,9 +117,22 @@ app.post('/api/notes', (req, res) => {
                '`date`,' +
                '`title`,' +
                '`author`,' +
-               '`precautions`' +
+               '`precautions`,' +
+               '`subjective`,' +
+               '`pain_level`,' +
+               '`pain_quality`,' +
+               '`blood_pressure`,' +
+               '`heart_rate`,' +
+               '`spo2`' +
+
            ') VALUES (' +
-               '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
                 '?,' +
                 '?,' +
                 '?,' +
@@ -124,7 +143,13 @@ app.post('/api/notes', (req, res) => {
                 date,
                 title,
                 author,
-                precautions
+                precautions,
+                subjective,
+                painLevel,
+                painQuality,
+                bloodPressure,
+                heartRate,
+                spo2,
             ],
             (err, result) => {
                 if (err) throw err;
@@ -136,6 +161,12 @@ app.post('/api/notes', (req, res) => {
                         title,
                         author,
                         precautions,
+                        subjective,
+                        painLevel,
+                        painQuality,
+                        bloodPressure,
+                        heartRate,
+                        spo2,
                     }
                 });
     });
