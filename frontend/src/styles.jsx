@@ -5,11 +5,12 @@ export const AppStyle = styled.div`
   text-align: center;
   height: 100vh;
   background-color: ${p => p.theme.pureWhite};
-  > div {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+`;
+
+export const LoggedInStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 export const StyledField = styled(Field)`
