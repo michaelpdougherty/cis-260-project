@@ -187,8 +187,8 @@ export const StatusBoardTitle = styled.h2`
 `;
 
 export const TabContainer = styled.div`
-  height: 70vh;
-  width: 80%;
+  height: 90%;
+  width: 98%;
   background: ${p => p.theme.tertiary2};
 `;
 
