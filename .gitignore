@@ -1,4 +1,4 @@
 node_modules/
 .env
-database/config.sh
+database/config.*
 .idea/
