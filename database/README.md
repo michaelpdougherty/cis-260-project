@@ -19,7 +19,7 @@ the command, you can do the following:
 
 # Instructions
 1. Copy `example-config.sh` or `example-config.ps1` to a file called `config.sh`/`.ps1`
-2. Set the MySQL hostname, database name, and your username and passowrd in the `config` file.
+2. Set the MySQL hostname, database name, and your username and password in the `config` file.
 3. Run the file by calling the filename (e.g., `./reset_db.sh`)
 
 Note: In Bash, you may need to grant the file executable privileges (`chmod +x ./reset_db.sh`),
