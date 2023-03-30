@@ -1,4 +1,5 @@
-# AWS hostname: <http://cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com> (Not reachable from browser)
+AWS hostname: cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com  
+
 # Files
 - `schema.sql` - table definitions
 - `data.sql` - the initial data
