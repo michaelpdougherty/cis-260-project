@@ -1,4 +1,14 @@
+# Database
+The application runs by connecting to one MySQL database using the information
+in the `backend/.env` file. The database can be created for development and testing
+purposes using the files here.
+
+# Database Connection
+```
 AWS hostname: cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com  
+Port: 3306
+Default database: CIS260db
+```
 
 # Files
 - `schema.sql` - table definitions
