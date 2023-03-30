@@ -1,7 +1,6 @@
 ## Database
-The database for this project is located here:
-<cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com>
-The port is the default `3306`
+The database for this project is located here:  
+<http://cis260db.cwv0o9vfnwsc.us-east-1.rds.amazonaws.com:3306>
 
 You can also run a MySQL database locally and put `HOST=localhost` in your `config.sh`
 
