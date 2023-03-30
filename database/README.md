@@ -11,7 +11,7 @@ the connection information and the name of the database to drop if it exists and
 ## Note about PATH
 In order for the scripts to run, you will need to have access to a MySQL Client command in your terminal,
 either `mysql` or `mysqlsh`. If, for some reason, you have MySQL installed and you don't have access to
-the command, you can do the following:
+the command, you can do the following (Git Bash only):
 - `notepad ~/.profile`
 - Add the line: `export PATH=$PATH:/path/to/mysql/bin` and save
 - `souce ~/.profile`
