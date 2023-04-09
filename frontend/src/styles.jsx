@@ -215,10 +215,187 @@ export const MainPatientContent = styled.div`
   overflow-y: scroll;
   display: flex;
 `;
-
 export const PatientContentView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+`;
+export const NotesTabView = styled.div`
+height: 93.5%;
+width: 100%;
+display: flex;
+flex-direction: row;
+
+.container-1, .container-2 {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  vertical-align: top;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.container-2 {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  height: 100%;
+
+}
+
+label {
+  margin-right: 10px;
+  font-weight: bold;
+
+}
+
+select {
+  margin-left: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+#note-style {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  position: relative;
+  align-items: center;
+  display: ;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+#note-style > option {
+  color: black;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+#container-1-header {
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+button {
+  border: 1px solid transparent;
+  background-color: #00a4bd;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  margin-left: 10px;
+
+}
+.container-2-inner {
+  background-color: lightgrey;
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  vertical-align: sub;
+
+}
+#daily-note-header-p {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 1px;
+  padding: 1px;
+
+}
+.daily-note-occupational-therapy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+
+}
+
+.vital-field {
+  width: 95%;
+  height: 100%;
+  background-color: darkgrey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+}
+
+#form {
+  // display: none;
+}
+
+
+`;
+
+export const NoteStyle = styled.div`
+
+#container-1-inner > p {
+  font-height: 12px;
+  font-weight: regular;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+#caretaker {
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
 `;
