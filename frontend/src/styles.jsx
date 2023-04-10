@@ -337,20 +337,6 @@ button {
   padding: 1px;
 
 }
-.daily-note-occupational-therapy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  box-sizing: border-box;
-
-}
 
 .vital-field {
   width: 95%;
@@ -359,7 +345,7 @@ button {
   border: 1px solid transparent;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -368,8 +354,25 @@ button {
 
 }
 
-#form {
-  // display: none;
+.daily-occupational-therapy {
+  display: none;
+}
+
+.initial-evaluation {
+  width: 95%;
+  height: 100%;
+  background-color: darkgrey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+
 }
 
 
