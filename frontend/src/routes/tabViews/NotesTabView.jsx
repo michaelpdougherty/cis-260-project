@@ -43,7 +43,7 @@ const NotesTabView = ({ notes, mrn }) => {
     const initialValues = Object.fromEntries(keys.map(key => [key, '']));
   return (
   <NotesContainer>
-    <div>{notesList.length ? notesList.map(note => <NoteObject note={note} />) : 'No notes.'}</div>
+    <div>{notesList.length ? notesList.map((note, i) => <NoteObject key={i+i} note={note} />) : 'No notes.'}</div>
     <div>
       <Formik
           initialValues={initialValues}
