@@ -56,7 +56,7 @@ const NotesTabView = ({ notes }) => {
           onSubmit={submitHandler}
       >
         <Form>
-            {keys.map(key => <><Field name={key} placeholder={key} /><br/></>)}
+            {keys.map(key => <div key={key}><Field name={key} placeholder={key} /><br/></div>)}
             <input type="submit"/>
         </Form>
       </Formik>
