@@ -94,9 +94,16 @@ app.get('/patient/:id', async (req, res) => {
   });
 });
 
+app.get('/api/notes/:mrn', (req, res) => {
+  const { mrn } = req.params;
+  con.query("SELECT * FROM notes", async (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 app.post('/api/notes', (req, res) => {
     console.log("Received request at /api/notes");
-
     const {
         mrn,
         date,
