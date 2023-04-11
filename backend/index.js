@@ -96,7 +96,7 @@ app.get('/patient/:id', async (req, res) => {
 
 app.get('/api/notes/:mrn', (req, res) => {
   const { mrn } = req.params;
-  con.query("SELECT * FROM notes", async (err, results) => {
+  con.query("SELECT * FROM notes WHERE mrn = ?", [mrn], async (err, results) => {
     if (err) throw err;
     res.json(results);
   });
