@@ -12,7 +12,7 @@ const NotesTabView = ({ notes }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(values),
+            body: JSON.stringify({ ...values, jsonData: values }),
         })
             .then(res => res.json())
             .then(body => {
@@ -36,15 +36,11 @@ const NotesTabView = ({ notes }) => {
     const keys = [
         'mrn',
         'date',
-        'title',
         'author',
-        'precautions',
-        'subjective',
-        'painLevel',
-        'painQuality',
-        'bloodPressure',
-        'heartRate',
-        'spO2',
+        'summary',
+    ]
+    const formKeys = [
+        'summary',
     ]
     const initialValues = Object.fromEntries(keys.map(key => [key, '']));
   return (
@@ -56,7 +52,7 @@ const NotesTabView = ({ notes }) => {
           onSubmit={submitHandler}
       >
         <Form>
-            {keys.map(key => <div key={key}><Field name={key} placeholder={key} /><br/></div>)}
+            {formKeys.map(key => <div key={key}><Field name={key} placeholder={key} /><br/></div>)}
             <input type="submit"/>
         </Form>
       </Formik>

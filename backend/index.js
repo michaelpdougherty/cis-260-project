@@ -104,40 +104,23 @@ app.get('/api/notes/:mrn', (req, res) => {
 
 app.post('/api/notes', (req, res) => {
     console.log("Received request at /api/notes");
+    console.log(req.body);
     const {
         mrn,
         date,
-        title,
+        summary,
         author,
-        precautions,
-        subjective,
-        painLevel,
-        painQuality,
-        bloodPressure,
-        heartRate,
-        spo2,
+        jsonData,
     } = req.body;
 
     con.query(
            'insert into notes (' +
                '`mrn`,' +
                '`date`,' +
-               '`title`,' +
+               '`summary`,' +
                '`author`,' +
-               '`precautions`,' +
-               '`subjective`,' +
-               '`pain_level`,' +
-               '`pain_quality`,' +
-               '`blood_pressure`,' +
-               '`heart_rate`,' +
-               '`spo2`' +
+               '`jsonData`' +
            ') VALUES (' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?,' +
                 '?,' +
                 '?,' +
                 '?,' +
@@ -147,15 +130,9 @@ app.post('/api/notes', (req, res) => {
             [
                 mrn,
                 date,
-                title,
+                summary,
                 author,
-                precautions,
-                subjective,
-                painLevel,
-                painQuality,
-                bloodPressure,
-                heartRate,
-                spo2,
+                JSON.stringify(jsonData),
             ],
             (err, result) => {
                 if (err) throw err;
@@ -164,15 +141,9 @@ app.post('/api/notes', (req, res) => {
                     note: {
                         mrn,
                         date,
-                        title,
+                        summary,
                         author,
-                        precautions,
-                        subjective,
-                        painLevel,
-                        painQuality,
-                        bloodPressure,
-                        heartRate,
-                        spo2,
+                        jsonData,
                     }
                 });
     });

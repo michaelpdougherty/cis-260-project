@@ -51,15 +51,9 @@ create table notes (
   `id` int not null auto_increment,
   `mrn` int,
   `date` datetime,
-  `title` varchar(150),
+  `summary` varchar(150),
   `author` varchar(150),
-  `precautions` varchar(150),
-  `subjective` varchar(150),
-  `pain_level` varchar(150),
-  `pain_quality` varchar(150),
-  `blood_pressure` varchar(150),
-  `heart_rate` varchar(150),
-  `spo2` varchar(150),
+  `jsonData` JSON, 
   primary key (`id`)
 );
 
