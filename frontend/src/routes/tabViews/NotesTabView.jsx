@@ -1,10 +1,8 @@
-import JsonTable from '../../JsonTable';
-
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { NotesContainer } from '../../styles';
 
-const NotesTabView = ({ notes }) => {
+const NotesTabView = ({ notes, mrn }) => {
     const [notesList, setNotesList] = useState([]);
     const submitHandler = values => {
         fetch('/api/notes', {
@@ -12,7 +10,7 @@ const NotesTabView = ({ notes }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...values, jsonData: values }),
+            body: JSON.stringify({ mrn, ...values, jsonData: values }),
         })
             .then(res => res.json())
             .then(body => {
@@ -34,7 +32,7 @@ const NotesTabView = ({ notes }) => {
         );
     }
     const keys = [
-        'mrn',
+        //'mrn',
         'date',
         'author',
         'summary',
