@@ -64,7 +64,7 @@ const Patient = () => {
       <PatientContentView>
         <TabContainer>
           <TabBar>
-            {tabSchema.map((tab, i) => <button className={currentTab === i ? 'active' : ''} onClick={() => setCurrentTab(i)}>{tab.title}</button>)}
+            {tabSchema.map((tab, i) => <button key={tab.title} className={currentTab === i ? 'active' : ''} onClick={() => setCurrentTab(i)}>{tab.title}</button>)}
           </TabBar>
           { tabSchema[currentTab].component }
         </TabContainer>
