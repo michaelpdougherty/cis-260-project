@@ -13,10 +13,12 @@ See `frontend/` for more details.
 5. `cp example.env .env` (Copy `example.env` to secret file `.env`)
 6. Edit `.env` to add your DB username and password (`notepad .env`?)
 7. `cd ..` to return to the project root
-8. `npm run build`
+8. `npm run build` to install everything
 9. `npm start`
-10. The app should run on localhost:3000
-11. Everything is working if you can click the "Patients" tab and see the data.
+10. This usually opens a browser for you automatically. The website should be running at `http://localhost:3000/`
+11. Now to test the database connection, log in with the username `test` and the password `test`.
+There should be accounts with that login for each account type.
+12. Upon logging in, you should see the Status Board with at least one patient, "Neveah Williams".
 
 ## Available Scripts (Front-End)
 

@@ -7,6 +7,12 @@ export const AppStyle = styled.div`
   background-color: ${p => p.theme.pureWhite};
 `;
 
+export const LoggedInStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
+
 export const StyledField = styled(Field)`
   input {
     background-color: ${p => p.theme.white};
@@ -182,8 +188,8 @@ export const StatusBoardTitle = styled.h2`
 `;
 
 export const TabContainer = styled.div`
-  height: 90%;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   background: ${p => p.theme.tertiary2};
 `;
 
@@ -206,12 +212,16 @@ export const TabBar = styled.div`
 
 export const Sidebar = styled.div`
   height: 100%;
-  min-width: 350px;
+  min-width: 200px;
   background: ${p => p.theme.tertiary1};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const MainPatientContent = styled.div`
-  height: calc(100vh - 88px);
+  height: 100%;
   overflow-y: scroll;
   display: flex;
 `;
@@ -221,6 +231,7 @@ export const PatientContentView = styled.div`
   align-items: center;
   width: 100%;
 `;
+
 export const NotesTabView = styled.div`
 height: 93.5%;
 width: 100%;
@@ -401,4 +412,30 @@ export const NoteStyle = styled.div`
   justify-content: space-between;
   
 }
+
+export const NotesContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    height: 60vh;
+    div {
+        flex: 1;
+        background: ${p => p.theme.secondary2};
+        padding: 10px;
+        margin: 0 10px;
+        overflow-x: scroll;
+    }
+`;
+
+export const StatusBoardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const StatusBoardInnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;

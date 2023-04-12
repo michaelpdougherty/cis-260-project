@@ -1,8 +1,6 @@
-// import JsonTable from '../../JsonTable';
 import React from 'react';
 import { NotesTabView } from '../../styles';
 import { NoteStyle } from '../../styles';
-// import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 
 const Note = ({ id, date, time, content, caretaker }) => {
@@ -12,10 +10,10 @@ const Note = ({ id, date, time, content, caretaker }) => {
         <p id='caretaker'>{caretaker}</p>
         <p id='display'><b>Date of Service: </b>{date} <br></br> <b>Time: </b>{time} <br></br> <b>Signed</b> <hr /> </p>
       </div>
-
     </NoteStyle>
   );
 };
+
 function showForm() {
   const noteStyle = document.querySelector("#note-style").value;
   const selectedValue = noteStyle.options[noteStyle.selectedIndex].value;
@@ -209,21 +207,17 @@ const NotesTab = () => {
                       <label htmlFor="ie-subjective">Subjective:</label>
                       <Field type="text" id="ie-subjective" name="ie-subjective" />
                     </div>
-
                   </fieldset>
                   <button type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
-
                 </Form>
               </>
             )}
           </Formik>
         </div>
-
       </div>
-
-    </NotesTabView >
+    </NotesTabView>
   );
 };
 export default NotesTab;

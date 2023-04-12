@@ -1,7 +1,7 @@
 drop table if exists alerts;
 create table alerts (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date_and_time` datetime not null,
   `subject` varchar(50) not null,
   `status` varchar(50) not null,
@@ -12,7 +12,7 @@ create table alerts (
 drop table if exists encounters;
 create table encounters (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date` datetime not null,
   `location` varchar(100) not null,
   `provider` varchar(50) not null,
@@ -24,7 +24,7 @@ create table encounters (
 drop table if exists labs;
 create table labs (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date` datetime not null,
   `lab_test` varchar(150) not null,
   `value` varchar(150) not null,
@@ -37,7 +37,7 @@ create table labs (
 drop table if exists meds;
 create table meds (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date` datetime not null,
   `category` varchar(50) not null,
   `drug_description` varchar(150) not null,
@@ -49,18 +49,18 @@ create table meds (
 drop table if exists notes;
 create table notes (
   `id` int not null auto_increment,
-  `mr_num` int not null,
-  `date` datetime not null,
-  `note_title` varchar(150) not null,
-  `author` varchar(150) not null,
-  `location` varchar(150) not null,
+  `mrn` int,
+  `date` datetime,
+  `summary` varchar(150),
+  `author` varchar(150),
+  `jsonData` JSON, 
   primary key (`id`)
 );
 
 drop table if exists orders;
 create table orders (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `when` datetime not null,
   `category` varchar(150) not null,
   `order_item` varchar(150) not null,
@@ -72,7 +72,7 @@ create table orders (
 drop table if exists patient_prevention;
 create table patient_prevention (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `prev_date` datetime not null,
   `prev_subject` varchar(50) not null,
   `prev_status` varchar(50) not null,
@@ -83,7 +83,7 @@ create table patient_prevention (
 drop table if exists patient_problems;
 create table patient_problems (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date_of_onset` datetime not null,
   `priority` varchar(50) not null,
   `patient_status` varchar(50) not null,
@@ -95,9 +95,11 @@ create table patient_problems (
 
 drop table if exists patients;
 create table patients (
-  `mr_num` int not null auto_increment,
+  `mrn` int not null auto_increment,
   `firstName` varchar(50) not null,
   `lastName` varchar(50) not null,
+  `diagnosis` varchar(50) not null,
+  `gender` enum('M', 'F') not null,
   `dob` date not null,
   `language` varchar(50) not null,
   `ethnicity` varchar(50) not null,
@@ -106,13 +108,14 @@ create table patients (
   `provider` varchar(50) not null,
   `hospital` varchar(50) not null,
   `comment` varchar(150) not null,
-  primary key (`mr_num`)
+  `image` varchar(255) not null,
+  primary key (`mrn`)
 );
 
 drop table if exists vitals;
 create table vitals (
   `id` int not null auto_increment,
-  `mr_num` int not null,
+  `mrn` int not null,
   `date` datetime not null,
   `pulse` int not null,
   `blood_pressure` varchar(10) not null,

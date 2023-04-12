@@ -6,7 +6,7 @@ app.use(express.json());
 require('dotenv').config();
 
 // Database
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const con = mysql.createConnection({
   host: process.env.DATABASE_HOSTNAME, 
   user: process.env.DATABASE_USER,
@@ -44,16 +44,16 @@ app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
   const returnResult = {};
   const statements = [
-    'select * from alerts where mr_num = ?',
-    'select * from encounters where mr_num = ?',
-    'select * from labs where mr_num = ?',
-    'select * from meds where mr_num = ?',
-    'select * from notes where mr_num = ?',
-    'select * from orders where mr_num = ?',
-    'select * from patient_prevention where mr_num = ?',
-    'select * from patient_problems where mr_num = ?',
-    'select * from patients where mr_num = ?',
-    'select * from vitals where mr_num = ?',
+    'select * from alerts where mrn = ?',
+    'select * from encounters where mrn = ?',
+    'select * from labs where mrn = ?',
+    'select * from meds where mrn = ?',
+    'select * from notes where mrn = ?',
+    'select * from orders where mrn = ?',
+    'select * from patient_prevention where mrn = ?',
+    'select * from patient_problems where mrn = ?',
+    'select * from patients where mrn = ?',
+    'select * from vitals where mrn = ?',
   ];
   const sql = statements.join('; ');
   const bindings = statements.map(() => id);
@@ -94,28 +94,82 @@ app.get('/patient/:id', async (req, res) => {
   });
 });
 
+app.get('/api/notes/:mrn', (req, res) => {
+  const { mrn } = req.params;
+  con.query("SELECT * FROM notes WHERE mrn = ?", [mrn], async (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.post('/api/notes', (req, res) => {
+    console.log("Received request at /api/notes");
+    console.log(req.body);
+    const {
+        mrn,
+        date,
+        summary,
+        author,
+        jsonData,
+    } = req.body;
+
+    con.query(
+           'insert into notes (' +
+               '`mrn`,' +
+               '`date`,' +
+               '`summary`,' +
+               '`author`,' +
+               '`jsonData`' +
+           ') VALUES (' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?,' +
+                '?' +
+            ')',
+            [
+                mrn,
+                date,
+                summary,
+                author,
+                JSON.stringify(jsonData),
+            ],
+            (err, result) => {
+                if (err) throw err;
+                res.send({
+                    success: true,
+                    note: {
+                        mrn,
+                        date,
+                        summary,
+                        author,
+                        jsonData,
+                    }
+                });
+    });
+});
+
 app.post('/api/login', (req, res) => {
   const { username, password, accountType } = req.body;
   if (!(username && password && accountType)) {
-    res.send({ 'error': "missing username, password, or account type" });
+    return res.send({ 'error': "missing username, password, or account type" });
   }
   if (!['student', 'teacher', 'admin'].includes(accountType.toLowerCase())) {
-    res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
+    return res.send({ 'error': "`accountType` must be one of ['student', 'teacher', 'admin']"}, 400);
   }
-  con.query(`SELECT password FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
+  con.query(`SELECT password FROM users WHERE username = ? AND account_type = ?`, [username, accountType], (err, result) => {
     if (err) throw err;
     if (result.length === 1) {
       const { password: dbPassword } = result[0];
       if (password === dbPassword) {
-        con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
-          res.send(result[0]);
+        con.query(`SELECT * FROM users WHERE username = ? AND account_type = ?`, [username, accountType], (err, result) => {
+          res.send(result[0], 200);
         });
-        // res.send(200);
       } else {
-        res.send(401);
+        res.sendStatus(401);
       }
     } else {
-      res.send(401);
+      res.sendStatus(401);
     }
   });
 });
