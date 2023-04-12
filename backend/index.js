@@ -42,36 +42,45 @@ app.get('/patients', (req, res) => {
 
 app.get('/patient/:id', async (req, res) => {
   const { id } = req.params;
-  const returnResult = {};
   const statements = [
-    'select * from alerts where mrn = ?',
-    'select * from encounters where mrn = ?',
-    'select * from labs where mrn = ?',
-    'select * from meds where mrn = ?',
+    //'select * from alerts where mrn = ?',
+    //'select * from encounters where mrn = ?',
+    //'select * from labs where mrn = ?',
+    //'select * from meds where mrn = ?',
     'select * from notes where mrn = ?',
-    'select * from orders where mrn = ?',
-    'select * from patient_prevention where mrn = ?',
-    'select * from patient_problems where mrn = ?',
+    //'select * from orders where mrn = ?',
+    //'select * from patient_prevention where mrn = ?',
+    //'select * from patient_problems where mrn = ?',
     'select * from patients where mrn = ?',
-    'select * from vitals where mrn = ?',
+    //'select * from vitals where mrn = ?',
   ];
   const sql = statements.join('; ');
   const bindings = statements.map(() => id);
   con.query(sql, bindings, async (err, results) => {
     if (err) throw err;
-    const responseBody = {};
     const responseKeys = [
-      'alerts',
-      'encounters',
-      'labs',
-      'meds',
+      //'alerts',
+      //'encounters',
+      //'labs',
+      //'meds',
       'notes',
-      'orders',
-      'patientPrevention',
-      'patientProblems',
+      //'orders',
+      //'patientPrevention',
+      //'patientProblems',
       'patient',
-      'vitals',
+      //'vitals',
     ];
+    const body = {};
+    results.forEach((arr, i) => {
+      const currentTable = responseKeys[i];
+      if (currentTable === 'patient') {
+        body[currentTable] = arr[0];
+      } else {
+        body[currentTable] = arr;
+      }
+    })
+    res.json(body);
+    /*
     await results.map(tableResult => tableResult[0]).forEach((row, i) => {
       const key = responseKeys[i];
       const rowObj = (() => {
@@ -90,7 +99,8 @@ app.get('/patient/:id', async (req, res) => {
       })();
       responseBody[key] = rowObj;
     })
-    res.json(responseBody);
+    */
+    //res.json(results);
   });
 });
 
@@ -112,7 +122,7 @@ app.post('/api/notes', (req, res) => {
         type,
         jsonData,
     } = req.body;
-    const date = new Date().toLocaleDateString();
+    const date = new Date().toISOString()
 
     con.query(
            'insert into notes (' +
