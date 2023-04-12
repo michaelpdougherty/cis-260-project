@@ -107,11 +107,12 @@ app.post('/api/notes', (req, res) => {
     console.log(req.body);
     const {
         mrn,
-        date,
         summary,
         author,
+        type,
         jsonData,
     } = req.body;
+    const date = new Date().toLocaleDateString();
 
     con.query(
            'insert into notes (' +

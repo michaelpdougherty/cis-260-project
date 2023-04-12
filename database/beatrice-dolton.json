@@ -1,0 +1,27 @@
+{
+  "notes": [
+    {
+      "type": "Admission H&P",
+      "date": "3/26/2023",
+      "provider": "Lillian Goethe, MD",
+      "comments": [
+        {
+          "header": "Chief Complaint",
+          "value": "Altered mental status (AMS), drowsy, slurred speech. Unknown last well-time (LKWT). Pt sitting on couch on EMS arrival. Police department called to home to unlock door."
+        },
+        {
+          "header": "History of Present Illness",
+          "value": "83-year-old female, altered mental status today, patient called 911 and was found down. She was admitted through the emergency room with depressed GCS and with nausea and vomiting and drowsiness. Was emergently intubated after imaging showed a large cerebellar bleed. She has a history of cardiac pathology requiring Xarelto which she takes daily. History could not be obtained from the patient and minimal history could be obtained from the family who was not present at the time. She has had no intracranial pathology prior. Examination was done after significant medication administration for intubation."
+        },
+        {
+          "header": "Problem List/Past Medical History",
+          "value": "Ongoing CAD, NSTEMI, SP DES-LAD (5 years ago) Hyperlipidemia Hypertension Mild CVA (cerebral infarction) - (5 years ago) Paroxysmal atrial fibrillation Peripheral artery disease"
+        },
+        {
+          "header": "Historical",
+          "value": "No qualifying data."
+        }
+      ]
+    }
+  ]
+}

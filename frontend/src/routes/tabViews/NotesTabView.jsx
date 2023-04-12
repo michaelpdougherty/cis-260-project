@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NotesTabView } from '../../styles';
+import { useEffect, useState } from 'react';
+import { NotesTabViewStyle } from '../../styles';
 import { NoteStyle } from '../../styles';
 import { Formik, Form, Field } from 'formik';
 
@@ -150,16 +150,21 @@ const Note = ({ date, time, caretaker, signed }) => {
   );
 };
 
-const NotesTab = () => {
+const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
-  const notes = [
+  /*
     { id: 1, date: '01/01/2022', time: '01:40pm', content: 'Patient in critical condition', caretaker: 'RN.Lopez', signed: true },
     { id: 2, date: '02/15/2022', time: '12:00am', content: 'Patient had allergic reaction to medication', caretaker: 'Dr.Syad', signed: true },
     { id: 3, date: '03/10/2022', time: '04:06am', content: 'Patient experienced high blood pressure', caretaker: 'NP.Toshiba', signed: true },
     { id: 4, date: '01/10/2023', time: '06:06am', content: 'Patient experienced high glucose', caretaker: 'MD.Dell', signed: false },
   ];
+  */
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString('en-US');
+  useEffect(() => {
+    console.log('notes');
+    console.log(notes);
+  }, [notes])
 
   const getCurrentForm = isSubmitting => {
     switch (formType) {
@@ -173,10 +178,10 @@ const NotesTab = () => {
   }
 
   return (
-    <NotesTabView>
+    <NotesTabViewStyle>
       <div className='container-1'>
         <div id='container-1-header'>All Notes <button id='new-note'>New Note</button></div>
-        {notes.map(note => <Note key={note.id} {...note} />)}
+        {notes.length > 0 ? notes.map(note => <Note key={note.id} {...note} />) : 'No notes.'}
       </div>
       <div className="container-2">
         <label htmlFor="current-date">Date: {formattedDate}</label>
@@ -201,7 +206,7 @@ const NotesTab = () => {
           </Formik>
         </div>
       </div>
-    </NotesTabView>
+    </NotesTabViewStyle>
   );
 };
-export default NotesTab;
+export default NotesTabView;

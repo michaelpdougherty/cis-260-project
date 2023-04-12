@@ -232,7 +232,7 @@ export const PatientContentView = styled.div`
   width: 100%;
 `;
 
-export const NotesTabView = styled.div`
+export const NotesTabViewStyle = styled.div`
   height: 93.5%;
   width: 100%;
   display: flex;
