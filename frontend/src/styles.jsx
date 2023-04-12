@@ -361,10 +361,6 @@ export const NotesTabView = styled.div`
     align-items: flex-start;
   }
 
-  .daily-occupational-therapy {
-    display: none;
-  }
-
   .initial-evaluation {
     width: 95%;
     height: 100%;
