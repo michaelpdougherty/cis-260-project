@@ -80,27 +80,6 @@ app.get('/patient/:id', async (req, res) => {
       }
     })
     res.json(body);
-    /*
-    await results.map(tableResult => tableResult[0]).forEach((row, i) => {
-      const key = responseKeys[i];
-      const rowObj = (() => {
-        if (!row) return {};
-        if (key !== 'patient') {
-          const rowObj = {};
-          Object.entries(row).forEach(([key, value]) => {
-            if (key !== 'MR_NUM') {
-              rowObj[key] = value;
-            }
-          });
-          return rowObj;
-        } else {
-          return row;
-        }
-      })();
-      responseBody[key] = rowObj;
-    })
-    */
-    //res.json(results);
   });
 });
 
