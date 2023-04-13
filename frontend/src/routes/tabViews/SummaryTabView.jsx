@@ -9,7 +9,7 @@ const TabSlide = ({ heading, items }) => {
       boxShadow: '0 3px 10px rgb(0 0 0 / 0.2)',
     }}>
       <h2 style={{ fontSize: 16 }}>{heading}</h2>
-      {items.map(item => (<div>{item}</div>))}
+      {items.map((item, i) => (<div key={heading + i}>{item}</div>))}
     </div>
   );
 };

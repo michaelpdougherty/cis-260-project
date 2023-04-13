@@ -11,16 +11,18 @@ const VitalsTabView = ({ vitals }) => {
   return (
     <table>
       <thead>
-        <th>
-          Date
-        </th>
-        <th>
-          Time
-        </th>
+        <tr>
+          <th>
+            Date
+          </th>
+          <th>
+            Time
+          </th>
+        </tr>
       </thead>
       <tbody>
       {vitalEntries.map(entry => (
-        <tr>
+        <tr key={entry.date + entry.time}>
           <td>
             {entry.date}
           </td>
