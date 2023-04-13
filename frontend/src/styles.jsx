@@ -246,37 +246,31 @@ export const PatientContentView = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 export const NotesTabViewStyle = styled.div`
-  height: 93.5%;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: row;
 
   .container-1, .container-2 {
-    display: inline-block;
     width: 50%;
     box-sizing: border-box;
-    vertical-align: top;
-    background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 10px;
-    height: 100%;
-    position: relative;
+
+    overflow-y: scroll;
+    background: white;
   }
 
   .container-2 {
     display: block;
     align-items: center;
     justify-content: center;
-    vertical-align: top;
-    background-color: #fff;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    height: 100%;
   }
 
   label {
@@ -347,57 +341,11 @@ export const NotesTabViewStyle = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 75%;
     border: 1px solid transparent;
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
     vertical-align: sub;
-  }
-
-  .vital-field {
-    width: 95%;
-    height: 100%;
-    background-color: darkgrey;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .vital-field-2 { /* for text-area below header */
-    width: 95%;
-    height: 100%;
-    background-color: darkgrey;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .initial-evaluation {
-    width: 95%;
-    height: 100%;
-    background-color: darkgrey;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
   }
 `;
 
