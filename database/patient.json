@@ -1,0 +1,157 @@
+{
+  "patientName": "Homer Xiang",
+  "notes": [
+    {
+      "noteType": "Admission H&P",
+      "date": "9/15/2023",
+      "author": "Adrienne Leyva, DO",
+      "noteComments": [
+        {
+          "header": "History of Present Illness",
+          "body": "This is an elderly male admitted to the hospital after falling in the bathtub and found to be unresponsive. At the hospital, the patient was found to have a ruptured left middle cerebral artery aneurysm and right hemiplegia. He underwent a left frontoparietal decompression, craniotomy and clipping of the aneurysm. Hospital course was complicated by postoperative fever, increase in lethargy, electrolyte abnormalities and hypertension. He was intubated while hospitalized, but stabilized and has now been extubated. He had a PEG tube placed for nutrition."
+        },
+        {
+          "header": "Prior Medical History",
+          "body": [
+            "Kidney stones",
+            "Hypertension",
+            "Osteoporosis",
+            "Benign neoplasm of colon",
+            "Diabetes type II",
+            "Elevated PSA"
+          ]
+        },
+        {
+          "header": "Allergies",
+          "body": "No known medical allergies"
+        },
+        {
+          "header": "Medications at Outside Hospital",
+          "body": [
+            "Heparin 5000 units subcutaneously twice daily",
+            "Nimotop 60 mg every 4 hours",
+            "Neutra-Phos one packet four times a day",
+            "Reglan 5 mg IV every 6 hours",
+            "Zovirax topical 5 times per day x7 days",
+            "Keppra 1000 mg twice daily",
+            "Magnesium oxide 400 mg twice daily",
+            "Pepcid 20 mg twice daily",
+            "Trazodone 25 mg at bedtime",
+            "Ritalin 2.5 mg every 0700 and 1300"
+          ]
+        },
+        {
+          "header": "Medications on Discharge from Outside Hospital",
+          "body": [
+            "Zantac 150 mg per PEG tube twice daily",
+            "Ritalin 5 mg at 0700 and 1300 per PEG tube",
+            "Trazodone 50 mg per PEG tube at bedtime",
+            "Tylenol per rectum or per tube 650 mg every 4 hours as needed"
+          ]
+        },
+        {
+          "header": "Social History",
+          "body": "The patient is married. The patient has smoked one pack per day for 30 years. He does not drink alcoholic beverages. He has no pets. He is retired. His hobbies include fishing, reading and building model cars."
+        },
+        {
+          "header": "Functional History",
+          "body": "Independent prior to admission. Bed mobility: supine-to-sit, mod assist. Transfers: sit-to-stand, min-to-mod assistance of 2. Ambulate: 2 steps attempted but not performed. Sitting: balance for 15 minutes, min assist. Upper and lower extremity. ADLs: mod assist. Bowel and bladder: max assist. Feeding: dependent. Due to dysphagia we will hydrate with semi-thick liquids."
+        },
+        {
+          "header": "Family History",
+          "body": "Mother is deceased. Father died of cancer of an unknown type. There is a grandmother with history of stroke."
+        },
+        {
+          "header": "Laboratory Data (from Outside Hospital)",
+          "body": "From day of discharge: WBC 13,500; hemoglobin 10.4; hematocrit 30.3; platelets 285,000; MCV 91.2; PTT 24; PT 10.2; sodium 138; potassium 4.1; chloride 102; CO2 24; BUN 13; creatinine 0.7; glucose 108; calcium 8.4; magnesium 1.7; phosphorus 2.8."
+        },
+        {
+          "header": "Review of Systems",
+          "body": {
+            "General": "No fever, chills, weight loss with recent hospitalization.",
+            "Cardiovascular": "Denies chest pain. Denies palpitations.",
+            "Respiratory": "Denies orthopnea and dyspnea.",
+            "Gastrointestinal": "PEG tube in place. No nausea or vomiting. No blood in bowel movements or dark tarry stools.",
+            "Genitourinary": "No dysuria or hematuria.",
+            "Neurological": "Noted in physical exam.",
+            "Musculoskeletal": "Noted in physical exam."
+          }
+        },
+        {
+          "header": "Physical Examination",
+          "body": {
+            "Vital Signs": "Vitals are pending.",
+            "HEENT": "Eyes open to voice. Pupils are equal, round and reactive to light. The patient makes good eye contact.",
+            "Heart": "Regular rate and rhythm.",
+            "Lungs": "Clear to auscultation bilaterally.",
+            "Abdomen": "Positive bowel sounds. Soft and non-tender. PEG tube present.",
+            "Extremities": "Bilateral upper and lower extremity voluntary movements.",
+            "Neurologic": "The patient is awake and appears fatigued. Eyes kept closed. He would open them intermittently with conversation. He has limited verbalization due to his current health status, weakness and poor memory. He uses 1-2 word answers. He nods and shakes his head for yes or no. He uses hand gestures. He did follow commands to squeeze with his right hand. Deep tendon reflexes are 2+/4 bilateral biceps, brachioradialis and left patellar; 3+/4 right patellar."
+          }
+        },
+        {
+          "header": "Assessment and Plan",
+          "body": {
+            "steps": [
+              "The patient is an elderly male with a left middle cerebral artery intracerebral hemorrhage secondary to ruptured aneurysm with right hemiplegia, status post decompression, craniotomy and clipping.",
+              "Postoperative fever, lethargy and electrolyte abnormalities.",
+              "Dysphagia.",
+              "Hypertension.",
+              "Right axillary deep venous thrombosis."
+            ],
+            "text": "Plan is for full team rehabilitation. Physical therapy to evaluate and treat for mobility, transfers, balance and gait training. Occupational therapy to evaluate and treat the patient for activities of daily living. Speech-language pathology to evaluate and treat for dysphagia and cognition, along with aphasia. Recreational therapy to evaluate and treat for community re-entry. Rehabilitation psychology to evaluate and treat for adjustment and depression. Laboratory ordered will include complete blood count, comprehensive metabolic panel, prealbumin level, urinalysis with culture and sensitivity, along with total and free testosterone level weekly. We will also order a sleep log and sleep study to check for sleep hypopnea. Trazodone will be ordered for sleep hygiene. Ritalin will be ordered for fatigue. In addition, amantadine will be added for attention and fatigue. For DVT prophylaxis, we will order TED hose and sequential compression device along with heparin subcutaneously every 8 hours. For bowel and bladder prophylaxis, we will order MiraLax and Senokot. For nutrition and hydration, we will order Ultracal HN Plus at 80 ml per hour. In addition, we will order 250 ml of water bolus every 6 hours."
+          }
+        }
+      ]
+    },
+    {
+      "noteType": "OT Initial Evaluation",
+      "date": "9/16/2023",
+      "author": "Sara Warston OTD",
+      "summary": "This is an elderly male admitted to the hospital after falling in the bathtub and found to be unresponsive. At the hospital, the patient was found to have a ruptured left middle cerebral artery aneurysm and right hemiplegia. He underwent a left frontoparietal decompression, craniotomy and clipping of the aneurysm. Hospital course was complicated by postoperative fever, increase in lethargy, electrolyte abnormalities and hypertension. He was intubated while hospitalized, but stabilized and has now been extubated. He had a PEG tube placed for nutrition.",
+      "noteComments": [
+        {
+          "header": "Prior Medical History",
+          "body": [
+            "Kidney stones",
+            "Hypertension",
+            "Osteoporosis",
+            "Benign neoplasm of colon",
+            "Diabetes type II",
+            "Elevated PSA"
+          ]
+        },
+        {
+          "header": "Social History",
+          "body": "see EHR"
+        },
+        {
+          "header": "Results of the OT Evaluation",
+          "body": {
+            "ORIENTATION": "AOx2 (person and location only)",
+            "PROBLEM SOLVING": "Pt demonstrated poor ability to develop solution of novel problems related to new onset hemiplegia",
+            "COMMAND FOLLOWING":	"Pt able to follow contextual 2 step verbal commands.",
+            "TOOL-USAGE":	"Pt shows knowledge of basic ADL tool usage evidenced during grooming routine.",
+            "SAFETY and JUDGEMENT":	"Poor insight into new physical impairments evidenced by attempts to stand without assistance from staff.",
+            "PSYCHOSOCIAL":	"Motivated but anxious"
+          }
+        }
+      ]
+    },
+    {
+      "noteType": "OT Initial Evaluation",
+      "date": "12/3/2023",
+      "author": "Irena Lyman OTD",
+      "noteComments": [
+        {
+          "header": "Musculoskeletal Assessment",
+          "body": ""
+        },
+        {
+          "header": "Balance and Coordination",
+          "body": ""
+        }
+      ]
+    }
+  ]
+}								

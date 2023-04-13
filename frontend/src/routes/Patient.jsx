@@ -15,18 +15,22 @@ import FullPageLoadingSpinner from '../FullPageLoadingSpinner';
 const Patient = () => {
   setTitle('Patient');
 
-  const { id } = useParams();
+  const { id: mrn } = useParams();
 
   const [jsonData, setJsonData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [currentTab, setCurrentTab] = useState(0);
 
   useEffect(() => {
-    fetch(`/patient/${id}`)
+    fetch(`/patient/${mrn}`)
       .then(res => res.json())
       .then(json => setJsonData(json))
       .finally(() => setIsLoading(false));
-  }, [id]);
+  }, [mrn]);
+
+  useEffect(() => {
+    console.log(jsonData);
+  }, [jsonData])
 
   // do not render tabs until data is loaded
   if (isLoading) return <FullPageLoadingSpinner/>;
@@ -54,7 +58,7 @@ const Patient = () => {
     },
     {
       title: 'Notes',
-      component: <NotesTabView notes={jsonData.notes} />,
+      component: <NotesTabView notes={jsonData.notes} mrn={mrn} />,
     },
   ];
 
@@ -64,7 +68,7 @@ const Patient = () => {
       <PatientContentView>
         <TabContainer>
           <TabBar>
-            {tabSchema.map((tab, i) => <button className={currentTab === i ? 'active' : ''} onClick={() => setCurrentTab(i)}>{tab.title}</button>)}
+            {tabSchema.map((tab, i) => <button key={tab.title} className={currentTab === i ? 'active' : ''} onClick={() => setCurrentTab(i)}>{tab.title}</button>)}
           </TabBar>
           { tabSchema[currentTab].component }
         </TabContainer>
