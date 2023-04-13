@@ -28,10 +28,6 @@ const Patient = () => {
       .finally(() => setIsLoading(false));
   }, [mrn]);
 
-  useEffect(() => {
-    console.log(jsonData);
-  }, [jsonData])
-
   // do not render tabs until data is loaded
   if (isLoading) return <FullPageLoadingSpinner/>;
 

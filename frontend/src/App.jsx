@@ -69,7 +69,6 @@ const LogOutButton = () => {
 
 const Layout = () => {
   const user = getUser();
-  console.log(user);
   return (
     <LoggedInStyle>
       <AppHeader>

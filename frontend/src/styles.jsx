@@ -22,6 +22,21 @@ export const StyledField = styled(Field)`
   padding: 3px;
 `;
 
+export const NoteFieldDiv = styled.div`
+  width: 95%;
+  height: 100%;
+  background-color: darkgrey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: ${p => p.direction ?? 'row'};
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
 export const LoginField = styled(Field)`
   input {
     background-color: ${p => p.theme.white};
@@ -225,6 +240,7 @@ export const MainPatientContent = styled.div`
   overflow-y: scroll;
   display: flex;
 `;
+
 export const PatientContentView = styled.div`
   display: flex;
   justify-content: center;
@@ -339,13 +355,6 @@ export const NotesTabViewStyle = styled.div`
     vertical-align: sub;
   }
 
-  #daily-note-header-p {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 1px;
-    padding: 1px;
-  }
-
   .vital-field {
     width: 95%;
     height: 100%;
@@ -357,6 +366,21 @@ export const NotesTabViewStyle = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .vital-field-2 { /* for text-area below header */
+    width: 95%;
+    height: 100%;
+    background-color: darkgrey;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
   }
@@ -425,4 +449,11 @@ export const StatusBoardInnerContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+`;
+
+export const NoteHeader = styled.p`
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 1px;
+  padding: 1px;
 `;
