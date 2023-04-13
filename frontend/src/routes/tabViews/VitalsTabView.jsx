@@ -1,9 +1,10 @@
 import { Table } from "../../styles";
 
-const VitalsTabView = () => {
-  const vitalEntries = [    {      "Time": '10:23',      "Date": '12/09/22',      "Temperature": '98.5',      "Pulse": '86',      "Respiratory": '16',      "Blood Pressure": '121/64',      "Pulse Oxygen": '90%',      "Pain": '8',    },    
-  {      "Time": '07:50',      "Date": '12/11/22',      "Temperature": '99.0',      "Pulse": '82',      "Respiratory": '18',      "Blood Pressure": '126/68',      "Pulse Oxygen": '94%',      "Pain": '5',    },    
-  {      "Time": '15:21',      "Date": '12/13/22',      "Temperature": '97.9',      "Pulse": '90',      "Respiratory": '20',      "Blood Pressure": '128/70',      "Pulse Oxygen": '98%',      "Pain": '3',    }  ];
+const VitalsTabView = () => {//vitals }) => {
+  const vitals = [
+  {      time: '10:23',      date: '12/09/22',      temperature: '98.5',      pulse: '86',      respiratory: '16',      bloodPressure: '121/64',      pulseOxygen: '90%',      pain: '8',    },    
+  {      time: '07:50',      date: '12/11/22',      temperature: '99.0',      pulse: '82',      respiratory: '18',      bloodPressure: '126/68',      pulseOxygen: '94%',      pain: '5',    },    
+  {      time: '15:21',      date: '12/13/22',      temperature: '97.9',      pulse: '90',      respiratory: '20',      bloodPressure: '128/70',      pulseOxygen: '98%',      pain: '3',    }  ];
 
   return (
     <Table>
@@ -34,31 +35,31 @@ const VitalsTabView = () => {
         </th>
       </thead>
       <tbody>
-        {vitalEntries.map(entry => (
+        {vitals.map(entry => (
           <tr>
             <td>
-              {entry["Date"]}
+              {entry.date}
             </td>
             <td>
-              {entry["Time"]}
+              {entry.time}
             </td>
             <td>
-              {entry["Temperature"]}
+              {entry.temperature}
             </td>
             <td>
-              {entry["Pulse"]}
+              {entry.pulse}
             </td>
             <td>
-              {entry["Respiratory"]}
+              {entry.respiratory}
             </td>
             <td>
-              {entry["Blood Pressure"]}
+              {entry.bloodPressure}
             </td>
             <td>
-              {entry["Pulse Oxygen"]}
+              {entry.pulseOxygen}
             </td>
             <td>
-              {entry["Pain"]}
+              {entry.pain}
             </td>
           </tr>
         ))}
@@ -66,5 +67,4 @@ const VitalsTabView = () => {
     </Table>
   );
 };
-
 export default VitalsTabView;
