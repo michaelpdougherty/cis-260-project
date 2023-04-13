@@ -8,7 +8,7 @@ const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
         return <Field as='textarea' id={name} name={name} {...otherProps} />;
       case 'select':
         return <Field as='select' id={name} name={name} {...otherProps}>
-          {Object.entries(options).map(([optionKey, optionValue]) => <option key={optionKey} value={optionValue}>{optionValue}</option>)}
+          {Object.entries(options).map(([optionKey, optionValue]) => <option key={`${name}.${optionKey}.option`} value={optionValue}>{optionValue}</option>)}
         </Field>;
       default:
         return <Field type={type ?? 'text'} id={name} name={name} {...otherProps} />;
@@ -19,10 +19,10 @@ const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
     <Form>
       <NoteHeader>{noteSchema.header}</NoteHeader>
       {noteSchema.fieldSets.map(fieldSet => (
-        <fieldset>
+        <fieldset key={`${fieldSet.legend}.fieldset`}>
           <legend>{fieldSet.legend}</legend>
           {fieldSet.fields.map(field => (
-            <NoteFieldDiv direction={field.type === 'textarea' ? 'column' : 'row'}>
+            <NoteFieldDiv key={`${fieldSet.legend}.${field.name}.NoteFieldDiv`} direction={field.type === 'textarea' ? 'column' : 'row'}>
               <label htmlFor={field.name}>{field.header}:</label>
               <div>
                 {getCurrentField(field)}

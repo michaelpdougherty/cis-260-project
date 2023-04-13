@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { NoteStyle, NotesTabViewStyle } from '../../styles';
-import { Formik, Form } from 'formik';
+import { useState } from 'react';
+import { NotesTabViewStyle } from '../../styles';
+import { Formik, } from 'formik';
 import GenericNoteForm from './GenericNoteForm';
+import NoteSummary from './NoteSummary';
 
 const dailyNoteSchema = {
   header: 'Daily Note: Occupational Therapy',
@@ -96,7 +97,7 @@ const initialEvaluationOTSchema = {
         },
         {
           header: 'Prior Medical History',
-          name: 'reasonForReferral',
+          name: 'priorMedicalHistory',
         },
       ]
     },
@@ -146,18 +147,6 @@ const initialEvaluationOTSchema = {
   ]
 };
 
-const Note = ({ date, time, caretaker, signed }) => {
-  return (
-    <NoteStyle>
-      <div id='container-1-inner'>
-        <p id='caretaker'>{caretaker}</p>
-        <p id='display'><b>Date of Service: </b>{date} <br></br> <b>Time: </b>{time} <br></br> <b>{signed ? 'Signed' : 'Draft'}</b></p>
-        <hr/>
-      </div>
-    </NoteStyle>
-  );
-};
-
 const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
   /*
@@ -172,9 +161,9 @@ const NotesTabView = ({ notes, mrn }) => {
 
   const getCurrentForm = isSubmitting => {
     switch (formType) {
-      case '/patient/1/daily-note-ot':
+      case 'daily-note-ot':
         return <GenericNoteForm noteSchema={dailyNoteSchema} isSubmitting={isSubmitting} />;
-      case '/patient/1/inital-eval-ot':
+      case 'inital-eval-ot':
         return <GenericNoteForm noteSchema={initialEvaluationOTSchema} isSubmitting={isSubmitting} />;
       default:
         return <GenericNoteForm noteSchema={initialEvaluationOTSchema} isSubmitting={isSubmitting} />;
@@ -185,15 +174,15 @@ const NotesTabView = ({ notes, mrn }) => {
     <NotesTabViewStyle>
       <div className='container-1'>
         <div id='container-1-header'>All Notes <button id='new-note'>New Note</button></div>
-        {notes.length > 0 ? notes.map(note => <Note key={note.id} {...note} />) : 'No notes.'}
+        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id} {...note} />) : 'No notes.'}
       </div>
       <div className="container-2">
         <label htmlFor="current-date">Date: {formattedDate}</label>
         <p id="current-date"></p>
         <select value={formType} name="note-style" id="note-style" onChange={e => setFormType(e.target.value)}>
           <option value="" disabled>Please select your note style</option>
-          <option value="/patient/1/daily-note-ot">Daily Note: Occupational Therapy</option>
-          <option value="/patient/1/initial-eval-ot">Initial Evaluation: Occupational Therapy</option>
+          <option value="daily-note-ot">Daily Note: Occupational Therapy</option>
+          <option value="initial-eval-ot">Initial Evaluation: Occupational Therapy</option>
         </select>
         <div className='container-2-inner'>
           <Formik initialValues={{ content: '' }}
