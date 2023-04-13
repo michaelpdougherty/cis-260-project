@@ -46,7 +46,7 @@ const Patient = () => {
     },
     {
       title: 'Imaging',
-      component: <ImagingTabView imaging={{ what: '?' }} />,
+      component: <ImagingTabView imaging={jsonData.imaging} />,
     },
     {
       title: 'Orders',

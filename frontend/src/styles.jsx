@@ -159,6 +159,7 @@ export const LoginHeader = styled(AppHeader)`
 export const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
+  width: 100%;
 
   td, th {
     padding: 10px 20px;
