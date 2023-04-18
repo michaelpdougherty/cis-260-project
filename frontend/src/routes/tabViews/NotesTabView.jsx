@@ -1,56 +1,40 @@
 import { useState } from 'react';
+import { Formik } from 'formik';
+
+import GenericNoteForm from './GenericNoteForm';
+import NoteSummary from './NoteSummary';
+
+import { getNoteSchemaForFormType } from './noteSchema';
+
 import {
   ButtonBlue,
   NotesTabViewStyle,
   NoteTypeSelect,
-  NoteFormLabel as Label,
   NoteHalfLeft,
   NoteHalfRight,
   NoteFormDiv,
   NotesContainerHeader,
 } from '../../styles';
-import { Formik } from 'formik';
-import GenericNoteForm from './GenericNoteForm';
-import NoteSummary from './NoteSummary';
-
-/* todo create note provider class */
-import {
-  dailyNoteSchema,
-  initialEvaluationOTSchema,
-  freeTextSchema,
-} from './noteSchema';
 
 const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
   const initialValues = {};
 
-  /* todo submit notes to server */
+  /* todo actually submit notes to server */
   const handleNoteSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify({
         mrn: mrn,
-        noteType: formType,
+        userId: null,
+        formType,
         values,
-        exampleApiRequest: {
-          mrn: mrn,
-          noteType: formType,
-          summary: values.summary,
-          author: null,
-          'formData': values,
-        },
-        actuallySubmitted: false,
       }, null, 2));
       setSubmitting(false);
     }, 500);
   }
 
-  /* magic function that should be in its own class */
   const getCurrentForm = isSubmitting => {
-    const noteSchemaResult = (() => ({
-      dailyNoteOT: dailyNoteSchema,
-      initialEvalOT: initialEvaluationOTSchema,
-      freeText: freeTextSchema,
-    }[formType] ?? null))();
+    const noteSchemaResult = getNoteSchemaForFormType(formType);
     if (!noteSchemaResult) {
       return null;
     }
@@ -73,7 +57,7 @@ const NotesTabView = ({ notes, mrn }) => {
         </NoteTypeSelect>
         {formType !== '' && (
           <NoteFormDiv>
-            {/* todo fix initialvalues on form change so select fields are recognized */}
+            {/* todo fix initialvalues on form change so select fields work */}
             <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
               {({ isSubmitting }) => getCurrentForm(isSubmitting)}
             </Formik>

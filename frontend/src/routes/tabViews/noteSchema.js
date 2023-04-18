@@ -1,23 +1,28 @@
-import { getUser } from "../../util";
+import { getUserFullName } from "../../util";
 
-export const dailyNoteSchema = {
+const commonFields = {
+    date: {
+      header: 'Date',
+      name: 'date',
+      disabled: true,
+      value: new Date().toLocaleString(),
+    },
+    author: {
+      header: 'Author',
+      name: 'author',
+      disabled: true,
+      value: getUserFullName(),
+    },
+}
+
+const dailyNoteSchema = {
   header: 'Daily Note: Occupational Therapy',
   fieldSets: [
     {
       legend: 'Occupational Therapy',
       fields: [
-        {
-          header: 'Date',
-          name: 'date',
-          disabled: true,
-          value: new Date().toLocaleString(),
-        },
-        {
-          header: 'Author',
-          name: 'author',
-          disabled: true,
-          value: getUser().username,
-        },
+        commonFields.date,
+        commonFields.author,
         {
           name: 'summary',
           header: 'Summary',
@@ -91,24 +96,14 @@ export const dailyNoteSchema = {
   ]
 };
 
-export const initialEvaluationOTSchema = {
+const initialEvaluationOTSchema = {
   header: 'Initial Evaluation: Occupational Therapy',
   fieldSets: [
     {
       legend: 'Initial Evaluation Occupational Therapy',
       fields: [
-        {
-          header: 'Date',
-          name: 'date',
-          disabled: true,
-          value: new Date().toLocaleString(),
-        },
-        {
-          header: 'Author',
-          name: 'author',
-          disabled: true,
-          value: getUser().username,
-        },
+        commonFields.date,
+        commonFields.author,
         {
           name: 'summary',
           header: 'Summary',
@@ -181,24 +176,22 @@ export const initialEvaluationOTSchema = {
   ]
 };
 
-export const freeTextSchema = {
+const freeTextSchema = {
   fields: [
-    {
-      header: 'Date',
-      name: 'date',
-      disabled: true,
-      value: new Date().toLocaleString(),
-    },
-    {
-      header: 'Author',
-      name: 'author',
-      disabled: true,
-      value: getUser().username,
-    },
+    commonFields.date,
+    commonFields.author,
     {
       name: 'content',
       type: 'textarea',
       placeholder: 'Free text',
     },
   ],
+};
+
+export const getNoteSchemaForFormType = formType => {
+  return {
+    dailyNoteOT: dailyNoteSchema,
+    initialEvalOT: initialEvaluationOTSchema,
+    freeText: freeTextSchema,
+  }[formType] ?? null;
 };

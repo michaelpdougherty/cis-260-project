@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import './App.css';
 
 import { AppStyle, AppHeader, Brand, YouAreSignedInAs, LogoutButton, LoggedInStyle } from './styles';
-import { setTitle, getUser } from './util';
+import { setTitle, getUser, getUserFullName } from './util';
 
 import Login from './routes/Login';
 import Logout from './routes/Logout';
@@ -75,7 +75,7 @@ const Layout = () => {
         <Link to='/'>
           <Brand><span className='ot'>OT</span><span className='racker'>racker</span></Brand>
         </Link>
-        {user.isLoggedIn && (<YouAreSignedInAs>You are signed in as: {user.first_name} {user.last_name}</YouAreSignedInAs>)}
+        {user.isLoggedIn && (<YouAreSignedInAs>You are signed in as: {getUserFullName()}</YouAreSignedInAs>)}
         {user.canEdit && <Link to="/edit">Edit</Link>}
         <Link to='/logout'><LogOutButton/></Link>
       </AppHeader>

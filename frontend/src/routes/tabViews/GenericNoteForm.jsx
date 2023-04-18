@@ -34,8 +34,8 @@ const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
             {getCurrentField(field)}
           </NoteFieldDiv>
       ))}
-      <ButtonBlue type="submit" disabled={isSubmitting}>
-        Submit
+      <ButtonBlue style={{ marginTop: 5 }} type="submit" disabled={isSubmitting}>
+        Save as draft
       </ButtonBlue>
     </Form>
   );
