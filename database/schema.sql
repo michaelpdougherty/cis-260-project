@@ -118,11 +118,13 @@ drop table if exists vitals;
 create table vitals (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `date` datetime not null,
-  `pulse` int not null,
-  `blood_pressure` varchar(10) not null,
-  `pulse_ox` int not null,
-  `temperature` decimal(3,1),
+  `date` datetime not null default current_timestamp(),
+  `temperature` float not null,
+  `pulse` float not null,
+  `respiratory` float not null,
+  `blood_pressure` varchar(20) not null,
+  `pulse_oxygen` float not null,
+  `pain` int not null,
   primary key (`id`)
 );
 

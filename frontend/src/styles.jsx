@@ -176,7 +176,6 @@ export const Table = styled.table`
       cursor: pointer;
     }
   `}
-  margin-bottom: 40px;
 `;
 
 export const Button = styled.button`
@@ -248,12 +247,13 @@ export const PatientContentView = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 `;
 
 export const NotesTabViewStyle = styled.div`
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
   display: flex;
   flex-direction: row;
 
@@ -405,4 +405,9 @@ export const NoteHeader = styled.p`
   font-size: 16px;
   margin-bottom: 1px;
   padding: 1px;
+`;
+
+export const ScrollableDiv = styled.div`
+  height: 100%;
+  /* overflow-y: scroll; */
 `;

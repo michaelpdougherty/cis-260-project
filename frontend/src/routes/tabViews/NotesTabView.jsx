@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { NotesTabViewStyle } from '../../styles';
-import { Formik, } from 'formik';
+import { NotesTabViewStyle, ScrollableDiv } from '../../styles';
+import { Formik } from 'formik';
 import GenericNoteForm from './GenericNoteForm';
 import NoteSummary from './NoteSummary';
 
@@ -173,10 +173,13 @@ const NotesTabView = ({ notes, mrn }) => {
   return (
     <NotesTabViewStyle>
       <div className='container-1'>
+      <ScrollableDiv>
         <div id='container-1-header'>All Notes <button id='new-note'>New Note</button></div>
         {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id} {...note} />) : 'No notes.'}
+      </ScrollableDiv>
       </div>
       <div className="container-2">
+      <ScrollableDiv>
         <label htmlFor="current-date">Date: {formattedDate}</label>
         <p id="current-date"></p>
         <select value={formType} name="note-style" id="note-style" onChange={e => setFormType(e.target.value)}>
@@ -198,6 +201,7 @@ const NotesTabView = ({ notes, mrn }) => {
             }
           </Formik>
         </div>
+      </ScrollableDiv>
       </div>
     </NotesTabViewStyle>
   );

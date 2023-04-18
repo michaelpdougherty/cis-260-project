@@ -139,3 +139,20 @@ insert into patient_problems (`mrn`, `date_of_onset`, `priority`, `patient_statu
 insert into patient_prevention (`mrn`, `prev_date`, `prev_subject`, `prev_status`, `prev_type`) values (@mrn, '2023-02-06', 'whatever', 'whatever', 'whatever');
 insert into vitals (`mrn`, `date`, `pulse`, `blood_pressure`, `pulse_ox`, `temperature`) values (@mrn, CURRENT_TIMESTAMP(), 89, 'high', 100, 90.098);
 */
+
+set @mrn = 1;
+insert into vitals (`mrn`, `date`, `temperature`, `pulse`, `respiratory`, `blood_pressure`, `pulse_oxygen`, `pain`) VALUES
+    (@mrn, '12-09-22 10:23:00', 98.5, 86, 16, '121/64', 0.9, 8),
+    (@mrn, '12-11-22 07:50:00', 99, 82, 18, '126/68', 0.94, 5),
+    (@mrn, '12-13-22 15:21:00', 97.9, 90, 20, '128/70', 0.98, 3),
+    (@mrn, '01-6-23 11:45:00', 99, 87, 25, '139/68', 0.95, 7),
+    (@mrn, '01-20-23 09:30:00', 100.3, 110, 15, '130/85', 0.9, 6),
+    (@mrn, '02-18-23 15:40:00', 97.8, 89, 20, '126/80', 0.97, 5),
+    (@mrn, '02-28-23 13:15:00', 97.5, 88, 17, '120/70', 0.98, 3),
+    (@mrn, '03-09-23 07:00:00', 98, 85, 18, '130/50', 0.99, 0),
+    (@mrn, '03-16-23 11:45:00', 97.5, 87, 21, '140/50', 0.93, 6),
+    (@mrn, '03-22-23 08:30:00', 99.2, 86, 16, '120/30', 0.94, 5),
+    (@mrn, '03-28-23 10:00:00', 97.8, 90, 19, '139/70', 0.94, 4),
+    (@mrn, '04-05-23 16:45:00', 98, 89, 18, '128/40', 0.9, 2),
+    (@mrn, '04-09-23 07:55:00', 101, 105, 25, '140/80', 0.92, 8),
+    (@mrn, '04-10-23 08:00:00', 99, 90, 17, '130/68', 0.9, 8);
