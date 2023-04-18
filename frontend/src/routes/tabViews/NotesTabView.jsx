@@ -43,16 +43,18 @@ const NotesTabView = ({ notes, mrn }) => {
       setSubmitting(false);
     }, 500);
   }
-  const formattedDate = new Date().toLocaleString('en-US');
 
   /* magic function that should be in its own class */
   const getCurrentForm = isSubmitting => {
-    const getNoteSchema = () => ({
+    const noteSchemaResult = (() => ({
       dailyNoteOT: dailyNoteSchema,
       initialEvalOT: initialEvaluationOTSchema,
       freeText: freeTextSchema,
-    }[formType] ?? freeTextSchema);
-    return <GenericNoteForm noteSchema={getNoteSchema()} isSubmitting={isSubmitting} />
+    }[formType] ?? null))();
+    if (!noteSchemaResult) {
+      return null;
+    }
+    return <GenericNoteForm noteSchema={noteSchemaResult} isSubmitting={isSubmitting} />
   }
 
   return (
@@ -69,14 +71,17 @@ const NotesTabView = ({ notes, mrn }) => {
           <option value='dailyNoteOT'>Daily Note: Occupational Therapy</option>
           <option value='initialEvalOT'>Initial Evaluation: Occupational Therapy</option>
         </NoteTypeSelect>
-        <NoteFormDiv>
-          {/* todo fix initialvalues on form change */}
-          <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
-            {({ isSubmitting }) => getCurrentForm(isSubmitting)}
-          </Formik>
-        </NoteFormDiv>
+        {formType !== '' && (
+          <NoteFormDiv>
+            {/* todo fix initialvalues on form change so select fields are recognized */}
+            <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
+              {({ isSubmitting }) => getCurrentForm(isSubmitting)}
+            </Formik>
+          </NoteFormDiv>
+        )}
       </NoteHalfRight>
     </NotesTabViewStyle>
   );
 };
+
 export default NotesTabView;
