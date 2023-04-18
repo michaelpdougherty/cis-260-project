@@ -48,28 +48,28 @@ const VitalsTabView = () => {
         {vitals.map(entry => (
           <tr>
             <td>
-              {entry.date}
+              {entry["Date"]}
             </td>
             <td>
-              {entry.time}
+              {entry["Time"]}
             </td>
             <td>
-              {entry.temperature}
+              {entry["Temperature"]}
             </td>
             <td>
-              {entry.pulse}
+              {entry["Pulse"]}
             </td>
             <td>
-              {entry.respiratory}
+              {entry["Respiratory"]}
             </td>
             <td>
-              {entry.bloodPressure}
+              {entry["Blood Pressure"]}
             </td>
             <td>
-              {entry.pulseOxygen}
+              {entry["Pulse Oxygen"]}
             </td>
             <td>
-              {entry.pain}
+              {entry["Pain"]}
             </td>
           </tr>
         ))}
