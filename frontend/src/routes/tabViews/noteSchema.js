@@ -1,3 +1,5 @@
+import { getUser } from "../../util";
+
 export const dailyNoteSchema = {
   header: 'Daily Note: Occupational Therapy',
   fieldSets: [
@@ -5,17 +7,31 @@ export const dailyNoteSchema = {
       legend: 'Occupational Therapy',
       fields: [
         {
-          name: 'precautions-textarea',
-          header: 'Precautions (textarea)',
+          header: 'Date',
+          name: 'date',
+          disabled: true,
+          value: new Date().toLocaleString(),
+        },
+        {
+          header: 'Author',
+          name: 'author',
+          disabled: true,
+          value: getUser().username,
+        },
+        {
+          name: 'summary',
+          header: 'Summary',
           type: 'textarea',
         },
         {
           name: 'precautions',
           header: 'Precautions',
+          type: 'textarea',
         },
         {
           name: 'subjective',
           header: 'Subjective',
+          type: 'textarea',
         },
         {
           name: 'pain-level',
@@ -82,16 +98,36 @@ export const initialEvaluationOTSchema = {
       legend: 'Initial Evaluation Occupational Therapy',
       fields: [
         {
+          header: 'Date',
+          name: 'date',
+          disabled: true,
+          value: new Date().toLocaleString(),
+        },
+        {
+          header: 'Author',
+          name: 'author',
+          disabled: true,
+          value: getUser().username,
+        },
+        {
+          name: 'summary',
+          header: 'Summary',
+          type: 'textarea',
+        },
+        {
           header: 'Precautions',
           name: 'precautions',
+          type: 'textarea',
         },
         {
           header: 'Reason for Referral',
           name: 'reasonForReferral',
+          type: 'textarea',
         },
         {
           header: 'Prior Medical History',
           name: 'priorMedicalHistory',
+          type: 'textarea',
         },
       ]
     },
@@ -123,20 +159,46 @@ export const initialEvaluationOTSchema = {
         {
           header: 'Lives with',
           name: 'livesWith',
+          type: 'textarea',
         },
         {
           header: 'Available Social Support',
           name: 'availableSocialSupport',
+          type: 'textarea',
         },
         {
           header: 'Home Environment',
           name: 'homeEnvironment',
+          type: 'textarea',
         },
         {
           header: 'Subjective',
           name: 'subjective',
+          type: 'textarea',
         }
       ]
     }
   ]
+};
+
+export const freeTextSchema = {
+  fields: [
+    {
+      header: 'Date',
+      name: 'date',
+      disabled: true,
+      value: new Date().toLocaleString(),
+    },
+    {
+      header: 'Author',
+      name: 'author',
+      disabled: true,
+      value: getUser().username,
+    },
+    {
+      name: 'content',
+      type: 'textarea',
+      placeholder: 'Free text',
+    },
+  ],
 };

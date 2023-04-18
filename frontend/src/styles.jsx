@@ -14,7 +14,6 @@ export const LoggedInStyle = styled.div`
 `;
 
 export const NoteFieldDiv = styled.div`
-  width: 95%;
   height: 100%;
   background-color: darkgrey;
   border: 1px solid transparent;
@@ -25,7 +24,7 @@ export const NoteFieldDiv = styled.div`
   display: flex;
   flex-direction: ${p => p.direction ?? 'row'};
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: ${p => p.direction === 'row' ? 'center' : 'flex-start'};
 `;
 
 export const LoginField = styled(Field)`
@@ -400,16 +399,22 @@ export const NoteHalfContainer = styled.div`
   width: 50%;
   box-sizing: border-box;
   border: 1px solid #ccc;
-  padding: 10px;
-
   background: white;
   display: block;
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
-
   overflow-y: scroll;
 `;
+
+export const NoteHalfLeft = styled(NoteHalfContainer)`
+  padding: 10px;
+`;
+
+export const NoteHalfRight = styled(NoteHalfContainer)`
+  padding: 5px;
+  padding-top: 25px;
+`
 
 export const PatientImage = styled.img`
   width: 100px;
