@@ -22,6 +22,21 @@ export const StyledField = styled(Field)`
   padding: 3px;
 `;
 
+export const NoteFieldDiv = styled.div`
+  width: 95%;
+  height: 100%;
+  background-color: darkgrey;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: ${p => p.direction ?? 'row'};
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
 export const LoginField = styled(Field)`
   input {
     background-color: ${p => p.theme.white};
@@ -144,6 +159,7 @@ export const LoginHeader = styled(AppHeader)`
 export const Table = styled.table`
   text-align: center;
   border-collapse: collapse;
+  width: 100%;
 
   td, th {
     padding: 10px 20px;
@@ -225,42 +241,37 @@ export const MainPatientContent = styled.div`
   overflow-y: scroll;
   display: flex;
 `;
+
 export const PatientContentView = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 export const NotesTabViewStyle = styled.div`
-  height: 93.5%;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: row;
 
   .container-1, .container-2 {
-    display: inline-block;
     width: 50%;
     box-sizing: border-box;
-    vertical-align: top;
-    background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 10px;
-    height: 100%;
-    position: relative;
+
+    overflow-y: scroll;
+    background: white;
   }
 
   .container-2 {
     display: block;
     align-items: center;
     justify-content: center;
-    vertical-align: top;
-    background-color: #fff;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    height: 100%;
   }
 
   label {
@@ -331,49 +342,11 @@ export const NotesTabViewStyle = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 75%;
     border: 1px solid transparent;
     border-radius: 10px;
     padding: 10px;
     box-sizing: border-box;
     vertical-align: sub;
-  }
-
-  #daily-note-header-p {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 1px;
-    padding: 1px;
-  }
-
-  .vital-field {
-    width: 95%;
-    height: 100%;
-    background-color: darkgrey;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .initial-evaluation {
-    width: 95%;
-    height: 100%;
-    background-color: darkgrey;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
   }
 `;
 
@@ -425,4 +398,11 @@ export const StatusBoardInnerContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+`;
+
+export const NoteHeader = styled.p`
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 1px;
+  padding: 1px;
 `;

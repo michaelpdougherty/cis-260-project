@@ -45,14 +45,14 @@ app.get('/patient/:id', async (req, res) => {
   const statements = [
     //'select * from alerts where mrn = ?',
     //'select * from encounters where mrn = ?',
-    //'select * from labs where mrn = ?',
+    'select * from labs where mrn = ?',
     //'select * from meds where mrn = ?',
     'select * from notes where mrn = ?',
-    //'select * from orders where mrn = ?',
+    'select * from orders where mrn = ?',
     //'select * from patient_prevention where mrn = ?',
     //'select * from patient_problems where mrn = ?',
     'select * from patients where mrn = ?',
-    //'select * from vitals where mrn = ?',
+    'select * from vitals where mrn = ?',
   ];
   const sql = statements.join('; ');
   const bindings = statements.map(() => id);
@@ -61,14 +61,14 @@ app.get('/patient/:id', async (req, res) => {
     const responseKeys = [
       //'alerts',
       //'encounters',
-      //'labs',
+      'labs',
       //'meds',
       'notes',
-      //'orders',
+      'orders',
       //'patientPrevention',
       //'patientProblems',
       'patient',
-      //'vitals',
+      'vitals',
     ];
     const body = {};
     results.forEach((arr, i) => {
@@ -80,27 +80,6 @@ app.get('/patient/:id', async (req, res) => {
       }
     })
     res.json(body);
-    /*
-    await results.map(tableResult => tableResult[0]).forEach((row, i) => {
-      const key = responseKeys[i];
-      const rowObj = (() => {
-        if (!row) return {};
-        if (key !== 'patient') {
-          const rowObj = {};
-          Object.entries(row).forEach(([key, value]) => {
-            if (key !== 'MR_NUM') {
-              rowObj[key] = value;
-            }
-          });
-          return rowObj;
-        } else {
-          return row;
-        }
-      })();
-      responseBody[key] = rowObj;
-    })
-    */
-    //res.json(results);
   });
 });
 

@@ -1,153 +1,150 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NotesTabViewStyle } from '../../styles';
-import { NoteStyle } from '../../styles';
-import { Formik, Form, Field } from 'formik';
+import { Formik, } from 'formik';
+import GenericNoteForm from './GenericNoteForm';
+import NoteSummary from './NoteSummary';
 
-const DailyNoteOTForm = ({ isSubmitting }) => {
-  return (
-    <Form className='daily-occupational-therapy'>
-      <p id='daily-note-header-p'>Daily Note: Occupational Therapy</p>
-      <fieldset>
-        <legend>Occupational Therapy</legend>
-        <div className='daily-note-occupational-therapy-header'>
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="precautions">Precautions:</label>
-          <Field type="text" id="precautions" name="precautions" />
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="subjective">Subjective:</label>
-          <Field type="text" id="subjective" name="content" />
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="pain-level">Pain Level:</label>
-          <select id='pain-level' name='pain_level'>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
-          </select>
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="pain-quality">Pain Quality:</label>
-          <select id='pain-quality' name='pain_quality'>
-            <option value='dull'>dull</option>
-            <option value='sharp'>sharp</option>
-            <option value='arching'>arching</option>
-            <option value='radiating'>radiating</option>
-            <option value='burning'>burning</option>
-            <option value='cramping'>cramping</option>
-            <option value='shooting'>shooting</option>
-            <option value='stabbing'>stabbing</option>
-            <option value='throbbing'>throbbing</option>
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Vitals</legend>
-        <div className='vital-field'>
-          <label htmlFor="blood-pressure">Blood Pressure:</label>
-          <input type="number" id="blood-pressure" name="blood-pressure" />
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="heart-rate">Heart Rate:</label>
-          <input type="number" id="heart-rate" name="heart-rate" />
-        </div>
-        <div className='vital-field'>
-          <label htmlFor="spO2">SpO2:</label>
-          <input type="text" id="spO2" name="spO2" pattern="\d{1,3}%" />
-        </div>
-      </fieldset>
-      <button type="submit" disabled={isSubmitting}>
-        Submit
-      </button>
-    </Form>
-  );
+const dailyNoteSchema = {
+  header: 'Daily Note: Occupational Therapy',
+  fieldSets: [
+    {
+      legend: 'Occupational Therapy',
+      fields: [
+        {
+          name: 'precautions-textarea',
+          header: 'Precautions (textarea)',
+          type: 'textarea',
+        },
+        {
+          name: 'precautions',
+          header: 'Precautions',
+        },
+        {
+          name: 'subjective',
+          header: 'Subjective',
+        },
+        {
+          name: 'pain-level',
+          header: 'Pain Level',
+          type: 'select',
+          options: {
+            1: 1,
+            2: 2,
+            3: 3,
+            4: 4,
+            5: 5,
+            6: 6,
+            7: 7,
+            8: 8,
+            9: 9,
+            10: 10,
+          }
+        },
+        {
+          name: 'pain-quality',
+          header: 'Pain Quality',
+          type: 'select',
+          options: {
+            dull: 'dull',
+            sharp: 'sharp',
+            aching: 'aching',
+            radiating: 'radiating',
+            burning: 'burning',
+            cramping: 'cramping',
+            shooting: 'shooting',
+            stabbing: 'stabbing',
+            throbbing: 'throbbing',
+          }
+        },
+      ]
+    },
+    {
+      legend: 'Vitals',
+      fields: [
+        {
+          header: 'Blood Pressure',
+          name: 'bloodPressure',
+          type: 'number',
+        },
+        {
+          header: 'Heart Rate',
+          name: 'heartRate',
+          type: 'number',
+        },
+        {
+          header: 'SpO2',
+          name: 'spO2',
+          pattern: /\d{1,3}%/g,
+        }
+      ]
+    }
+  ]
 };
 
-const InitialEvaluationOTForm = ({ isSubmitting }) => {
-  return (
-    <Form className='initial-evaluation-occupational-therapy'>
-      <p id='daily-note-header-p'>Initial Evaluation: Occupational Therapy</p>
-      <fieldset>
-        <legend>Initial Evaluation Occupational Therapy</legend>
-        <div className='initial-evaluation-occupational-therapy-header'>
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="precautions">Precautions:</label>
-          <Field type="text" id="precautions" name="precautions" />
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="reason-for-retrieval">Reason for Referral:</label>
-          <Field type="text" id="reason-for-retrieval" name="content" />
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="prior-medical-history">Prior Medical History:</label>
-          <Field type="text" id="prior-medical-history" name="content" />
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>PLOF</legend>
-        <div className='initial-evaluation'>
-          <label htmlFor="equipment-used-pta">Equipment used PTA:</label>
-          <select id="equipment-used-pta" name="equipment-used-pta">
-            <option value='including-commode'>Including Commode</option>
-            <option value='grab-bars'>Grab Bars</option>
-            <option value='tub-transfer-bench'>Tub Transfer Bench</option>
-            <option value='shower-chair'>Shower Chair</option>
-            <option value='shower-tool'>Shower Stool</option>
-            <option value='reacher'>Reacher</option>
-            <option value='sock-aid'>Sock Aid</option>
-            <option value='rolling-water'>Rolling Water</option>
-            <option value='rollator'>Rollator</option>
-            <option value='sc'>SC</option>
-            <option value='lbqc'>LBQC</option>
-            <option value='nbqc'>NBQC</option>
-            <option value='hemi-walker'>Hemi Walker</option>
-            <option value='lift-equipment'>Lift Equipment</option>
-            <option value='other'>Other</option>
-          </select>
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="lives-with">Lives with:</label>
-          <Field type="text" id="lives-with" name="lives-with" />
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="available-social-support">Available Social Support:</label>
-          <Field type="text" id="available-social-support" name="available-social-support" />
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="home-environment">Home Environment:</label>
-          <Field type="text" id="home-environment" name="home-environment" />
-        </div>
-        <div className='initial-evaluation'>
-          <label htmlFor="ie-subjective">Subjective:</label>
-          <Field type="text" id="ie-subjective" name="ie-subjective" />
-        </div>
-      </fieldset>
-      <button type="submit" disabled={isSubmitting}>
-        Submit
-      </button>
-    </Form>
-  );
-};
-
-const Note = ({ date, time, caretaker, signed }) => {
-  return (
-    <NoteStyle>
-      <div id='container-1-inner'>
-        <p id='caretaker'>{caretaker}</p>
-        <p id='display'><b>Date of Service: </b>{date} <br></br> <b>Time: </b>{time} <br></br> <b>{signed ? 'Signed' : 'Draft'}</b></p>
-        <hr/>
-      </div>
-    </NoteStyle>
-  );
+const initialEvaluationOTSchema = {
+  header: 'Initial Evaluation: Occupational Therapy',
+  fieldSets: [
+    {
+      legend: 'Initial Evaluation Occupational Therapy',
+      fields: [
+        {
+          header: 'Precautions',
+          name: 'precautions',
+        },
+        {
+          header: 'Reason for Referral',
+          name: 'reasonForReferral',
+        },
+        {
+          header: 'Prior Medical History',
+          name: 'priorMedicalHistory',
+        },
+      ]
+    },
+    {
+      legend: 'PLOF',
+      fields: [
+        {
+          header: 'Equipment used PTA',
+          name: 'equipmentUsedPTA',
+          type: 'select',
+          options: {
+            includingCommode: 'Including Commode',
+            grabBars: 'Grab Bars',
+            tubTransferBench: 'Tub Transfer Bench',
+            showerChair: 'Shower Chair',
+            showerStools: 'Shower Stool',
+            reacher: 'Reacher',
+            sockAid: 'Sock Aid',
+            rollingWater: 'Rolling Water',
+            rollator: 'Rollator',
+            sc: 'SC',
+            lbqc: 'LBQC',
+            nbqc: 'NBQC',
+            hemiWalker: 'Hemi Walker',
+            liftEquipment: 'Lift Equipment',
+            other: 'Other',
+          }
+        },
+        {
+          header: 'Lives with',
+          name: 'livesWith',
+        },
+        {
+          header: 'Available Social Support',
+          name: 'availableSocialSupport',
+        },
+        {
+          header: 'Home Environment',
+          name: 'homeEnvironment',
+        },
+        {
+          header: 'Subjective',
+          name: 'subjective',
+        }
+      ]
+    }
+  ]
 };
 
 const NotesTabView = ({ notes, mrn }) => {
@@ -161,19 +158,15 @@ const NotesTabView = ({ notes, mrn }) => {
   */
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString('en-US');
-  useEffect(() => {
-    console.log('notes');
-    console.log(notes);
-  }, [notes])
 
   const getCurrentForm = isSubmitting => {
     switch (formType) {
-      case '/patient/1/daily-note-ot':
-        return <DailyNoteOTForm isSubmitting={isSubmitting} />;
-      case '/patient/1/inital-eval-ot':
-        return <InitialEvaluationOTForm isSubmitting={isSubmitting} />;
+      case 'daily-note-ot':
+        return <GenericNoteForm noteSchema={dailyNoteSchema} isSubmitting={isSubmitting} />;
+      case 'inital-eval-ot':
+        return <GenericNoteForm noteSchema={initialEvaluationOTSchema} isSubmitting={isSubmitting} />;
       default:
-        return <InitialEvaluationOTForm isSubmitting={isSubmitting} />;
+        return <GenericNoteForm noteSchema={initialEvaluationOTSchema} isSubmitting={isSubmitting} />;
     }
   }
 
@@ -181,15 +174,15 @@ const NotesTabView = ({ notes, mrn }) => {
     <NotesTabViewStyle>
       <div className='container-1'>
         <div id='container-1-header'>All Notes <button id='new-note'>New Note</button></div>
-        {notes.length > 0 ? notes.map(note => <Note key={note.id} {...note} />) : 'No notes.'}
+        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id} {...note} />) : 'No notes.'}
       </div>
       <div className="container-2">
         <label htmlFor="current-date">Date: {formattedDate}</label>
         <p id="current-date"></p>
         <select value={formType} name="note-style" id="note-style" onChange={e => setFormType(e.target.value)}>
           <option value="" disabled>Please select your note style</option>
-          <option value="/patient/1/daily-note-ot">Daily Note: Occupational Therapy</option>
-          <option value="/patient/1/initial-eval-ot">Initial Evaluation: Occupational Therapy</option>
+          <option value="daily-note-ot">Daily Note: Occupational Therapy</option>
+          <option value="initial-eval-ot">Initial Evaluation: Occupational Therapy</option>
         </select>
         <div className='container-2-inner'>
           <Formik initialValues={{ content: '' }}
