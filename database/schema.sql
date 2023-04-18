@@ -61,11 +61,13 @@ drop table if exists orders;
 create table orders (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `when` datetime not null,
-  `category` varchar(150) not null,
-  `order_item` varchar(150) not null,
+  `date` datetime not null,
+  `order` varchar(150) not null,
+  `reason` varchar(150) not null,
+  /*
   `frequency` varchar(150) not null,
   `status` varchar(150) not null,
+  */
   primary key (`id`)
 );
 

@@ -21,6 +21,8 @@ const Patient = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentTab, setCurrentTab] = useState(0);
 
+  const [orders, setOrders] = useState([]);
+
   useEffect(() => {
     fetch(`/patient/${mrn}`)
       .then(res => res.json())
@@ -54,7 +56,7 @@ const Patient = () => {
     },
     {
       title: 'Orders',
-      component: <OrdersTabView orders={jsonData.orders} />,
+      component: <OrdersTabView mrn={mrn} initialOrders={jsonData.orders} orders={orders} setOrders={setOrders} />,
     },
     {
       title: 'Notes',
