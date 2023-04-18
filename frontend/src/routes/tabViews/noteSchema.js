@@ -39,9 +39,10 @@ const dailyNoteSchema = {
           type: 'textarea',
         },
         {
-          name: 'pain-level',
+          name: 'painLevel',
           header: 'Pain Level',
           type: 'select',
+          defaultValue: 1,
           options: {
             1: 1,
             2: 2,
@@ -56,9 +57,10 @@ const dailyNoteSchema = {
           }
         },
         {
-          name: 'pain-quality',
+          name: 'painQuality',
           header: 'Pain Quality',
           type: 'select',
+          defaultValue: 'dull',
           options: {
             dull: 'dull',
             sharp: 'sharp',
@@ -133,6 +135,7 @@ const initialEvaluationOTSchema = {
           header: 'Equipment used PTA',
           name: 'equipmentUsedPTA',
           type: 'select',
+          defaultValue: 'includingCommode',
           options: {
             includingCommode: 'Including Commode',
             grabBars: 'Grab Bars',
@@ -186,6 +189,37 @@ const freeTextSchema = {
       placeholder: 'Free text',
     },
   ],
+};
+
+const getInitialValueForField = field => {
+  if (field.name === 'date') {
+    return new Date().toLocaleString(); // commonFields
+  }
+  if (field.name === 'author') {
+    return getUserFullName(); // commonFields
+  }
+  if (field.defaultValue) {
+    return field.defaultValue;
+  }
+  return '';
+}
+
+export const getInitialValuesForFormType = formType => {
+  const schema = getNoteSchemaForFormType(formType);
+  if (!schema) return {};
+  const initialValues = {};
+  if (schema.fieldSets) {
+    schema.fieldSets.forEach(fieldSet => {
+      fieldSet.fields.forEach(field => {
+        initialValues[field.name] = getInitialValueForField(field);
+      })
+    })
+  } else {
+    schema.fields.forEach(field => {
+      initialValues[field.name] = getInitialValueForField(field);
+    })
+  }
+  return initialValues;
 };
 
 export const getNoteSchemaForFormType = formType => {

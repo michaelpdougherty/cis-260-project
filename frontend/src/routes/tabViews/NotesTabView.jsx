@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 
 import GenericNoteForm from './GenericNoteForm';
 import NoteSummary from './NoteSummary';
 
-import { getNoteSchemaForFormType } from './noteSchema';
+import { getNoteSchemaForFormType, getInitialValuesForFormType } from './noteSchema';
 
 import {
   ButtonBlue,
@@ -18,13 +18,18 @@ import {
 
 const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
-  const initialValues = {};
+  const initialValues = getInitialValuesForFormType(formType);
+
+  useEffect(() => {
+    console.log("initial values were changed:")
+    console.log(initialValues);
+  }, [initialValues])
 
   /* todo actually submit notes to server */
   const handleNoteSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
       alert(JSON.stringify({
-        mrn: mrn,
+        mrn: Number.parseInt(mrn),
         userId: null,
         formType,
         values,
