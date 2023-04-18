@@ -1,8 +1,8 @@
-import { Table, ScrollableDiv } from "../../styles";
+import { Table, ScrollableTabStyle } from "../../styles";
 
 const VitalsTabView = ({ vitals }) => {
   return (
-    <ScrollableDiv>
+    <ScrollableTabStyle>
       <Table>
         <thead>
           <th>
@@ -61,7 +61,7 @@ const VitalsTabView = ({ vitals }) => {
           ))}
         </tbody>
       </Table>
-    </ScrollableDiv>
+    </ScrollableTabStyle>
   );
 };
 export default VitalsTabView;

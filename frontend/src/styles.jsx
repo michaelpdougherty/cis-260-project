@@ -13,15 +13,6 @@ export const LoggedInStyle = styled.div`
   height: 100vh;
 `;
 
-export const StyledField = styled(Field)`
-  input {
-    background-color: ${p => p.theme.white};
-  }
-  flex: 1;
-  font-size: 18px;
-  padding: 3px;
-`;
-
 export const NoteFieldDiv = styled.div`
   width: 95%;
   height: 100%;
@@ -66,7 +57,7 @@ export const LoginView = styled(FlexBox)`
   align-items: center;
 `;
 
-export const FormGroup =  styled.div`
+export const FormGroup = styled.div`
   display: flex;
   justify-content: flex-start;
   padding: 1px;
@@ -205,6 +196,7 @@ export const StatusBoardTitle = styled.h2`
 export const TabContainer = styled.div`
   height: 100%;
   width: 100%;
+  overflow-y: scroll;
   background: ${p => p.theme.tertiary2};
 `;
 
@@ -216,22 +208,26 @@ export const TabBar = styled.div`
     background: ${p => p.theme.tertiary2};
   }
   button {
-    padding: 15px; 
+    /* padding: 15px; */
     margin-right: 10px;
     border: none;
     cursor: pointer;
     width: 12%;
   }
   background: white;
+  /** Must add to 100% with ScrollableTabStyle */
+  height: 5%;
 `;
 
 export const Sidebar = styled.div`
+  box-sizing: border-box;
   height: 100%;
-  min-width: 200px;
+  padding: 5px;
+  /* min-width: 200px; */
   background: ${p => p.theme.tertiary1};
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start; /* space-around; */
   align-items: center;
 `;
 
@@ -247,130 +243,116 @@ export const PatientContentView = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
 `;
 
 export const NotesTabViewStyle = styled.div`
-  width: 100%;
-  height: 100%;
-  /*overflow-y: scroll;*/
   display: flex;
   flex-direction: row;
+  height: 95%;
+`;
 
-  .container-1, .container-2 {
-    width: 50%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    padding: 10px;
+/** these two styles should be the same :( */
+export const Select = styled.select`
+  margin-left: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+`;
+export const SelectField = styled(Field)`
+  margin-left: 10px;
+  padding: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+`;
 
-    overflow-y: scroll;
-    background: white;
-  }
+export const NoteFormLabel = styled.label`
+  margin-right: 10px;
+  font-weight: bold;
+`;
 
-  .container-2 {
-    display: block;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ccc;
-  }
-
-  label {
-    margin-right: 10px;
-    font-weight: bold;
-  }
-
-  select {
-    margin-left: 10px;
-    padding: 5px;
-    border: none;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    cursor: pointer;
-    position: relative;
-  }
-
-  #note-style {
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f2f2f2;
-    position: relative;
-    align-items: center;
-    display: ;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-  }
-
-  #note-style > option {
+export const NoteTypeSelect = styled(Select)`
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  position: relative;
+  align-items: center;
+  display: ;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  option {
     color: black;
     background-color: #f2f2f2;
     cursor: pointer;
   }
-
-  #container-1-header {
-    text-align: left;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  button {
-    border: 1px solid transparent;
-    background-color: #00a4bd;
-    cursor: pointer;
-    color: #ffffff;
-    padding: 5px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-    width: 100px;
-    height: 30px;
-    margin-left: 10px;
-  }
-
-  .container-2-inner {
-    background-color: lightgrey;
-    display: inline-block;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    vertical-align: sub;
-  }
 `;
 
-export const NoteStyle = styled.div`
-  #container-1-inner > p {
-    font-height: 12px;
-    font-weight: regular;
-    text-align: right;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+export const NoteFormDiv = styled.div`
+  background-color: lightgrey;
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  vertical-align: sub;
+`;
 
-  #caretaker {
-    text-align: left;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+export const NotesContainerHeader = styled.div`
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const NotePar = styled.p`
+  font-height: 12px;
+  font-weight: regular;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const Caretaker = styled.p`
+  text-align: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+export const ButtonBlue = styled.button`
+  border: 1px solid transparent;
+  background-color: #00a4bd;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  width: 100px;
+  height: 30px;
 `;
 
 export const NotesContainer = styled.div`
@@ -378,11 +360,11 @@ export const NotesContainer = styled.div`
   justify-content: space-around;
   height: 60vh;
   div {
-      flex: 1;
-      background: ${p => p.theme.secondary2};
-      padding: 10px;
-      margin: 0 10px;
-      overflow-x: scroll;
+    flex: 1;
+    background: ${p => p.theme.secondary2};
+    padding: 10px;
+    margin: 0 10px;
+    overflow-x: scroll;
   }
 `;
 
@@ -407,7 +389,32 @@ export const NoteHeader = styled.p`
   padding: 1px;
 `;
 
-export const ScrollableDiv = styled.div`
+export const ScrollableTabStyle = styled.div`
+  /* must add to 100% with TabBar */
+  height: 95%;
+  overflow-y: scroll;
+`;
+
+export const NoteHalfContainer = styled.div`
   height: 100%;
-  /* overflow-y: scroll; */
+  width: 50%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px;
+
+  background: white;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+
+  overflow-y: scroll;
+`;
+
+export const PatientImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 300px;
+  margin: 10px;
+  object-fit: cover;
 `;

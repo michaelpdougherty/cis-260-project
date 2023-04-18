@@ -1,5 +1,5 @@
 import { Form, Field } from 'formik';
-import { NoteHeader, NoteFieldDiv } from '../../styles';
+import { NoteFormLabel as Label, SelectField, ButtonBlue, NoteHeader, NoteFieldDiv } from '../../styles';
 
 const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
   const getCurrentField = ({ type, name, options, ...otherProps }) => {
@@ -7,9 +7,9 @@ const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
       case 'textarea':
         return <Field as='textarea' id={name} name={name} {...otherProps} rows={3} style={{ width: '100%', marginTop: 10 }} />;
       case 'select':
-        return <Field as='select' id={name} name={name} {...otherProps}>
+        return <SelectField as='select' id={name} name={name} {...otherProps}>
           {Object.entries(options).map(([optionKey, optionValue]) => <option key={`${name}.${optionKey}.option`} value={optionValue}>{optionValue}</option>)}
-        </Field>;
+        </SelectField>;
       default:
         return <Field type={type ?? 'text'} id={name} name={name} {...otherProps} />;
     }
@@ -23,15 +23,15 @@ const GenericNoteForm = ({ noteSchema, isSubmitting }) => {
           <legend>{fieldSet.legend}</legend>
           {fieldSet.fields.map(field => (
             <NoteFieldDiv key={`${fieldSet.legend}.${field.name}.NoteFieldDiv`} direction={field.type === 'textarea' ? 'column' : 'row'}>
-              <label htmlFor={field.name}>{field.header}:</label>
+              <Label htmlFor={field.name}>{field.header}:</Label>
               {getCurrentField(field)}
             </NoteFieldDiv>
           ))}
         </fieldset>
       ))}
-      <button type="submit" disabled={isSubmitting}>
+      <ButtonBlue type="submit" disabled={isSubmitting}>
         Submit
-      </button>
+      </ButtonBlue>
     </Form>
   );
 };
