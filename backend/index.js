@@ -45,6 +45,7 @@ app.get('/patient/:id', async (req, res) => {
   const statements = [
     //'select * from alerts where mrn = ?',
     //'select * from encounters where mrn = ?',
+    'select * from imaging where mrn = ?',
     'select * from labs where mrn = ?',
     //'select * from meds where mrn = ?',
     'select * from notes where mrn = ?',
@@ -61,6 +62,7 @@ app.get('/patient/:id', async (req, res) => {
     const responseKeys = [
       //'alerts',
       //'encounters',
+      'imaging',
       'labs',
       //'meds',
       'notes',

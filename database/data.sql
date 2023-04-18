@@ -139,3 +139,10 @@ insert into patient_problems (`mrn`, `date_of_onset`, `priority`, `patient_statu
 insert into patient_prevention (`mrn`, `prev_date`, `prev_subject`, `prev_status`, `prev_type`) values (@mrn, '2023-02-06', 'whatever', 'whatever', 'whatever');
 insert into vitals (`mrn`, `date`, `pulse`, `blood_pressure`, `pulse_ox`, `temperature`) values (@mrn, CURRENT_TIMESTAMP(), 89, 'high', 100, 90.098);
 */
+
+set @hand_image_1 = 'https://jooinn.com/images/xray-3.jpg';
+set @hand_image_2 = 'https://jooinn.com/images/xray-1.png';
+set @neck_image = 'https://www.sciencelearn.org.nz/system/images/images/000/001/098/original/Neck-X-ray20160518-20305-d802q3.jpg?1522298704';
+insert into imaging (`mrn`, `image`) VALUES (1, @hand_image_1);
+insert into imaging (`mrn`, `image`) VALUES (1, @hand_image_2);
+insert into imaging (`mrn`, `image`) VALUES (1, @neck_image);

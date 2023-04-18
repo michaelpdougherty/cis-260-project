@@ -133,3 +133,12 @@ create table users (
   `last_name` varchar(255),
   primary key (`username`, `account_type`)
 );
+
+drop table if exists imaging;
+create table imaging (
+  `id` int not null auto_increment,
+  `mrn` int not null,
+  `date` datetime not null default CURRENT_TIMESTAMP(),
+  `image` VARCHAR(255),
+  primary key (`id`)
+);
