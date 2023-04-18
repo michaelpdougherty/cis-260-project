@@ -1,7 +1,7 @@
 import { Table } from "../../styles";
 
 const VitalsTabView = () => {
-  const vitalEntries = [    {      "Time": '10:23',      "Date": '12/09/22',      "Temperature": '98.5',      "Pulse": '86',      "Respiratory": '16',      "Blood Pressure": '121/64',      "Pulse Oxygen": '90%',      "Pain": '8',    },    
+  const vitals = [    {      "Time": '10:23',      "Date": '12/09/22',      "Temperature": '98.5',      "Pulse": '86',      "Respiratory": '16',      "Blood Pressure": '121/64',      "Pulse Oxygen": '90%',      "Pain": '8',    },    
   {      "Time": '07:50',      "Date": '12/11/22',      "Temperature": '99.0',      "Pulse": '82',      "Respiratory": '18',      "Blood Pressure": '126/68',      "Pulse Oxygen": '94%',      "Pain": '5',    },    
   {      "Time": '15:21',      "Date": '12/13/22',      "Temperature": '97.9',      "Pulse": '90',      "Respiratory": '20',      "Blood Pressure": '128/70',      "Pulse Oxygen": '98%',      "Pain": '3',    },
   {      "Time": '11:45',      "Date": '01/6/23',       "Temperature": '99.0',      "Pulse": '87',      "Respiratory": '25',      "Blood Pressure":  '139/68',     "Pulse Oxygen":  '95%',     "Pain": '7'     },
