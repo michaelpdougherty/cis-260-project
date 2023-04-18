@@ -18,15 +18,8 @@ import {
   initialEvaluationOTSchema
 } from './noteSchema';
 
-const NotesTabView = ({ /*notes,*/ mrn }) => {
+const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
-  
-  const notes = 
-  [{ id: 1, date: '01/01/2022', time: '01:40pm', content: 'Patient in critical condition', caretaker: 'RN.Lopez', signed: true },
-  { id: 2, date: '02/15/2022', time: '12:00am', content: 'Patient had allergic reaction to medication', caretaker: 'Dr.Syad', signed: true },
-  { id: 3, date: '03/10/2022', time: '04:06am', content: 'Patient experienced high blood pressure', caretaker: 'NP.Toshiba', signed: true },
-  { id: 4, date: '01/10/2023', time: '06:06am', content: 'Patient experienced high glucose', caretaker: 'MD.Dell', signed: false }];
-
   /* todo submit notes to server */
   const handleNoteSubmit = (values, { setSubmitting }) => {
     setTimeout(() => {
@@ -49,6 +42,7 @@ const NotesTabView = ({ /*notes,*/ mrn }) => {
     <NotesTabViewStyle>
       <NoteHalfContainer>
         <NotesContainerHeader>All Notes <ButtonBlue id='new-note'>New Note</ButtonBlue></NotesContainerHeader>
+        <hr/>
         {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id} {...note} />) : 'No notes.'}
       </NoteHalfContainer>
       <NoteHalfContainer>

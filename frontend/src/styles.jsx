@@ -321,11 +321,11 @@ export const NotesContainerHeader = styled.div`
 `;
 
 export const NotePar = styled.p`
-  font-height: 12px;
+  font-size: 12px;
   font-weight: regular;
-  text-align: right;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  text-align: ${p => p.textAlign ?? 'right'};
+  margin: 0;
+  margin-bottom: 2px;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -334,8 +334,8 @@ export const NotePar = styled.p`
 export const Caretaker = styled.p`
   text-align: left;
   font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 16px;
+  margin: 5px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -417,4 +417,12 @@ export const PatientImage = styled.img`
   border-radius: 300px;
   margin: 10px;
   object-fit: cover;
+`;
+
+export const NoteSummaryBox = styled.div`
+  padding: 0;
+  cursor: pointer;
+  :hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
 `;

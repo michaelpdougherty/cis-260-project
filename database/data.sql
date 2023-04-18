@@ -218,3 +218,10 @@ insert into vitals (`mrn`, `date`, `temperature`, `pulse`, `respiratory`, `blood
     (@mrn, '2023-04-05 16:45:00', 98, 89, 18, '128/40', 0.9, 2),
     (@mrn, '2023-04-09 07:55:00', 101, 105, 25, '140/80', 0.92, 8),
     (@mrn, '2023-04-10 08:00:00', 99, 90, 17, '130/68', 0.9, 8);
+  
+set @mrn = 1;
+insert into notes (`mrn`, `date`, `summary`, `author`, `signed`) VALUES
+(@mrn, '2022-01-01 13:40:00', 'Patient in critical condition', 'R.N. Lopez', 1),
+(@mrn, '2022-02-15 00:00:00', 'Patient had allergic reaction to medication', 'Dr. Syad', 1),
+(@mrn, '2022-03-10 04:06:00', 'Patient experienced high blood pressure', 'N.P. Toshiba', 1),
+(@mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);

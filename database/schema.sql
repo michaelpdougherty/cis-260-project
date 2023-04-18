@@ -53,6 +53,7 @@ create table notes (
   `date` datetime,
   `summary` varchar(150),
   `author` varchar(150),
+  `signed` BOOLEAN DEFAULT 0,
   `jsonData` JSON, 
   primary key (`id`)
 );
