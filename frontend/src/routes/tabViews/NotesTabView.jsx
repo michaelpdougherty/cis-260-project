@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
-
 import GenericNoteForm from './GenericNoteForm';
 import NoteSummary from './NoteSummary';
-
 import { getNoteSchemaForFormType, getInitialValuesForFormType } from './noteSchema';
-
 import {
   ButtonBlue,
   NotesTabViewStyle,
