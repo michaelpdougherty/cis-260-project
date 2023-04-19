@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Formik } from 'formik';
 
 import GenericNoteForm from './GenericNoteForm';
@@ -32,13 +32,12 @@ const NotesTabView = ({ notes, mrn }) => {
     }, 500);
   }
 
+  // This still doesn't work for some reason.
   const getCurrentForm = () => {
     const noteSchemaResult = getNoteSchemaForFormType(formType);
-    if (!noteSchemaResult) {
-      return null;
-    }
+    if (!noteSchemaResult) return null;
     const initialValues = getInitialValuesForFormType(formType)
-    console.log('initialValues:');
+    console.log('got initial values:');
     console.log(initialValues);
     return (
       <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
@@ -46,7 +45,7 @@ const NotesTabView = ({ notes, mrn }) => {
           <GenericNoteForm noteSchema={noteSchemaResult} isSubmitting={isSubmitting} />
         )}
       </Formik>
-    ); 
+    );
   };
 
   return (
