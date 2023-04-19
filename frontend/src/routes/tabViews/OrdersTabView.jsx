@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Table } from "../../styles";
 import { Formik, Form, Field } from 'formik';
 
@@ -31,10 +30,12 @@ const OrdersTabView = ({ mrn, orders, setOrders, initialOrders }) => {
     <>
       <Table>
         <thead>
-          <th>Order</th>
-          <th>Reason</th>
-          <th>Date</th>
-          <th>Time</th>
+          <tr>
+            <th>Order</th>
+            <th>Reason</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
         </thead>
         <tbody>
           {orders.map((order, index) => (

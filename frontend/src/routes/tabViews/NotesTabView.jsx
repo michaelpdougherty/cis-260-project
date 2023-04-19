@@ -18,12 +18,6 @@ import {
 
 const NotesTabView = ({ notes, mrn }) => {
   const [formType, setFormType] = useState('');
-  const initialValues = getInitialValuesForFormType(formType);
-
-  useEffect(() => {
-    console.log("initial values were changed:")
-    console.log(initialValues);
-  }, [initialValues])
 
   /* todo actually submit notes to server */
   const handleNoteSubmit = (values, { setSubmitting }) => {
@@ -38,13 +32,22 @@ const NotesTabView = ({ notes, mrn }) => {
     }, 500);
   }
 
-  const getCurrentForm = isSubmitting => {
+  const getCurrentForm = () => {
     const noteSchemaResult = getNoteSchemaForFormType(formType);
     if (!noteSchemaResult) {
       return null;
     }
-    return <GenericNoteForm noteSchema={noteSchemaResult} isSubmitting={isSubmitting} />
-  }
+    const initialValues = getInitialValuesForFormType(formType)
+    console.log('initialValues:');
+    console.log(initialValues);
+    return (
+      <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
+        {({ isSubmitting }) => (
+          <GenericNoteForm noteSchema={noteSchemaResult} isSubmitting={isSubmitting} />
+        )}
+      </Formik>
+    ); 
+  };
 
   return (
     <NotesTabViewStyle>
@@ -62,10 +65,7 @@ const NotesTabView = ({ notes, mrn }) => {
         </NoteTypeSelect>
         {formType !== '' && (
           <NoteFormDiv>
-            {/* todo fix initialvalues on form change so select fields work */}
-            <Formik initialValues={initialValues} onSubmit={handleNoteSubmit}>
-              {({ isSubmitting }) => getCurrentForm(isSubmitting)}
-            </Formik>
+            {getCurrentForm()}
           </NoteFormDiv>
         )}
       </NoteHalfRight>

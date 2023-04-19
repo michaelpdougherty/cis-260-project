@@ -5,34 +5,36 @@ const VitalsTabView = ({ vitals }) => {
     <ScrollableTabStyle>
       <Table>
         <thead>
-          <th>
-            Date
-          </th>
-          <th>
-            Time
-          </th>
-          <th>
-            Temperature
-          </th>
-          <th>
-            Pulse
-          </th>
-          <th>
-            Respiratory
-          </th>
-          <th>
-            Blood Pressure
-          </th>
-          <th>
-            Pulse Oxygen
-          </th>
-          <th>
-            Pain
-          </th>
+          <tr>
+            <th>
+              Date
+            </th>
+            <th>
+              Time
+            </th>
+            <th>
+              Temperature
+            </th>
+            <th>
+              Pulse
+            </th>
+            <th>
+              Respiratory
+            </th>
+            <th>
+              Blood Pressure
+            </th>
+            <th>
+              Pulse Oxygen
+            </th>
+            <th>
+              Pain
+            </th>
+          </tr>
         </thead>
         <tbody>
           {vitals.map(entry => (
-            <tr>
+            <tr key={entry.id}>
               <td>
                 {new Date(entry.date).toLocaleDateString()}
               </td>
