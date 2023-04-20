@@ -102,7 +102,6 @@ app.post('/api/orders', (req, res) => {
   res.json({
     message: 'You win!',
   })
-
 })
 
 app.post('/api/notes', (req, res) => {
@@ -110,47 +109,64 @@ app.post('/api/notes', (req, res) => {
     console.log(req.body);
     const {
         mrn,
-        summary,
-        author,
+        userId,
         type,
         jsonData,
     } = req.body;
-    const date = new Date().toISOString()
-
+    const {
+      date,
+      author,
+      summary,
+    } = jsonData;
+    try {
     con.query(
-           'insert into notes (' +
-               '`mrn`,' +
-               '`date`,' +
-               '`summary`,' +
-               '`author`,' +
-               '`jsonData`' +
-           ') VALUES (' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?' +
-            ')',
-            [
-                mrn,
-                date,
-                summary,
-                author,
-                JSON.stringify(jsonData),
-            ],
-            (err, result) => {
-                if (err) throw err;
-                res.send({
-                    success: true,
-                    note: {
-                        mrn,
-                        date,
-                        summary,
-                        author,
-                        jsonData,
-                    }
-                });
+      'insert into notes (' +
+          '`mrn`,' +
+          '`date`,' +
+          '`type`,' +
+          '`summary`,' +
+          '`author`,' +
+          '`user_id`,' +
+          '`jsonData`' +
+      ') VALUES (' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?' +
+      ')',
+      [
+          mrn,
+          date,
+          type,
+          summary,
+          author,
+          userId,
+          JSON.stringify(jsonData),
+      ],
+      (err, result) => {
+          if (err) throw err;
+          res.json({
+              success: true,
+              note: {
+                  mrn,
+                  userId,
+                  date,
+                  type,
+                  jsonData,
+                  summary,
+                  author,
+              }
+          });
     });
+  } catch (err) {
+    res.json({
+      success: false,
+      error: err,
+    })
+  }
 });
 
 app.post('/api/login', (req, res) => {

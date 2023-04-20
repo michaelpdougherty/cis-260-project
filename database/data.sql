@@ -3,9 +3,9 @@ set @test_username = 'test';
 set @test_password = 'test';
 set @dev_first_name = 'Michael';
 set @dev_last_name = 'Dougherty';
-insert into users values (@test_username, @test_password, 'admin', @dev_first_name, @dev_last_name);
-insert into users values (@test_username, @test_password, 'student', @dev_first_name, @dev_last_name);
-insert into users values (@test_username, @test_password, 'teacher', @dev_first_name, @dev_last_name);
+insert into users (`username`, `password`, `account_type`, `first_name`, `last_name`) values (@test_username, @test_password, 'admin', @dev_first_name, @dev_last_name);
+insert into users (`username`, `password`, `account_type`, `first_name`, `last_name`) values (@test_username, @test_password, 'student', @dev_first_name, @dev_last_name);
+insert into users (`username`, `password`, `account_type`, `first_name`, `last_name`) values (@test_username, @test_password, 'teacher', @dev_first_name, @dev_last_name);
 
 /* Global Sample Patient Data */
 set @diagnosis = 'Diagnosis?';
@@ -256,10 +256,11 @@ insert into vitals (`mrn`, `date`, `temperature`, `pulse`, `respiratory`, `blood
     (@mrn, '2023-04-10 08:00:00', 99, 90, 17, '130/68', 0.9, 8);
   
 set @mrn = 1;
-insert into notes (`mrn`, `date`, `summary`, `author`, `signed`) VALUES
-(@mrn, '2022-01-01 13:40:00', 'Patient in critical condition', 'R.N. Lopez', 1),
-(@mrn, '2022-02-15 00:00:00', 'Patient had allergic reaction to medication', 'Dr. Syad', 1),
-(@mrn, '2022-03-10 04:06:00', 'Patient experienced high blood pressure', 'N.P. Toshiba', 1),
-(@mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);
+set @userId = 0; /* this user ID is used for preexistent data not created by the student */
+insert into notes (`user_id`, `mrn`, `date`, `summary`, `author`, `signed`) VALUES
+(@userId, @mrn, '2022-01-01 13:40:00', 'Patient in critical condition', 'R.N. Lopez', 1),
+(@userId, @mrn, '2022-02-15 00:00:00', 'Patient had allergic reaction to medication', 'Dr. Syad', 1),
+(@userId, @mrn, '2022-03-10 04:06:00', 'Patient experienced high blood pressure', 'N.P. Toshiba', 1),
+(@userId, @mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);
 
 insert into orders (`mrn`, `date`, `order`, `reason`) VALUES (1, '2022-02-02 02:02:02', 'order', 'reason');

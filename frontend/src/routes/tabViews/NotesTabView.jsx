@@ -11,21 +11,38 @@ import {
   NoteFormDiv,
   NotesContainerHeader,
 } from '../../styles';
+import { getUser } from '../../util';
 
-const NotesTabView = ({ notes, mrn }) => {
+const NotesTabView = ({ notes, setNotes, mrn }) => {
   const [formType, setFormType] = useState('');
 
   /* todo actually submit notes to server */
   const handleNoteSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify({
-        mrn: Number.parseInt(mrn),
-        userId: null,
-        formType,
-        values,
-      }, null, 2));
+    const { id: userId } = getUser();
+    const reqBody = {
+      mrn: Number.parseInt(mrn),
+      userId,
+      type: formType,
+      date: new Date(values.date).toISOString(),
+      summary: values.summary,
+      author: values.author,
+      jsonData: values,
+    };
+    console.log(reqBody);
+    fetch('/api/notes', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reqBody),
+    }).then(res => res.json())
+    .then(json => {
       setSubmitting(false);
-    }, 500);
+      console.log(json);
+      if (json.success) {
+        setNotes([...notes, json.note]);
+      }
+    });
   }
 
   const getCurrentForm = () => {
