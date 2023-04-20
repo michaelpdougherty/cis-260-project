@@ -6,7 +6,7 @@ const ImageRow = ({ imageRow: { id, mrn, date, image }}) => {
       <td>{id}</td>
       <td>{mrn}</td>
       <td>{date}</td>
-      <td><img src={image} alt="x-ray" /></td>
+      <td><img src={image} height={100} alt="x-ray" /></td>
     </tr>
   )
 }
