@@ -8,8 +8,6 @@ insert into users (`username`, `password`, `account_type`, `first_name`, `last_n
 insert into users (`username`, `password`, `account_type`, `first_name`, `last_name`) values (@test_username, @test_password, 'teacher', @dev_first_name, @dev_last_name);
 
 /* Global Sample Patient Data */
-set @diagnosis = 'Diagnosis?';
-set @dob = '1950-10-05';
 set @language = 'English';
 set @ethnicity = 'Caucasian';
 set @contact_info = 'Mother';
@@ -18,15 +16,18 @@ set @provider = 'Sharon Lamar, M.D.';
 set @hospital = 'Hillside Pediatric Hospital';
 set @comments = 'Needs full assistance';
 set @male_image = "https://media.istockphoto.com/id/1270067126/photo/smiling-indian-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=ovIQ5GPurLd3mOUj82jB9v-bjGZ8updgy1ACaHMeEC0=";
+set @male_image_2 = "https://bracketfights.com/images/templates/2019/43805/random-male-celebrities-43805/screen-shot-2022-08-14-at-32648-pmpng.png";
 set @female_image = "https://media.gettyimages.com/id/1212006375/photo/confident-asian-businesswoman-in-office.jpg?s=612x612&w=gi&k=20&c=-S1G8CZR8jhf52tIZqcXWSjt0KZFZ2HgCjpJjnidmv0=";
+set @female_image_2 = "https://www.unilad.co.uk/wp-content/uploads/2019/06/jeana-1.jpg";
+set @female_image_3 = "https://thumbs.dreamstime.com/b/portrait-attractive-young-woman-who-sitting-cafe-urban-lifestyle-random-183947629.jpg";
 
 /* Create patient rows */
-insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Beatrice', 'Dolton', @diagnosis, 'F', @dob, @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image);
+insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Beatrice', 'Dolton', 'Arthritis', 'F', '1990-01-01', @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image);
 set @beatrice_dolton_mrn = LAST_INSERT_ID();
-insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Homer', 'Xiang', @diagnosis, 'M', @dob, @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @male_image);
-insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Meredith', 'Dewietz', @diagnosis, 'F', @dob, @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image);
-insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Suzanne', 'Rose', @diagnosis, 'F', @dob, @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image);
-insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('William', 'Overath', @diagnosis, 'M', @dob, @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @male_image);
+insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Homer', 'Xiang', "Asperger's Syndrome", 'M', '1967-06-02', @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @male_image);
+insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Meredith', 'Dewietz', 'Carpal Tunnel Syndrome', 'F', '1984-02-21', @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image_2);
+insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('Suzanne', 'Rose', 'Anxiety', 'F', '1982-08-20', @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @female_image_3);
+insert into patients (`firstName`, `lastName`, `diagnosis`, `gender`, `dob`, `language`, `ethnicity`, `contact_info`, `admit_date`, `provider`, `hospital`, `comment`, `image`) values ('William', 'Overath', 'Depression', 'M', '1991-11-01', @language, @ethnicity, @contact_info, @admit_date, @provider, @hospital, @comments, @male_image_2);
 
 /*
 insert into alerts (`mrn`, `date_and_time`, `subject`, `status`, `alert_type`) VALUES (@mrn, CURRENT_TIMESTAMP(), 'whatever', 'whatever', 'whatever');
