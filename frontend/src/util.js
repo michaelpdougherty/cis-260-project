@@ -13,6 +13,11 @@ export const getUser = () => {
   return {};
 }
 
+export const getUserFullName = () => {
+  const { first_name, last_name } = getUser();
+  return `${first_name} ${last_name}`;
+}
+
 export const getAgeFromDOB = DOB => {
   const millisecondsInAYear = 1000 * 60 * 60 * 24 * 365
   return (Math.abs(new Date(DOB) - new Date()) / millisecondsInAYear).toFixed(0);

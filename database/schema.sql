@@ -53,6 +53,7 @@ create table notes (
   `date` datetime,
   `summary` varchar(150),
   `author` varchar(150),
+  `signed` BOOLEAN DEFAULT 0,
   `jsonData` JSON, 
   primary key (`id`)
 );
@@ -61,11 +62,13 @@ drop table if exists orders;
 create table orders (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `when` datetime not null,
-  `category` varchar(150) not null,
-  `order_item` varchar(150) not null,
+  `date` datetime not null default current_timestamp(),
+  `order` varchar(150) not null,
+  `reason` varchar(150) not null,
+  /*
   `frequency` varchar(150) not null,
   `status` varchar(150) not null,
+  */
   primary key (`id`)
 );
 
@@ -116,11 +119,13 @@ drop table if exists vitals;
 create table vitals (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `date` datetime not null,
-  `pulse` int not null,
-  `blood_pressure` varchar(10) not null,
-  `pulse_ox` int not null,
-  `temperature` decimal(3,1),
+  `date` datetime not null default current_timestamp(),
+  `temperature` float not null,
+  `pulse` float not null,
+  `respiratory` float not null,
+  `blood_pressure` varchar(20) not null,
+  `pulse_oxygen` float not null,
+  `pain` int not null,
   primary key (`id`)
 );
 

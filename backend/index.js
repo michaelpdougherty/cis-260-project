@@ -93,6 +93,18 @@ app.get('/api/notes/:mrn', (req, res) => {
   });
 });
 
+app.post('/api/orders', (req, res) => {
+  const {
+    order,
+    mrn
+  } = req.body;
+
+  res.json({
+    message: 'You win!',
+  })
+
+})
+
 app.post('/api/notes', (req, res) => {
     console.log("Received request at /api/notes");
     console.log(req.body);

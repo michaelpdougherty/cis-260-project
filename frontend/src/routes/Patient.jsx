@@ -21,12 +21,20 @@ const Patient = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentTab, setCurrentTab] = useState(0);
 
+  const [orders, setOrders] = useState([]);
+
   useEffect(() => {
     fetch(`/patient/${mrn}`)
       .then(res => res.json())
       .then(json => setJsonData(json))
       .finally(() => setIsLoading(false));
   }, [mrn]);
+  
+  useEffect(() => {
+    if (jsonData?.orders) {
+      setOrders(jsonData.orders);
+    }
+  }, [jsonData])
 
   // do not render tabs until data is loaded
   if (isLoading) return <FullPageLoadingSpinner/>;
@@ -50,7 +58,7 @@ const Patient = () => {
     },
     {
       title: 'Orders',
-      component: <OrdersTabView orders={jsonData.orders} />,
+      component: <OrdersTabView mrn={mrn} initialOrders={jsonData.orders} orders={orders} setOrders={setOrders} />,
     },
     {
       title: 'Notes',

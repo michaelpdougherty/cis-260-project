@@ -1,32 +1,31 @@
 import { useEffect, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import { Audio } from 'react-loader-spinner';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactModal from 'react-modal';
 
 import JsonTable from '../JsonTable';
 import { setTitle } from '../util';
-import { FlexBox, StyledField, Button, AddChartButton } from '../styles';
+import { FlexBox, Button, AddChartButton } from '../styles';
 
 const PatientForm = () => {
   return (
     <Form>
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div>
-          <StyledField name='ID' placeholder="MR#"/>
+          <Field name='ID' placeholder="MR#"/>
         </div>
         <div>
-          <StyledField name='FirstName' placeholder="First name"/>
+          <Field name='FirstName' placeholder="First name"/>
         </div>
         <div>
-          <StyledField name='LastName' placeholder="Last name"/>
+          <Field name='LastName' placeholder="Last name"/>
         </div>
         <div>
-          <StyledField name='DOB' placeholder="DOB"/>
+          <Field name='DOB' placeholder="DOB"/>
         </div>
         <div>
-          <StyledField name='description' placeholder="Description"/>
+          <Field name='description' placeholder="Description"/>
         </div>
       </div>
     </Form>
