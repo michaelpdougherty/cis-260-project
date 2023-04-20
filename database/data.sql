@@ -225,3 +225,5 @@ insert into notes (`mrn`, `date`, `summary`, `author`, `signed`) VALUES
 (@mrn, '2022-02-15 00:00:00', 'Patient had allergic reaction to medication', 'Dr. Syad', 1),
 (@mrn, '2022-03-10 04:06:00', 'Patient experienced high blood pressure', 'N.P. Toshiba', 1),
 (@mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);
+
+insert into orders (`mrn`, `date`, `order`, `reason`) VALUES (1, '2022-02-02 02:02:02', 'order', 'reason');

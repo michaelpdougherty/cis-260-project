@@ -1,7 +1,7 @@
 import { Table } from "../../styles";
 import { Formik, Form, Field } from 'formik';
 
-const OrdersTabView = ({ mrn, orders, setOrders, initialOrders }) => {
+const OrdersTabView = ({ mrn, orders, setOrders }) => {
 
   const handleSubmit = (values) => {
     const newOrder = {

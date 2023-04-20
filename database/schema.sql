@@ -62,7 +62,7 @@ drop table if exists orders;
 create table orders (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `date` datetime not null,
+  `date` datetime not null default current_timestamp(),
   `order` varchar(150) not null,
   `reason` varchar(150) not null,
   /*
