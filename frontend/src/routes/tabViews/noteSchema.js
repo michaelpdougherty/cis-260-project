@@ -16,7 +16,6 @@ const commonFields = {
     summary: {
       header: 'Summary',
       name: 'summary',
-      placeholder: 'Please enter a summary',
     },
 }
 
@@ -27,11 +26,6 @@ const dailyNoteSchema = {
       legend: 'Occupational Therapy',
       fields: [
         ...Object.values(commonFields),
-        {
-          name: 'summary',
-          header: 'Summary',
-          type: 'textarea',
-        },
         {
           name: 'precautions',
           header: 'Precautions',
