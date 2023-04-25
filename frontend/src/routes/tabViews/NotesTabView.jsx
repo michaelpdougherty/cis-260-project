@@ -28,7 +28,6 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
       author: values.author,
       jsonData: values,
     };
-    console.log(reqBody);
     fetch('/api/notes', {
       method: 'post',
       headers: {
@@ -38,7 +37,6 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
     }).then(res => res.json())
     .then(json => {
       setSubmitting(false);
-      console.log(json);
       if (json.success) {
         setNotes([...notes, json.note]);
       }
@@ -49,7 +47,6 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
     const noteSchemaResult = getNoteSchemaForFormType(formType);
     if (!noteSchemaResult) return null;
     const initialValues = getInitialValuesForFormType(formType);
-    console.log(initialValues);
     return <GenericNoteForm initialValues={initialValues} handleSubmit={handleNoteSubmit} noteSchema={noteSchemaResult} />;
   };
 

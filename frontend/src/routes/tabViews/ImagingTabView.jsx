@@ -12,7 +12,6 @@ const ImageRow = ({ imageRow: { id, mrn, date, image }}) => {
 }
 
 const ImagingTabView = ({ imaging }) => {
-  console.log(imaging);
   return (
     <Table>
       {imaging.map(imageRow => (<ImageRow imageRow={imageRow} />))}
