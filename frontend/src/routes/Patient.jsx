@@ -22,6 +22,7 @@ const Patient = () => {
   const [currentTab, setCurrentTab] = useState(0);
 
   const [orders, setOrders] = useState([]);
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     fetch(`/patient/${mrn}`)
@@ -33,6 +34,9 @@ const Patient = () => {
   useEffect(() => {
     if (jsonData?.orders) {
       setOrders(jsonData.orders);
+    }
+    if (jsonData?.notes) {
+      setNotes(jsonData.notes);
     }
   }, [jsonData])
 
@@ -62,7 +66,7 @@ const Patient = () => {
     },
     {
       title: 'Notes',
-      component: <NotesTabView notes={jsonData.notes} mrn={mrn} />,
+      component: <NotesTabView mrn={mrn} initialNotes={jsonData.notes} notes={notes} setNotes={setNotes} />,
     },
   ];
 

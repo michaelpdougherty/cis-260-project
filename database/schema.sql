@@ -49,10 +49,12 @@ create table meds (
 drop table if exists notes;
 create table notes (
   `id` int not null auto_increment,
-  `mrn` int,
-  `date` datetime,
-  `summary` varchar(150),
-  `author` varchar(150),
+  `mrn` int not null,
+  `date` datetime not null default current_timestamp(),
+  `type` varchar(150) not null,
+  `summary` varchar(150) not null,
+  `user_id` int not null,
+  `author` varchar(150) not null,
   `signed` BOOLEAN DEFAULT 0,
   `jsonData` JSON, 
   primary key (`id`)
@@ -131,10 +133,21 @@ create table vitals (
 
 drop table if exists users;
 create table users (
+  `id` int not null auto_increment,
   `username` varchar(255) not null,
   `password` varchar(255),
   `account_type` enum('teacher', 'student', 'admin') not null,
   `first_name` varchar(255),
   `last_name` varchar(255),
-  primary key (`username`, `account_type`)
+  primary key (`id`),
+  unique key (`username`, `account_type`)
+);
+
+drop table if exists imaging;
+create table imaging (
+  `id` int not null auto_increment,
+  `mrn` int not null,
+  `date` datetime not null default CURRENT_TIMESTAMP(),
+  `image` VARCHAR(255),
+  primary key (`id`)
 );

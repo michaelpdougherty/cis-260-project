@@ -45,6 +45,7 @@ app.get('/patient/:id', async (req, res) => {
   const statements = [
     //'select * from alerts where mrn = ?',
     //'select * from encounters where mrn = ?',
+    'select * from imaging where mrn = ?',
     'select * from labs where mrn = ?',
     //'select * from meds where mrn = ?',
     'select * from notes where mrn = ?',
@@ -61,6 +62,7 @@ app.get('/patient/:id', async (req, res) => {
     const responseKeys = [
       //'alerts',
       //'encounters',
+      'imaging',
       'labs',
       //'meds',
       'notes',
@@ -101,7 +103,7 @@ app.post('/api/orders', (req, res) => {
     author,
     reason
   } = req.body;
-
+  
   try {
     con.query(
       'insert into orders(' +
@@ -143,47 +145,64 @@ app.post('/api/notes', (req, res) => {
     console.log(req.body);
     const {
         mrn,
-        summary,
-        author,
+        userId,
         type,
         jsonData,
     } = req.body;
-    const date = new Date().toISOString()
-
+    const {
+      date,
+      author,
+      summary,
+    } = jsonData;
+    try {
     con.query(
-           'insert into notes (' +
-               '`mrn`,' +
-               '`date`,' +
-               '`summary`,' +
-               '`author`,' +
-               '`jsonData`' +
-           ') VALUES (' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?,' +
-                '?' +
-            ')',
-            [
-                mrn,
-                date,
-                summary,
-                author,
-                JSON.stringify(jsonData),
-            ],
-            (err, result) => {
-                if (err) throw err;
-                res.send({
-                    success: true,
-                    note: {
-                        mrn,
-                        date,
-                        summary,
-                        author,
-                        jsonData,
-                    }
-                });
+      'insert into notes (' +
+          '`mrn`,' +
+          '`date`,' +
+          '`type`,' +
+          '`summary`,' +
+          '`author`,' +
+          '`user_id`,' +
+          '`jsonData`' +
+      ') VALUES (' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?,' +
+          '?' +
+      ')',
+      [
+          mrn,
+          date,
+          type,
+          summary,
+          author,
+          userId,
+          JSON.stringify(jsonData),
+      ],
+      (err, result) => {
+          if (err) throw err;
+          res.json({
+              success: true,
+              note: {
+                  mrn,
+                  userId,
+                  date,
+                  type,
+                  jsonData,
+                  summary,
+                  author,
+              }
+          });
     });
+  } catch (err) {
+    res.json({
+      success: false,
+      error: err,
+    })
+  }
 });
 
 app.post('/api/login', (req, res) => {
@@ -210,11 +229,3 @@ app.post('/api/login', (req, res) => {
     }
   });
 });
-
-/*
-app.get('/api/user/:username', (req, res) => {
-  con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
-
-  });
-})
-*/

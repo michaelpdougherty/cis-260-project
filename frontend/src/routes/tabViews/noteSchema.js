@@ -13,6 +13,10 @@ const commonFields = {
       disabled: true,
       value: getUserFullName(),
     },
+    summary: {
+      header: 'Summary',
+      name: 'summary',
+    },
 }
 
 const dailyNoteSchema = {
@@ -21,13 +25,7 @@ const dailyNoteSchema = {
     {
       legend: 'Occupational Therapy',
       fields: [
-        commonFields.date,
-        commonFields.author,
-        {
-          name: 'summary',
-          header: 'Summary',
-          type: 'textarea',
-        },
+        ...Object.values(commonFields),
         {
           name: 'precautions',
           header: 'Precautions',
@@ -104,13 +102,7 @@ const initialEvaluationOTSchema = {
     {
       legend: 'Initial Evaluation Occupational Therapy',
       fields: [
-        commonFields.date,
-        commonFields.author,
-        {
-          name: 'summary',
-          header: 'Summary',
-          type: 'textarea',
-        },
+        ...Object.values(commonFields),
         {
           header: 'Precautions',
           name: 'precautions',
@@ -181,8 +173,7 @@ const initialEvaluationOTSchema = {
 
 const freeTextSchema = {
   fields: [
-    commonFields.date,
-    commonFields.author,
+    ...Object.values(commonFields),
     {
       name: 'content',
       type: 'textarea',
