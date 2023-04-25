@@ -187,6 +187,7 @@ app.post('/api/notes', (req, res) => {
           res.json({
               success: true,
               note: {
+                  id: result.insertId,
                   mrn,
                   userId,
                   date,

@@ -76,22 +76,22 @@ const dailyNoteSchema = {
     {
       legend: 'Vitals',
       fields: [
-        /*
         {
           header: 'Blood Pressure',
           name: 'bloodPressure',
-          type: 'number',
+          type: 'textarea', // should be number
         },
         {
           header: 'Heart Rate',
           name: 'heartRate',
+          type: 'textarea', // should be number
         },
         {
           header: 'SpO2',
           name: 'spO2',
-          pattern: '\\d{1,3}%',
-        }
-        */
+          type: 'textarea', // should be number
+          // pattern: '\\d{1,3}%',
+        },
       ]
     }
   ]
