@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { setTitle } from '../util';
+import { getUser, setTitle } from '../util';
 import { MainPatientContent, PatientContentView, TabContainer, TabBar } from '../styles';
 
 import SummaryTabView from './tabViews/SummaryTabView';
@@ -12,7 +12,7 @@ import NotesTabView from './tabViews/NotesTabView';
 import PatientSidebar from '../PatientSidebar';
 import FullPageLoadingSpinner from '../FullPageLoadingSpinner';
 
-const Patient = () => {
+const Patient = ({ userId }) => {
   setTitle('Patient');
 
   const { id: mrn } = useParams();
@@ -62,11 +62,11 @@ const Patient = () => {
     },
     {
       title: 'Orders',
-      component: <OrdersTabView mrn={mrn} initialOrders={jsonData.orders} orders={orders} setOrders={setOrders} />,
+      component: <OrdersTabView mrn={mrn} userId={userId} initialOrders={jsonData.orders} orders={orders} setOrders={setOrders} />,
     },
     {
       title: 'Notes',
-      component: <NotesTabView mrn={mrn} initialNotes={jsonData.notes} notes={notes} setNotes={setNotes} />,
+      component: <NotesTabView mrn={mrn} userId={userId} initialNotes={jsonData.notes} notes={notes} setNotes={setNotes} />,
     },
   ];
 

@@ -11,9 +11,8 @@ import {
   NoteFormDiv,
   NotesContainerHeader,
 } from '../../styles';
-import { getUser } from '../../util';
 
-const NotesTabView = ({ notes, setNotes, mrn }) => {
+const NotesTabView = ({ notes, setNotes, mrn, userId }) => {
   const [formType, setFormType] = useState('');
   const [viewedNoteId, setViewedNoteId] = useState('');
   const [viewedNote, setViewedNote] = useState('');
@@ -35,7 +34,6 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
   }, [viewedNote])
 
   const handleNoteSubmit = (values, { setSubmitting }) => {
-    const { id: userId } = getUser();
     const reqBody = {
       mrn: Number.parseInt(mrn),
       userId,

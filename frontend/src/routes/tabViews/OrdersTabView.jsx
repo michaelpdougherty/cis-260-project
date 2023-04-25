@@ -1,7 +1,7 @@
 import { Table } from "../../styles";
 import { Formik, Form, Field } from 'formik';
 
-const OrdersTabView = ({ mrn, orders, setOrders }) => {
+const OrdersTabView = ({ mrn, userId, orders, setOrders }) => {
 
   const handleSubmit = (values) => {
     const newOrder = {
@@ -10,6 +10,7 @@ const OrdersTabView = ({ mrn, orders, setOrders }) => {
       date: values.date,
       time: values.time,
       mrn,
+      userId,
     };
 
     fetch("/api/orders", {
@@ -17,7 +18,7 @@ const OrdersTabView = ({ mrn, orders, setOrders }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(newOrder),
     }).then(res => res.json())
     .then(json => {
       console.log(json);

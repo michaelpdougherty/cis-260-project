@@ -264,4 +264,4 @@ insert into notes (`user_id`, `mrn`, `date`, `summary`, `author`, `signed`) VALU
 (@userId, @mrn, '2022-03-10 04:06:00', 'Patient experienced high blood pressure', 'N.P. Toshiba', 1),
 (@userId, @mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);
 
-insert into orders (`mrn`, `date`, `order`, `reason`) VALUES (1, '2022-02-02 02:02:02', 'order', 'reason');
+insert into orders (`user_id`, `mrn`, `date`, `order`, `reason`) VALUES (@userId, @mrn, '2022-02-02 02:02:02', 'order', 'reason');

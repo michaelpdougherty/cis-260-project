@@ -39,7 +39,7 @@ const App = () => {
               {user.canEdit && <Route element={<EditCharts />} />}
               <Route index element={<Patients />} />
               <Route path="edit" element={<EditCharts />} />
-              <Route path="patient/:id" element={<Patient />} />
+              <Route path="patient/:id" element={<Patient userId={user.id} />} />
               <Route path="*" element={<NoMatch />} />
             </Route>
           </Routes>

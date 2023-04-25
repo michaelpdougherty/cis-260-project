@@ -55,19 +55,19 @@ create table notes (
   `summary` varchar(150) not null,
   `user_id` int not null,
   `author` varchar(150) not null,
-  `signed` BOOLEAN DEFAULT 0,
-  `jsonData` JSON, 
+  `signed` boolean not null default 0,
+  `jsonData` json, 
   primary key (`id`)
 );
 
 drop table if exists orders;
 create table orders (
   `id` int not null auto_increment,
+  `user_id` int not null,
   `mrn` int not null,
   `date` datetime not null default current_timestamp(),
-  `order` varchar(150) not null,
   `reason` varchar(150) not null,
-  `author` varchar(150) not null,
+  `order` varchar(150) not null,
   primary key (`id`)
 );
 
@@ -132,10 +132,10 @@ drop table if exists users;
 create table users (
   `id` int not null auto_increment,
   `username` varchar(255) not null,
-  `password` varchar(255),
+  `password` varchar(255) not null,
   `account_type` enum('teacher', 'student', 'admin') not null,
-  `first_name` varchar(255),
-  `last_name` varchar(255),
+  `first_name` varchar(255) not null,
+  `last_name` varchar(255) not null,
   primary key (`id`),
   unique key (`username`, `account_type`)
 );
@@ -144,7 +144,7 @@ drop table if exists imaging;
 create table imaging (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `date` datetime not null default CURRENT_TIMESTAMP(),
-  `image` VARCHAR(255),
+  `date` datetime not null default current_timestamp(),
+  `image` varchar(255) not null,
   primary key (`id`)
 );

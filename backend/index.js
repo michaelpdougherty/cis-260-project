@@ -97,47 +97,55 @@ app.post('/api/orders', (req, res) => {
   console.log("Received request at /api/orders");
   console.log(req.body);
   const {
-    order,
+    userId,
     mrn,
     date,
-    author,
-    reason
+    reason,
+    order,
   } = req.body;
   
-  try {
-    con.query(
-      'insert into orders(' +
-        '`mrn`,' +
-        '`date`,' +
-        '`author`,' +
-        '`reason`,' +
-        '`order`' +
-      ') VALUES (' +
-        '?,' +
-        '?,' +
-        '?,' +
-        '?,' +
-        '?' +
-      ')',
-      [
-        mrn,
-        date,
-        author,
-        reason,
-        order
-      ],
-      (err, result) => {
-        if (err) throw err;
+  con.query(
+    'insert into orders(' +
+      '`user_id`,' +
+      '`mrn`,' +
+      '`date`,' +
+      '`reason`,' +
+      '`order`' +
+    ') VALUES (' +
+      '?,' +
+      '?,' +
+      '?,' +
+      '?,' +
+      '?' +
+    ')',
+    [
+      userId,
+      mrn,
+      date,
+      reason,
+      order
+    ],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({
+          success: false,
+          error: err,
+        });
+      } else {
         res.json({
           success: true,
+          order: {
+            id: result.insertId,
+            userId,
+            mrn,
+            date,
+            reason,
+            order,
+          }
         });
       }
-    );
-  } catch {
-    res.status(500).json({
-      success: false,
-    });
-  }
+    }
+  );
 });
 
 app.post('/api/notes', (req, res) => {
