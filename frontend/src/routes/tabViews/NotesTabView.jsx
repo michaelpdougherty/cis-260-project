@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GenericNoteForm from './GenericNoteForm';
 import NoteSummary from './NoteSummary';
 import { getNoteSchemaForFormType, getInitialValuesForFormType } from './noteSchema';
@@ -15,8 +15,25 @@ import { getUser } from '../../util';
 
 const NotesTabView = ({ notes, setNotes, mrn }) => {
   const [formType, setFormType] = useState('');
+  const [viewedNoteId, setViewedNoteId] = useState('');
+  const [viewedNote, setViewedNote] = useState('');
 
-  /* todo actually submit notes to server */
+  useEffect(() => {
+    if (viewedNoteId !== '') {
+      setViewedNote(notes.find(note => note.id === viewedNoteId));
+    } else {
+      setViewedNote('');
+    }
+  }, [viewedNoteId, notes]);
+
+  useEffect(() => {
+    console.log("Viewing note:");
+    console.log(viewedNote);
+    if (viewedNote?.draft) {
+      setFormType(viewedNote.type);
+    }
+  }, [viewedNote])
+
   const handleNoteSubmit = (values, { setSubmitting }) => {
     const { id: userId } = getUser();
     const reqBody = {
@@ -50,25 +67,65 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
     return <GenericNoteForm initialValues={initialValues} handleSubmit={handleNoteSubmit} noteSchema={noteSchemaResult} />;
   };
 
+  const handleNoteClick = id => {
+    setViewedNoteId(id);
+    setFormType('');
+  }
+
+  const handleNewNoteClick = () => {
+    setViewedNoteId('');
+    setFormType('');
+  }
+
+  const getRightView = () => {
+    if (!viewedNote) {
+      return (
+        <>
+          <NoteTypeSelect value={formType} onChange={e => setFormType(e.target.value)}>
+            <option value='' disabled>Please select your note style</option>
+            <option value='freeText'>Free text</option>
+            <option value='dailyNoteOT'>Daily Note: Occupational Therapy</option>
+            <option value='initialEvalOT'>Initial Evaluation: Occupational Therapy</option>
+          </NoteTypeSelect>
+          {formType !== '' && (
+            <NoteFormDiv>
+              {getCurrentForm()}
+            </NoteFormDiv>
+          )}
+        </>
+      );
+    } else if (viewedNote.signed) {
+      return <p>This is a signed note.<br/>{JSON.stringify(viewedNote, undefined, 4)}</p>;
+    } else {
+      // this is a draft note
+      return (
+        <>
+          <h1>WE DO NOT SUPPORT EDITING NOTES. THIS WILL BE A NEW NOTE.</h1>
+          <NoteTypeSelect value={formType} onChange={e => setFormType(e.target.value)}>
+            <option value='' disabled>Please select your note style</option>
+            <option value='freeText'>Free text</option>
+            <option value='dailyNoteOT'>Daily Note: Occupational Therapy</option>
+            <option value='initialEvalOT'>Initial Evaluation: Occupational Therapy</option>
+          </NoteTypeSelect>
+          {formType !== '' && (
+            <NoteFormDiv>
+              {getCurrentForm()}
+            </NoteFormDiv>
+          )}
+        </>
+      );
+    }
+  }
+
   return (
     <NotesTabViewStyle>
       <NoteHalfLeft>
-        <NotesContainerHeader>All Notes <ButtonBlue id='new-note'>New Note</ButtonBlue></NotesContainerHeader>
+        <NotesContainerHeader>All Notes <ButtonBlue onClick={handleNewNoteClick} id='new-note'>New Note</ButtonBlue></NotesContainerHeader>
         <hr/>
-        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id + note.mrn} {...note} />) : 'No notes.'}
+        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id + note.mrn} handleClick={handleNoteClick} {...note} />) : 'No notes.'}
       </NoteHalfLeft>
       <NoteHalfRight>
-        <NoteTypeSelect value={formType} onChange={e => setFormType(e.target.value)}>
-          <option value='' disabled>Please select your note style</option>
-          <option value='freeText'>Free text</option>
-          <option value='dailyNoteOT'>Daily Note: Occupational Therapy</option>
-          <option value='initialEvalOT'>Initial Evaluation: Occupational Therapy</option>
-        </NoteTypeSelect>
-        {formType !== '' && (
-          <NoteFormDiv>
-            {getCurrentForm()}
-          </NoteFormDiv>
-        )}
+        {getRightView()}
       </NoteHalfRight>
     </NotesTabViewStyle>
   );
