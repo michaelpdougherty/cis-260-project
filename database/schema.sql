@@ -67,10 +67,7 @@ create table orders (
   `date` datetime not null default current_timestamp(),
   `order` varchar(150) not null,
   `reason` varchar(150) not null,
-  /*
-  `frequency` varchar(150) not null,
-  `status` varchar(150) not null,
-  */
+  `author` varchar(150) not null,
   primary key (`id`)
 );
 

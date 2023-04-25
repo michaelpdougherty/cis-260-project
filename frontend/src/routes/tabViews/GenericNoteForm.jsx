@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import { NoteFormLabel as Label, SelectFieldDiv, InputBlue, NoteHeader, NoteFieldDiv } from '../../styles';
+import { NoteFormLabel as Label, SelectFieldDiv, NoteHeader, NoteFieldDiv, NoteSubmitButton } from '../../styles';
 
 const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
   const getCurrentField = ({ type, name, options, ...otherProps }) => {
@@ -42,7 +42,8 @@ const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
                 {getCurrentField(field)}
               </NoteFieldDiv>
           ))}
-          <InputBlue style={{ marginTop: 5 }} type="submit" disabled={isSubmitting} value="Save as draft"/>
+          <NoteSubmitButton type="submit" disabled={isSubmitting} value="Save as draft"/>
+          <NoteSubmitButton type="submit" disabled={isSubmitting} value="Sign note"/>
         </Form>
       )}
     </Formik>

@@ -370,6 +370,10 @@ export const InputBlue = styled.input`
   height: 30px;
 `;
 
+export const NoteSubmitButton = styled(InputBlue)`
+  margin: 5px;
+`;
+
 export const NotesContainer = styled.div`
   display: flex;
   justify-content: space-around;
