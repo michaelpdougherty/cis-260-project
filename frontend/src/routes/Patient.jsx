@@ -54,7 +54,7 @@ const Patient = ({ userId }) => {
     },
     {
       title: 'Lab Results',
-      component: <LabResultsTabView labs={jsonData.labs} />,
+      component: <LabResultsTabView labResults={jsonData.labs} />,
     },
     {
       title: 'Imaging',
