@@ -76,6 +76,7 @@ const dailyNoteSchema = {
     {
       legend: 'Vitals',
       fields: [
+        /*
         {
           header: 'Blood Pressure',
           name: 'bloodPressure',
@@ -84,13 +85,13 @@ const dailyNoteSchema = {
         {
           header: 'Heart Rate',
           name: 'heartRate',
-          type: 'number',
         },
         {
           header: 'SpO2',
           name: 'spO2',
           pattern: '\\d{1,3}%',
         }
+        */
       ]
     }
   ]
@@ -127,7 +128,8 @@ const initialEvaluationOTSchema = {
           header: 'Equipment used PTA',
           name: 'equipmentUsedPTA',
           type: 'select',
-          defaultValue: 'rollator',
+          defaultValue: 'includingCommode',
+          initialValue: 'includingCommode',
           options: {
             includingCommode: 'Including Commode',
             grabBars: 'Grab Bars',

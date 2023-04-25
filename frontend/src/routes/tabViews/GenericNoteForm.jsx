@@ -15,9 +15,12 @@ const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
           </SelectFieldDiv>
         );
       default:
+        return <Field type='text' id={name} name={name} />;
+        /*
         return <Field style={{
           width: '50%',
         }} type={type ?? 'text'} id={name} name={name} {...otherProps} />;
+        */
     }
   };
 
