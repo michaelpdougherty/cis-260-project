@@ -260,14 +260,16 @@ export const Select = styled.select`
   cursor: pointer;
   position: relative;
 `;
-export const SelectField = styled(Field)`
-  margin-left: 10px;
-  padding: 5px;
-  border: none;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  cursor: pointer;
-  position: relative;
+export const SelectFieldDiv = styled.div`
+  select {
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+  }
 `;
 
 export const NoteFormLabel = styled.label`

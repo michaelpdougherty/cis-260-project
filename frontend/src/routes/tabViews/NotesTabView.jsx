@@ -49,6 +49,7 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
     const noteSchemaResult = getNoteSchemaForFormType(formType);
     if (!noteSchemaResult) return null;
     const initialValues = getInitialValuesForFormType(formType);
+    console.log(initialValues);
     return <GenericNoteForm initialValues={initialValues} handleSubmit={handleNoteSubmit} noteSchema={noteSchemaResult} />;
   };
 
@@ -57,7 +58,7 @@ const NotesTabView = ({ notes, setNotes, mrn }) => {
       <NoteHalfLeft>
         <NotesContainerHeader>All Notes <ButtonBlue id='new-note'>New Note</ButtonBlue></NotesContainerHeader>
         <hr/>
-        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id} {...note} />) : 'No notes.'}
+        {notes.length > 0 ? notes.map(note => <NoteSummary key={note.id + note.mrn} {...note} />) : 'No notes.'}
       </NoteHalfLeft>
       <NoteHalfRight>
         <NoteTypeSelect value={formType} onChange={e => setFormType(e.target.value)}>

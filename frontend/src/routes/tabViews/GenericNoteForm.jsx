@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import { NoteFormLabel as Label, SelectField, ButtonBlue, NoteHeader, NoteFieldDiv } from '../../styles';
+import { NoteFormLabel as Label, SelectFieldDiv, ButtonBlue, NoteHeader, NoteFieldDiv } from '../../styles';
 
 const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
   const getCurrentField = ({ type, name, options, ...otherProps }) => {
@@ -8,9 +8,11 @@ const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
         return <Field as='textarea' id={name} name={name} {...otherProps} rows={3} style={{ width: '100%', marginTop: 5 }} />;
       case 'select':
         return (
-          <SelectField type='select' as='select' id={name} name={name} {...otherProps}>
-            {Object.entries(options).map(([optionKey, optionValue]) => <option key={optionKey} value={optionValue}>{optionValue}</option>)}
-          </SelectField>
+          <SelectFieldDiv>
+            <Field as='select' id={name} name={name}>
+              {Object.entries(options).map(([optionKey, optionValue]) => <option key={optionKey} value={optionKey}>{optionValue}</option>)}
+            </Field>
+          </SelectFieldDiv>
         );
       default:
         return <Field style={{
@@ -19,13 +21,14 @@ const GenericNoteForm = ({ handleSubmit, initialValues, noteSchema }) => {
     }
   };
 
+  let i = 0;
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit} enableReinitialize>
       {({ isSubmitting }) => (
         <Form>
           {noteSchema.header && <NoteHeader>{noteSchema.header}</NoteHeader>}
           {noteSchema.fieldSets ? noteSchema.fieldSets.map(fieldSet => (
-            <fieldset style={{ padding: 2 }} key={fieldSet.legend}>
+            <fieldset style={{ padding: 2 }} key={fieldSet.legend ?? 'fieldset-' + i++}>
               <legend>{fieldSet.legend}</legend>
               {fieldSet.fields.map(field => (
                 <NoteFieldDiv key={field.name} direction={field.type === 'textarea' ? 'column' : 'row'}>
