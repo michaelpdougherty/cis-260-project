@@ -94,15 +94,51 @@ app.get('/api/notes/:mrn', (req, res) => {
 });
 
 app.post('/api/orders', (req, res) => {
+  console.log("Received request at /api/orders");
+  console.log(req.body);
   const {
     order,
-    mrn
+    mrn,
+    date,
+    author,
+    reason
   } = req.body;
-
-  res.json({
-    message: 'You win!',
-  })
-})
+  
+  try {
+    con.query(
+      'insert into orders(' +
+        '`mrn`,' +
+        '`date`,' +
+        '`author`,' +
+        '`reason`,' +
+        '`order`' +
+      ') VALUES (' +
+        '?,' +
+        '?,' +
+        '?,' +
+        '?,' +
+        '?' +
+      ')',
+      [
+        mrn,
+        date,
+        author,
+        reason,
+        order
+      ],
+      (err, result) => {
+        if (err) throw err;
+        res.json({
+          success: true,
+        });
+      }
+    );
+  } catch {
+    res.status(500).json({
+      success: false,
+    });
+  }
+});
 
 app.post('/api/notes', (req, res) => {
     console.log("Received request at /api/notes");
@@ -193,11 +229,3 @@ app.post('/api/login', (req, res) => {
     }
   });
 });
-
-/*
-app.get('/api/user/:username', (req, res) => {
-  con.query(`SELECT * FROM users WHERE username = '${username}' AND account_type = '${accountType}'`, (err, result) => {
-
-  });
-})
-*/

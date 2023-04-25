@@ -24,6 +24,7 @@ const OrdersTabView = ({ mrn, orders, setOrders }) => {
     });
     
     setOrders([...orders, newOrder]);
+    
   };
 
   return (
