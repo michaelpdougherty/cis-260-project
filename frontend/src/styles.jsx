@@ -343,9 +343,8 @@ export const Caretaker = styled.p`
 `
 
 /* duplicated styled for input/button :( */
-export const ButtonBlue = styled.button`
+export const Button2 = styled.button`
   border: 1px solid transparent;
-  background-color: #00a4bd;
   cursor: pointer;
   color: #ffffff;
   padding: 5px;
@@ -355,6 +354,9 @@ export const ButtonBlue = styled.button`
   text-align: center;
   width: 100px;
   height: 30px;
+`;
+export const ButtonBlue = styled(Button2)`
+  background-color: #00a4bd;
 `;
 export const InputBlue = styled.input`
   border: 1px solid transparent;

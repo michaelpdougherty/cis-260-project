@@ -99,10 +99,10 @@ app.post('/api/orders', (req, res) => {
   const {
     userId,
     mrn,
-    date,
     reason,
     order,
   } = req.body;
+  const date = new Date().toISOString();
   
   con.query(
     'insert into orders(' +

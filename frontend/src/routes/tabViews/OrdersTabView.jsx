@@ -1,14 +1,26 @@
 import { Table } from "../../styles";
 import { Formik, Form, Field } from 'formik';
+import styled from 'styled-components';
+
+const OrderSpan = styled.span`
+  margin-right: 5px;
+`;
+
+const OrderLabel = styled.label`
+  margin-right: 20px;
+`;
+
+const OrderForm = styled(Form)`
+  padding: 20px;
+  margin-bottom: 50px;
+`;
 
 const OrdersTabView = ({ mrn, userId, orders, setOrders }) => {
-
   const handleSubmit = (values) => {
     const newOrder = {
       order: values.order,
       reason: values.reason,
-      date: values.date,
-      time: values.time,
+      date: new Date().toISOString(),
       mrn,
       userId,
     };
@@ -25,7 +37,6 @@ const OrdersTabView = ({ mrn, userId, orders, setOrders }) => {
     });
     
     setOrders([...orders, newOrder]);
-    
   };
 
   return (
@@ -44,8 +55,8 @@ const OrdersTabView = ({ mrn, userId, orders, setOrders }) => {
             <tr key={index}>
               <td>{order.order}</td>
               <td>{order.reason}</td>
-              <td>{order.date}</td>
-              <td>{order.time}</td>
+              <td>{new Date(order.date).toLocaleDateString()}</td>
+              <td>{new Date(order.date).toLocaleTimeString()}</td>
             </tr>
           ))}
         </tbody>
@@ -53,28 +64,18 @@ const OrdersTabView = ({ mrn, userId, orders, setOrders }) => {
       <Formik onSubmit={handleSubmit} initialValues={{
         order: '',
         reason: '',
-        date: '',
-        time: '',
       }}>
-        <Form>
-          <label>
-            Order:
+        <OrderForm>
+          <OrderLabel>
+            <OrderSpan>Order:</OrderSpan>
             <Field type="text" name="order" required />
-          </label>
-          <label>
-            Reason:
+          </OrderLabel>
+          <OrderLabel>
+            <OrderSpan>Reason:</OrderSpan>
             <Field type="text" name="reason" required />
-          </label>
-          <label>
-            Date:
-            <Field type="date" name="date" required />
-          </label>
-          <label>
-            Time:
-            <Field type="time" name="time" required />
-          </label>
+          </OrderLabel>
           <button type="submit">Add Order</button>
-        </Form>
+        </OrderForm>
       </Formik>
     </>
   );
