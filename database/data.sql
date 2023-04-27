@@ -265,3 +265,47 @@ insert into notes (`user_id`, `mrn`, `date`, `summary`, `author`, `signed`) VALU
 (@userId, @mrn, '2023-01-10 06:06:00', 'Patient experienced high glucose', 'M.D. Dell', 0);
 
 insert into orders (`user_id`, `mrn`, `date`, `order`, `reason`) VALUES (@userId, @mrn, '2022-02-02 02:02:02', 'order', 'reason');
+
+insert into labs (`mrn`, `lab_test`, `value`, `abnormal_flag`) VALUES
+    (@mrn, 'hemoglobin', 12.02, ''),
+    (@mrn, 'hemoglobin', 10, 'Low'),
+    (@mrn, 'hemotocrit', 36.9, ''),
+    (@mrn, 'hemotocrit', 31.2, 'Low'),
+    (@mrn, 'rbc', 4.43, ''),
+    (@mrn, 'rbc', 3.78, 'Low');
+
+set @mrn = 2;
+insert into labs (`mrn`, `lab_test`, `value`, `abnormal_flag`) VALUES
+    (@mrn, 'hemoglobin', 12.02, ''),
+    (@mrn, 'hemoglobin', 10, 'Low'),
+    (@mrn, 'hemotocrit', 36.9, ''),
+    (@mrn, 'hemotocrit', 31.2, 'Low'),
+    (@mrn, 'rbc', 4.43, ''),
+    (@mrn, 'rbc', 3.78, 'Low');
+
+set @mrn = 3;
+insert into labs (`mrn`, `lab_test`, `value`, `abnormal_flag`) VALUES
+    (@mrn, 'hemoglobin', 12.02, ''),
+    (@mrn, 'hemoglobin', 10, 'Low'),
+    (@mrn, 'hemotocrit', 36.9, ''),
+    (@mrn, 'hemotocrit', 31.2, 'Low'),
+    (@mrn, 'rbc', 4.43, ''),
+    (@mrn, 'rbc', 3.78, 'Low');
+
+set @mrn = 4;
+insert into labs (`mrn`, `lab_test`, `value`, `abnormal_flag`) VALUES
+    (@mrn, 'hemoglobin', 12.02, ''),
+    (@mrn, 'hemoglobin', 10, 'Low'),
+    (@mrn, 'hemotocrit', 36.9, ''),
+    (@mrn, 'hemotocrit', 31.2, 'Low'),
+    (@mrn, 'rbc', 4.43, ''),
+    (@mrn, 'rbc', 3.78, 'Low');
+
+set @mrn = 5;
+insert into labs (`mrn`, `lab_test`, `value`, `abnormal_flag`) VALUES
+    (@mrn, 'hemoglobin', 12.02, ''),
+    (@mrn, 'hemoglobin', 10, 'Low'),
+    (@mrn, 'hemotocrit', 36.9, ''),
+    (@mrn, 'hemotocrit', 31.2, 'Low'),
+    (@mrn, 'rbc', 4.43, ''),
+    (@mrn, 'rbc', 3.78, 'Low');

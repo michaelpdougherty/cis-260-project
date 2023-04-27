@@ -25,12 +25,10 @@ drop table if exists labs;
 create table labs (
   `id` int not null auto_increment,
   `mrn` int not null,
-  `date` datetime not null,
+  `date` datetime not null default current_timestamp(),
   `lab_test` varchar(150) not null,
-  `value` varchar(150) not null,
-  `unit` varchar(150) not null,
+  `value` float not null,
   `abnormal_flag` varchar(150) not null,
-  `reference_range` varchar(150) not null,
   primary key (`id`)
 );
 

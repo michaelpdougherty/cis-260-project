@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getUser, setTitle } from '../util';
+import { setTitle } from '../util';
 import { MainPatientContent, PatientContentView, TabContainer, TabBar } from '../styles';
 
 import SummaryTabView from './tabViews/SummaryTabView';
@@ -54,7 +54,7 @@ const Patient = ({ userId }) => {
     },
     {
       title: 'Lab Results',
-      component: <LabResultsTabView labResults={jsonData.labs} />,
+      component: <LabResultsTabView labs={jsonData.labs} />,
     },
     {
       title: 'Imaging',

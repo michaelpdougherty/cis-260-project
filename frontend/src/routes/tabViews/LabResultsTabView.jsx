@@ -1,55 +1,67 @@
 import { Table } from "../../styles";
 
-const LabResultsTabView = () => {//labResults }) => {
-  const labResults = [
-  {      labTest: 'Hemoglobin (g/dl)',      date1: '12.02',      flag1: '',      date2: '10',      flag2: 'Low',      refRange: '12.0-15.0',    },    
-  {      labTest: 'Hemotocrit (%)',      date1: '36.9',      flag1: '',      date2: '31.2',      flag2: 'Low',      refRange: '36-41',    },    
-  {      labTest: 'RBCs',      date1: '4.43',      flag1: '',      date2: '3.78',      flag2: 'Low',      refRange: '4.0-4.9',    }  ];
+const LabResultsTabView = ({ labs }) => {
+  const labTypes = {
+    hemoglobin: {
+      header: "Hemoglobin (g/dl)",
+      refRange: [12.0, 15.0],
+    },
+    hemotocrit: {
+      header: "Hemotocrit (%)",
+      refRange: [36, 41],
+    },
+    rbc: {
+      header: "RBCs",
+      refRange: [4.0, 4.9],
+    },
+  };
+
+  const NoData = () => {
+    return (
+      <tr>
+        <td colSpan={5}>No data.</td>
+      </tr>
+    );
+  }
 
   return (
-    
     <Table>
       <thead>
-        <th>
-          Lab Test
-        </th>
-        <th>
-          Date
-        </th>
-        <th>
-          Abnormal Flag
-        </th>
-        <th>
-          Date
-        </th>
-        <th>
-          Abnormal Flag
-        </th>
-        <th>
-          Reference Range
-        </th>
+        <tr>
+          <th>
+            Lab Test
+          </th>
+          <th>
+            Value
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Abnormal Flag
+          </th>
+          <th>
+            Reference Range
+          </th>
+        </tr>
       </thead>
-
       <tbody>
-        {labResults.map(entry => (
-          <tr>
+        {labs.length === 0 ? (<NoData />) : labs.map(entry => (
+          <tr key={entry.id}>
             <td>
-              {entry.labTest}
+              {labTypes[entry.lab_test].header ?? 'Error'}
             </td>
             <td>
-              {entry.date1}
+              {(entry.value).toFixed(2)}
             </td>
             <td>
-              {entry.flag1}
+              {entry.date ? new Date(entry.date).toLocaleString() : new Date().toLocaleString()}
             </td>
             <td>
-              {entry.date2}
+              {entry.abnormal_flag}
             </td>
             <td>
-              {entry.flag2}
-            </td>
-            <td>
-              {entry.refRange}
+              {(labTypes[entry.lab_test].refRange[0]).toFixed(2)}-{(labTypes[entry.lab_test].refRange[1]).toFixed(2)}
             </td>
           </tr>
         ))}
