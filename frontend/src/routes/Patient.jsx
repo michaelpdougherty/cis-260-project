@@ -30,7 +30,7 @@ const Patient = ({ userId }) => {
       .then(json => setJsonData(json))
       .finally(() => setIsLoading(false));
   }, [mrn]);
-  
+
   useEffect(() => {
     if (jsonData?.orders) {
       setOrders(jsonData.orders);
@@ -38,6 +38,7 @@ const Patient = ({ userId }) => {
     if (jsonData?.notes) {
       setNotes(jsonData.notes);
     }
+    console.log(jsonData);
   }, [jsonData])
 
   // do not render tabs until data is loaded
@@ -72,7 +73,11 @@ const Patient = ({ userId }) => {
 
   return (
     <MainPatientContent>
-      <PatientSidebar image={jsonData.patient.image} name={jsonData.patient.firstName + ' ' + jsonData.patient.lastName} />
+      <PatientSidebar
+        image={jsonData.patient.image}
+        name={jsonData.patient.firstName + ' ' + jsonData.patient.lastName}
+        dob={new Date(jsonData.patient.dob).toLocaleDateString()}
+      />
       <PatientContentView>
         <TabContainer>
           <TabBar>

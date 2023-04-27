@@ -1,11 +1,12 @@
 import { Sidebar, PatientImage } from './styles';
 
-const PatientSidebar = ({ image, name }) => {
+const PatientSidebar = ({ image, name, dob }) => {
   return (
     <Sidebar>
       <div>
         <PatientImage src={image} alt='patient profile' />
-        <p>{name}</p>
+        <p>Name: {name}</p>
+        <p>DOB: {dob}</p>
       </div>
     </Sidebar>
   );
