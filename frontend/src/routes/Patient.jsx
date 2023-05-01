@@ -79,6 +79,8 @@ const Patient = ({ userId }) => {
         dob={new Date(jsonData.patient.dob).toLocaleDateString()}
         mrn={jsonData.patient.mrn}
         attendingPhysician={jsonData.patient.provider}
+        height={jsonData.patient.height}
+        weight={jsonData.patient.weight}
       />
       <PatientContentView>
         <TabContainer>

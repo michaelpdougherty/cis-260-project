@@ -108,6 +108,8 @@ create table patients (
   `provider` varchar(50) not null,
   `hospital` varchar(50) not null,
   `comment` varchar(150) not null,
+  `height` float,
+  `weight` float,
   `image` varchar(255) not null,
   primary key (`mrn`)
 );
