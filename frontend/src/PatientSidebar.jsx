@@ -13,7 +13,7 @@ const PatientSidebar = ({
 }) => {
   return (
     <Sidebar>
-      <div style={{ textAlign: 'left' }}>
+      <div style={{ textAlign: 'left', paddingLeft: 10 }}>
         <PatientImage src={image} alt='patient profile' />
         <p><b>Name:</b> {name}</p>
         <p><b>DOB:</b> {dob}</p>
