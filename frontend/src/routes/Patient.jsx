@@ -81,6 +81,8 @@ const Patient = ({ userId }) => {
         attendingPhysician={jsonData.patient.provider}
         height={jsonData.patient.height}
         weight={jsonData.patient.weight}
+        bmi={jsonData.patient.bmi}
+        allergies={jsonData.patient.allergies}
       />
       <PatientContentView>
         <TabContainer>

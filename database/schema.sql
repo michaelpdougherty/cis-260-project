@@ -110,6 +110,8 @@ create table patients (
   `comment` varchar(150) not null,
   `height` float,
   `weight` float,
+  `bmi` float,
+  `allergies` varchar(255) default "None",
   `image` varchar(255) not null,
   primary key (`mrn`)
 );
