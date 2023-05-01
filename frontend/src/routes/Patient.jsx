@@ -77,6 +77,8 @@ const Patient = ({ userId }) => {
         image={jsonData.patient.image}
         name={jsonData.patient.firstName + ' ' + jsonData.patient.lastName}
         dob={new Date(jsonData.patient.dob).toLocaleDateString()}
+        mrn={jsonData.patient.mrn}
+        attendingPhysician={jsonData.patient.provider}
       />
       <PatientContentView>
         <TabContainer>
